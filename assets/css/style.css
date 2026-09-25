@@ -43,7 +43,25 @@ a { color: inherit; text-decoration: none; }
   background: var(--bg);
 }
 
-.bar a:hover { text-decoration: underline; }
+.bar p span:first-child {
+  margin-right: 1em;
+}
+.bar p span:first-child:after {
+  content: "⏺";
+  margin-left: 1em;
+}
+
+.bar a {
+  font-size: 0.75em;  
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 4px 8px;
+}
+
+.bar a:hover { 
+  color: black;
+  background: white;
+ }
 
 /* ---------- start page ---------- */
 
@@ -82,7 +100,7 @@ a { color: inherit; text-decoration: none; }
   position: sticky;
   top: 0;
   z-index: 1;
-  background: var(--bg);
+  background: #EEE;
   border-top: 1px solid var(--line);
 }
 
@@ -99,7 +117,7 @@ a.row:focus-visible {
 @media (max-width: 800px) {
   .columns { grid-template-columns: 1fr; }
   .column + .column { border-left: 0; }
-  .column + .column .row-head { margin-top: 2em; }
+  .column + .column .row-head { margin-top: 0em; border-top: none; }
 }
 
 /* ---------- detail page ----------
@@ -192,67 +210,100 @@ body.detail {
   margin: 1.35em 0;
 }
 
+.readme h1 { 
+  color: rgb(255, 100, 100); 
+}
+
 .readme > :first-child { margin-top: 0; }
 
 .readme p, .readme ul, .readme ol, .readme table, .readme blockquote { margin: 1.35em 0; }
 
 .readme a { text-decoration: underline; }
-.readme a:hover { color: #999; }
+.readme a:hover { color: rgb(100, 100, 255); }
 
 .readme img { max-width: 100%; height: auto; }
 
-.readme hr { border: 0; border-top: 1px solid #555; margin: 2em 0; }
+.readme hr { border: 0; border-top: 1px solid #FFF; margin: 2em 0; }
 
 .readme blockquote {
   padding-left: var(--gutter);
-  border-left: 2px solid #555;
-  color: #bbb;
+  border-left: 1px solid #FFF;
+  color: #FFF;
 }
 
 .readme code {
   font-family: var(--mono);
-  font-size: 0.9em;
-  color: #ccc;
+  font-size: 1.1em;
+  color: rgb(100, 100, 255);
 }
 
 .readme pre {
-  margin: 1.8em 12px;
-  padding: 16px;
+  margin: 24px 0px;
+  padding: 12px;
   border-radius: 6px;
   background: #171717;
   overflow-x: auto;
-  line-height: 1.45;
+  line-height: 1.2;
 }
 
-.readme pre code { color: var(--green); }
+.readme pre code { 
+  color: var(--green); 
+  font-size:0.85rem;
+}
 
 .readme table { border-collapse: collapse; display: block; overflow-x: auto; }
-.readme th, .readme td { border: 1px solid #555; padding: 4px 8px; text-align: left; }
+.readme th, .readme td { border: 1px solid #FFF; padding: 8px 12px; text-align: left; }
 
 .readme .empty { color: #999; }
 
 .readme .related {
   list-style: none;
-  margin: 0 0 1.35em;
-  padding: 0;
-  border-top: 1px solid #555;
+  padding: 10px var(--gutter);
+  background: white;
+  border-radius: 3px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;  
+}
+.readme .related:hover {
+  background: #555;
 }
 
 .readme .related li {
   display: flex;
   gap: var(--gutter);
-  padding: 8px 0;
-  border-bottom: 1px solid #555;
   text-transform: uppercase;
+  color: black;    
 }
 
-.readme .related-label { color: #999; min-width: 6em; }
+.readme .related-label { color: black }
 .readme .related a { text-decoration: none; }
-.readme .related a:hover { color: #999; }
+
+.readme ul:not(.related) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.readme ol:not(.related) {
+   list-style-position: inside;
+   padding: 0;
+}
+
+.readme ul:not(.related) li:before { 
+  content: "–";
+  display: inline-block;
+  width: 1em;
+}
+  
+
 
 /* ---------- page transition: flip the page like a card ----------
    Cross-document View Transitions (Chrome, Edge, Safari 18.2+);
-   other browsers just load the page. Direction set in assets/js/flip.js. */
+   other browsers just load the page. Pages flip forward; the home page
+   flips back (types: flip-back, set in _layouts/default.html). */
 
 @view-transition { navigation: auto; }
 

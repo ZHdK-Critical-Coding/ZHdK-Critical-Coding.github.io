@@ -6,9 +6,12 @@
   <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.title }} {{ site.subtitle }}</title>
   <meta name="description" content="{{ page.description | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <script src="{{ '/assets/js/flip.js' | relative_url }}"></script>
+  {%- assign body_class = page.body_class | default: layout.body_class %}
+  {%- if body_class == 'home' %}
+  <style>@view-transition { navigation: auto; types: flip-back; }</style>
+  {%- endif %}
 </head>
-<body class="{{ page.body_class | default: layout.body_class }}">
+<body class="{{ body_class }}">
 {{ content }}
 </body>
 </html>
