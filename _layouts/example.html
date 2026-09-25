@@ -42,7 +42,9 @@ body_class: detail
   </article>
 
   <aside class="meta">
-    <a class="button" href="{{ page.repo_url }}">GitHub</a>
+    <div class="meta-link">
+      <a class="button" href="{{ page.repo_url }}">GitHub</a>
+    </div>
     <dl>
       <dt>Technology</dt><dd>{{ page.technology }}</dd>
       <dt>Author</dt><dd>{{ page.author }}</dd>
@@ -53,7 +55,7 @@ body_class: detail
 </main>
 
 <footer class="bar pager">
-  <a href="{{ prev.url | relative_url }}" data-key="ArrowLeft" data-flip="back">&lt; {{ prev.title }}</a>
-  <a href="{{ next.url | relative_url }}" data-key="ArrowRight">{{ next.title }} &gt;</a>
+  <a href="{{ prev.url | relative_url }}" data-key="ArrowLeft" data-flip="back">&larr; {{ prev.title }}</a>
+  <a href="{{ next.url | relative_url }}" data-key="ArrowRight">{{ next.title }} &rarr;</a>
 </footer>
 <script src="{{ '/assets/js/keys.js' | relative_url }}"></script>
