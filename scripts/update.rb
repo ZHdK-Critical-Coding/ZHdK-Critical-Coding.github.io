@@ -179,6 +179,21 @@ def rewrite_links(markdown, readme_path, repo_dir, repo, slug)
   end.join
 end
 
+# Replaces the first H1 (outside code fences) with "# Technology: Name",
+# or prepends one if the README has no H1.
+def normalize_title(markdown, title)
+  lines = markdown.lines
+  fence = false
+  index = lines.index do |line|
+    fence = !fence if line.start_with?("```", "~~~")
+    !fence && line.match?(/\A# \S/)
+  end
+  return "# #{title}\n\n#{markdown}" unless index
+
+  lines[index] = "# #{title}\n"
+  lines.join
+end
+
 # ---------------------------------------------------------------- main
 
 token = github_token
@@ -255,6 +270,7 @@ repos.each do |repo|
     "related" => Array(meta["related"]).map { |r| r.to_s.strip }.reject(&:empty?),
     "render_with_liquid" => false
   }.compact
+  body = normalize_title(body, "#{front["technology"]}: #{front["title"]}") unless front["technology"].empty?
 
   File.write(File.join(OUT_DIR, "#{slug}.md"), "#{YAML.dump(front)}---\n\n#{body}")
   report[:published] << name
