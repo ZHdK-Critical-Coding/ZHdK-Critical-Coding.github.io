@@ -6,6 +6,7 @@ author: Urs Hofer
 date: 2025-09-26
 repo: Servers_RaspberriPi
 repo_url: https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi
+related: []
 render_with_liquid: false
 ---
 

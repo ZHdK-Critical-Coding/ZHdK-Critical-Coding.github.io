@@ -6,6 +6,7 @@ author: Urs Hofer
 date: 2026-09-16
 repo: P5_Transformation_Type_GetPoints
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Transformation_Type_GetPoints
+related: []
 render_with_liquid: false
 ---
 

@@ -43,7 +43,7 @@ jobs:
 
       - name: Collect examples from the organisation
         if: env.EXAMPLES_TOKEN != ''
-        run: ruby scripts/update.rb
+        run: bundle exec ruby scripts/update.rb
         env:
           GITHUB_TOKEN: ${{ secrets.EXAMPLES_TOKEN }}
 

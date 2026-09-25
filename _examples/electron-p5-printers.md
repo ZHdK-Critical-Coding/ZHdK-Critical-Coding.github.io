@@ -6,6 +6,7 @@ author: Urs Hofer
 date: 2026-09-17
 repo: Electron_P5_Printers
 repo_url: https://github.com/ZHdK-Critical-Coding/Electron_P5_Printers
+related: []
 render_with_liquid: false
 ---
 

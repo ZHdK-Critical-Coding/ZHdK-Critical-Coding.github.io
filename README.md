@@ -18,6 +18,7 @@ author: Urs Hofer
 technology: "P5.js"         # shown right of the title
 category: input             # input | transformation | output
 readme: "sub/readme.md"     # optional, if the README is not in the repo root
+related: Servers_Pusher     # optional, repo name or list of names, linked above the README
 ```
 
 Repositories without `example.yaml` are ignored. The README becomes the detail page;
@@ -26,8 +27,8 @@ images referenced in it are copied into the site, other relative links point to 
 ## Updating
 
 ```sh
-ruby scripts/update.rb                      # pull all repos of the organisation from GitHub
-ruby scripts/update.rb --local ../Examples  # or read existing local clones
+bundle exec ruby scripts/update.rb                  # pull all repos of the organisation from GitHub
+bundle exec ruby scripts/update.rb --local ../Examples  # or read existing local clones
 bundle exec jekyll serve                    # preview on http://127.0.0.1:4000/critical-coding-web/
 ```
 

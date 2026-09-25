@@ -6,6 +6,8 @@ author: Urs Hofer
 date: 2026-05-27
 repo: Servers_Pusher
 repo_url: https://github.com/ZHdK-Critical-Coding/Servers_Pusher
+related:
+- P5_Input_Pusher
 render_with_liquid: false
 ---
 

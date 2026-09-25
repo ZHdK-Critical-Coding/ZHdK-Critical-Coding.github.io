@@ -18,6 +18,21 @@ body_class: detail
 
 <main class="detail-body">
   <article class="readme">
+    {%- if page.related and page.related.size > 0 %}
+    <ul class="related">
+      {%- for name in page.related %}
+      {%- assign rel = site.examples | where: "repo", name | first %}
+      <li>
+        <span class="related-label">Related</span>
+        {%- if rel %}
+        <a href="{{ rel.url | relative_url }}">{{ rel.category }} &gt; {{ rel.title }}</a>
+        {%- else %}
+        <a href="https://github.com/{{ site.github_org }}/{{ name }}">{{ name }}</a>
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}
     {%- assign body = content | strip -%}
     {%- if body == "" %}
     <p class="empty">This example has no documentation yet. Have a look at the code on GitHub.</p>

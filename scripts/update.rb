@@ -12,10 +12,11 @@
 #   technology: "P5.js"         # shown right of the title
 #   category: input             # input | transformation | output
 #   readme: "sub/readme.md"     # optional, default: README.md in the repo root
+#   related: Servers_Pusher     # optional, repository name or list of names
 #
 # Usage:
-#   ruby scripts/update.rb                    # list + shallow-clone repos from GitHub
-#   ruby scripts/update.rb --local ../Examples  # use existing local clones instead
+#   bundle exec ruby scripts/update.rb                  # list + shallow-clone repos from GitHub
+#   bundle exec ruby scripts/update.rb --local ../Examples  # use existing local clones instead
 #
 # Authentication (private repos): GITHUB_TOKEN or GH_TOKEN, otherwise the token
 # stored in git's credential helper for github.com is used.
@@ -251,11 +252,20 @@ repos.each do |repo|
     "date" => date,
     "repo" => name,
     "repo_url" => repo["html_url"],
+    "related" => Array(meta["related"]).map { |r| r.to_s.strip }.reject(&:empty?),
     "render_with_liquid" => false
   }.compact
 
   File.write(File.join(OUT_DIR, "#{slug}.md"), "#{YAML.dump(front)}---\n\n#{body}")
   report[:published] << name
+end
+
+published = report[:published]
+Dir.glob(File.join(OUT_DIR, "*.md")).each do |file|
+  front = YAML.safe_load(File.read(file)[/\A---\n(.*?)\n---/m, 1], permitted_classes: [Date])
+  front.fetch("related", []).reject { |r| published.include?(r) }.each do |r|
+    report[:related] << "#{front["repo"]}: related '#{r}' is not a listed example (links to GitHub instead)"
+  end
 end
 
 puts
@@ -265,6 +275,7 @@ puts "Published #{report[:published].size} examples to _examples/"
   no_readme: "Examples without README (page shows placeholder)",
   empty_readme: "Examples with an empty README (page shows placeholder)",
   no_name: "Examples without name (repository name used)",
+  related: "Related repositories",
   errors: "Errors (not listed)"
 }.each do |key, label|
   next if report[key].empty?

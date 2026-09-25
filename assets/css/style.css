@@ -204,3 +204,22 @@ body.detail {
 .readme th, .readme td { border: 1px solid #555; padding: 4px 8px; text-align: left; }
 
 .readme .empty { color: #999; }
+
+.readme .related {
+  list-style: none;
+  margin: 0 0 1.35em;
+  padding: 0;
+  border-top: 1px solid #555;
+}
+
+.readme .related li {
+  display: flex;
+  gap: var(--gutter);
+  padding: 8px 0;
+  border-bottom: 1px solid #555;
+  text-transform: uppercase;
+}
+
+.readme .related-label { color: #999; min-width: 6em; }
+.readme .related a { text-decoration: none; }
+.readme .related a:hover { color: #999; }

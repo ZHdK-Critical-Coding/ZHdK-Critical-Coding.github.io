@@ -6,6 +6,7 @@ author: Urs Hofer
 date: 2026-05-15
 repo: P5_Empty_Sketch
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Empty_Sketch
+related: []
 render_with_liquid: false
 ---
 

@@ -6,6 +6,7 @@ author: Urs Hofer
 date: 2026-09-17
 repo: P5_Input_SearchXNG_Images
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Input_SearchXNG_Images
+related: []
 render_with_liquid: false
 ---
 

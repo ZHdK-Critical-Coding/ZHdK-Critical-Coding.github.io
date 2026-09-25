@@ -6,6 +6,7 @@ author: Urs Hofer
 date: 2025-10-02
 repo: Indesign_Basil_LoadImages
 repo_url: https://github.com/ZHdK-Critical-Coding/Indesign_Basil_LoadImages
+related: []
 render_with_liquid: false
 ---
 
