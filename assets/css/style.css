@@ -168,13 +168,17 @@ body.detail {
 
 @media (max-width: 800px) {
   .detail-body { grid-template-columns: 1fr; }
-  .meta {
-    order: -1;
-    position: static;
-    height: auto;
-    border-left: 0;
-    border-bottom: 1px solid var(--line);
+  /* button and details become rows of the page: the button sticks below
+     the header, the details scroll away with the README */
+  .meta { display: contents; }
+  .meta-link {
+    order: -2;
+    position: sticky;
+    top: var(--bar);
+    z-index: 1;
+    background: var(--bg);
   }
+  .meta dl { order: -1; border-bottom: 1px solid var(--line); }
 }
 
 /* README content: everything in one size, like the layout */
