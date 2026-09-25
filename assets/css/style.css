@@ -46,7 +46,6 @@ a { color: inherit; text-decoration: none; }
 
 .intro {
   padding: var(--gutter);
-  border-bottom: 1px solid var(--line);
 }
 
 .intro p { margin: 0 0 1em; }
@@ -76,6 +75,12 @@ a { color: inherit; text-decoration: none; }
   margin: 0;
   font: inherit;
   text-transform: uppercase;
+  /* column titles stay visible while scrolling the list */
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
 }
 
 .row .name { text-transform: uppercase; }
@@ -91,7 +96,7 @@ a.row:focus-visible {
 @media (max-width: 800px) {
   .columns { grid-template-columns: 1fr; }
   .column + .column { border-left: 0; }
-  .column + .column .row-head { border-top: 1px solid var(--line); margin-top: 2em; }
+  .column + .column .row-head { margin-top: 2em; }
 }
 
 /* ---------- detail page ---------- */
@@ -238,42 +243,30 @@ body.detail {
 ::view-transition-group(root) { animation: none; }
 ::view-transition-image-pair(root) { isolation: auto; }
 
+/* One continuous turn of 180°: top speed at 45°, then a long deceleration
+   (cubic-bezier(0.15, 0, 0.35, 1); the page is edge-on at 31 % of the time).
+   Old and new page share the timing, so they move as one card.
+   The slight shrink is a separate animation, deepest when the card is edge-on. */
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation: 0.9s linear both; /* easing per half, see keyframes */
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.15, 0, 0.35, 1), ease-in-out;
+  animation-fill-mode: both;
   backface-visibility: hidden;
   mix-blend-mode: normal;
 }
 
-::view-transition-old(root) { animation-name: flip-out; }
-::view-transition-new(root) { animation-name: flip-in; }
+::view-transition-old(root) { animation-name: flip-out, flip-shrink; }
+::view-transition-new(root) { animation-name: flip-in, flip-shrink; }
 
-html:active-view-transition-type(flip-back)::view-transition-old(root) { animation-name: flip-out-back; }
-html:active-view-transition-type(flip-back)::view-transition-new(root) { animation-name: flip-in-back; }
+html:active-view-transition-type(flip-back)::view-transition-old(root) { animation-name: flip-out-back, flip-shrink; }
+html:active-view-transition-type(flip-back)::view-transition-new(root) { animation-name: flip-in-back, flip-shrink; }
 
-/* 0–50 %: the old page turns away, accelerating (ease-in).
-   50–100 %: the new page turns in, decelerating (ease-out).
-   Old and new share the same keyframe timing, so they move as one card. */
-@keyframes flip-out {
-  from { transform: perspective(2000px) rotateY(0);                  animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-  50%  { transform: perspective(2000px) rotateY(90deg) scale(0.8);   animation-timing-function: cubic-bezier(0, 0.55, 0.45, 1); }
-  to   { transform: perspective(2000px) rotateY(180deg); }
-}
-@keyframes flip-in {
-  from { transform: perspective(2000px) rotateY(-180deg);            animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-  50%  { transform: perspective(2000px) rotateY(-90deg) scale(0.8);  animation-timing-function: cubic-bezier(0, 0.55, 0.45, 1); }
-  to   { transform: perspective(2000px) rotateY(0); }
-}
-@keyframes flip-out-back {
-  from { transform: perspective(2000px) rotateY(0);                  animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-  50%  { transform: perspective(2000px) rotateY(-90deg) scale(0.8);  animation-timing-function: cubic-bezier(0, 0.55, 0.45, 1); }
-  to   { transform: perspective(2000px) rotateY(-180deg); }
-}
-@keyframes flip-in-back {
-  from { transform: perspective(2000px) rotateY(180deg);             animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-  50%  { transform: perspective(2000px) rotateY(90deg) scale(0.8);   animation-timing-function: cubic-bezier(0, 0.55, 0.45, 1); }
-  to   { transform: perspective(2000px) rotateY(0); }
-}
+@keyframes flip-out      { from { transform: perspective(2000px) rotateY(0); }       to { transform: perspective(2000px) rotateY(180deg); } }
+@keyframes flip-in       { from { transform: perspective(2000px) rotateY(-180deg); } to { transform: perspective(2000px) rotateY(0); } }
+@keyframes flip-out-back { from { transform: perspective(2000px) rotateY(0); }       to { transform: perspective(2000px) rotateY(-180deg); } }
+@keyframes flip-in-back  { from { transform: perspective(2000px) rotateY(180deg); }  to { transform: perspective(2000px) rotateY(0); } }
+@keyframes flip-shrink   { 31% { scale: 0.8; } }
 
 @media (prefers-reduced-motion: reduce) {
   @view-transition { navigation: none; }

@@ -29,3 +29,17 @@ body_class: home
   </section>
   {%- endfor %}
 </main>
+
+<script>
+  // Keep the scroll position of the list when coming back from an example ("Close").
+  (function () {
+    try {
+      var saved = sessionStorage.getItem("homeScroll");
+      var fromExample = document.referrer.indexOf(location.origin + "{{ '/examples/' | relative_url }}") === 0;
+      if (saved !== null && fromExample) window.scrollTo(0, Number(saved));
+      window.addEventListener("pagehide", function () {
+        sessionStorage.setItem("homeScroll", String(window.scrollY));
+      });
+    } catch (e) {}
+  })();
+</script>
