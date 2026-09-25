@@ -1,0 +1,24 @@
+# Copy this file to .github/workflows/notify-site.yml in an example repository
+# (or add it as an organisation workflow template in ZHdK-Critical-Coding/.github)
+# to rebuild the Critical Coding page whenever the example is pushed.
+#
+# Needs the organisation secret SITE_DISPATCH_TOKEN: a fine-grained token with
+# "Contents: read and write" on ZHdK-Critical-Coding/critical-coding-web.
+
+name: Notify critical-coding-web
+
+on:
+  push:
+    branches: [main]
+    paths: ["example.yaml", "README.md", "readme.md", "**/readme.md"]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -fsS -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.SITE_DISPATCH_TOKEN }}" \
+            https://api.github.com/repos/ZHdK-Critical-Coding/critical-coding-web/dispatches \
+            -d '{"event_type":"example-updated","client_payload":{"repo":"${{ github.repository }}"}}'

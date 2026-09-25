@@ -1,0 +1,206 @@
+/* Critical Coding – Code Samples
+   Layout: Layout/layout.pdf (start page white, detail pages black) */
+
+:root {
+  --fg: #000;
+  --bg: #fff;
+  --line: #000;
+  --gutter: 16px;
+  --row: 44px;
+  --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: "Courier New", Courier, ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- bars (header / footer) ---------- */
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--gutter);
+  padding: 12px var(--gutter);
+  border-bottom: 1px solid var(--line);
+  text-transform: uppercase;
+  background: var(--bg);
+}
+
+.bar a:hover { text-decoration: underline; }
+
+/* ---------- start page ---------- */
+
+.intro {
+  padding: var(--gutter);
+  border-bottom: 1px solid var(--line);
+}
+
+.intro p { margin: 0 0 1em; }
+.intro p:last-child { margin-bottom: 0; }
+.intro a { text-decoration: underline; }
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.column + .column { border-left: 1px solid var(--line); }
+
+.column ul { list-style: none; margin: 0; padding: 0; }
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gutter);
+  min-height: var(--row);
+  padding: 8px var(--gutter);
+  border-bottom: 1px solid var(--line);
+}
+
+.row-head {
+  margin: 0;
+  font: inherit;
+  text-transform: uppercase;
+}
+
+.row .name { text-transform: uppercase; }
+.row .tech { white-space: nowrap; }
+
+a.row:hover,
+a.row:focus-visible {
+  background: var(--fg);
+  color: var(--bg);
+  outline: none;
+}
+
+@media (max-width: 800px) {
+  .columns { grid-template-columns: 1fr; }
+  .column + .column { border-left: 0; }
+  .column + .column .row-head { border-top: 1px solid var(--line); margin-top: 2em; }
+}
+
+/* ---------- detail page ---------- */
+
+body.detail {
+  --fg: #fff;
+  --bg: #000;
+  --line: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail > .bar:first-child { position: sticky; top: 0; z-index: 1; }
+
+.pager {
+  position: sticky;
+  bottom: 0;
+  margin-top: auto;
+  border-bottom: 0;
+  border-top: 1px solid var(--line);
+}
+
+.detail-body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: calc(var(--gutter) * 2);
+  padding: var(--gutter) var(--gutter) calc(var(--gutter) * 3);
+}
+
+.meta { padding-top: 60px; }
+
+.button {
+  display: block;
+  width: 184px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 12px;
+  border-radius: 3px;
+  background: #ddd;
+  color: #000;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.button:hover { background: #fff; }
+
+.meta dl {
+  width: 184px;
+  max-width: 100%;
+  margin: 2em auto 0;
+  color: #999;
+  font-size: 13px;
+}
+
+.meta dt { text-transform: uppercase; }
+.meta dd { margin: 0 0 0.8em; color: #ddd; overflow-wrap: anywhere; }
+
+@media (max-width: 800px) {
+  .detail-body { grid-template-columns: 1fr; }
+  .meta { order: -1; padding-top: 0; }
+  .button, .meta dl { margin-left: 0; }
+}
+
+/* README content: everything in one size, like the layout */
+
+.readme { min-width: 0; max-width: 62em; }
+
+.readme h1, .readme h2, .readme h3,
+.readme h4, .readme h5, .readme h6 {
+  font-size: 1em;
+  font-weight: 500;
+  margin: 1.35em 0;
+}
+
+.readme > :first-child { margin-top: 0; }
+
+.readme p, .readme ul, .readme ol, .readme table, .readme blockquote { margin: 1.35em 0; }
+
+.readme a { text-decoration: underline; }
+.readme a:hover { color: #999; }
+
+.readme img { max-width: 100%; height: auto; }
+
+.readme hr { border: 0; border-top: 1px solid #555; margin: 2em 0; }
+
+.readme blockquote {
+  padding-left: var(--gutter);
+  border-left: 2px solid #555;
+  color: #bbb;
+}
+
+.readme code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+.readme pre {
+  margin: 1.8em 12px;
+  padding: 16px;
+  border-radius: 6px;
+  background: #1c1c1c;
+  overflow-x: auto;
+  line-height: 1.45;
+}
+
+.readme pre code { color: #aaa; }
+
+.readme table { border-collapse: collapse; display: block; overflow-x: auto; }
+.readme th, .readme td { border: 1px solid #555; padding: 4px 8px; text-align: left; }
+
+.readme .empty { color: #999; }

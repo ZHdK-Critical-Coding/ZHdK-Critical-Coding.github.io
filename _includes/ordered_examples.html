@@ -1,0 +1,9 @@
+{%- comment -%}
+  Sets `ordered_examples`: all examples, grouped by site.example_categories
+  (in that order) and sorted by title within each category.
+{%- endcomment -%}
+{%- assign ordered_examples = "" | split: "" -%}
+{%- for cat in site.example_categories -%}
+  {%- assign cat_items = site.examples | where: "category", cat | sort_natural: "title" -%}
+  {%- assign ordered_examples = ordered_examples | concat: cat_items -%}
+{%- endfor -%}

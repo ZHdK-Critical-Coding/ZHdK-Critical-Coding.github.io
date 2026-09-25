@@ -1,0 +1,44 @@
+---
+layout: default
+body_class: detail
+---
+{%- include ordered_examples.html -%}
+{%- assign total = ordered_examples | size -%}
+{%- for e in ordered_examples -%}
+  {%- if e.url == page.url -%}{%- assign idx = forloop.index0 -%}{%- endif -%}
+{%- endfor -%}
+{%- assign prev_idx = idx | plus: total | minus: 1 | modulo: total -%}
+{%- assign next_idx = idx | plus: 1 | modulo: total -%}
+{%- assign prev = ordered_examples[prev_idx] -%}
+{%- assign next = ordered_examples[next_idx] -%}
+<header class="bar">
+  <span>{{ page.category }} &gt; {{ page.title }}</span>
+  <a href="{{ '/' | relative_url }}" data-key="Escape">Close</a>
+</header>
+
+<main class="detail-body">
+  <article class="readme">
+    {%- assign body = content | strip -%}
+    {%- if body == "" %}
+    <p class="empty">This example has no documentation yet. Have a look at the code on GitHub.</p>
+    {%- else %}
+    {{ content }}
+    {%- endif %}
+  </article>
+
+  <aside class="meta">
+    <a class="button" href="{{ page.repo_url }}">GitHub</a>
+    <dl>
+      <dt>Technology</dt><dd>{{ page.technology }}</dd>
+      <dt>Author</dt><dd>{{ page.author }}</dd>
+      <dt>Date</dt><dd>{{ page.date | date: "%d.%m.%Y" }}</dd>
+      <dt>Repository</dt><dd>{{ page.repo }}</dd>
+    </dl>
+  </aside>
+</main>
+
+<footer class="bar pager">
+  <a href="{{ prev.url | relative_url }}" data-key="ArrowLeft">&lt; {{ prev.title }}</a>
+  <a href="{{ next.url | relative_url }}" data-key="ArrowRight">{{ next.title }} &gt;</a>
+</footer>
+<script src="{{ '/assets/js/keys.js' | relative_url }}"></script>

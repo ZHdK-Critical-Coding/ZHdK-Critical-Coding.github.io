@@ -1,0 +1,43 @@
+title: Critical Coding
+subtitle: Code Samples
+description: Coding examples of the Critical Coding course at ZHdK.
+url: https://zhdk-critical-coding.github.io
+baseurl: /critical-coding-web
+
+# GitHub organisation the examples are collected from (see scripts/update.rb)
+github_org: ZHdK-Critical-Coding
+
+# Column order on the start page
+example_categories:
+  - input
+  - transformation
+  - output
+
+collections:
+  examples:
+    output: true
+    permalink: /examples/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: examples
+    values:
+      layout: example
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter_opts:
+    disable: true
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - Layout
+  - scripts
+  - docs
+  - vendor
+  - .cache

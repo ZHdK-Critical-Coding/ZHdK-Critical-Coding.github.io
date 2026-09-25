@@ -1,0 +1,31 @@
+---
+layout: default
+body_class: home
+---
+<header class="bar">
+  <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+  <span>{{ site.subtitle }}</span>
+</header>
+
+<section class="intro">
+  {{ content }}
+</section>
+
+<main class="columns">
+  {%- for cat in site.example_categories %}
+  {%- assign items = site.examples | where: "category", cat | sort_natural: "title" %}
+  <section class="column">
+    <h2 class="row row-head">{{ cat }}</h2>
+    <ul>
+      {%- for example in items %}
+      <li>
+        <a class="row" href="{{ example.url | relative_url }}">
+          <span class="name">{{ example.title }}</span>
+          <span class="tech">{{ example.technology }}</span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endfor %}
+</main>
