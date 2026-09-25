@@ -3,9 +3,9 @@
 # to rebuild the Critical Coding page whenever the example is pushed.
 #
 # Needs the organisation secret SITE_DISPATCH_TOKEN: a fine-grained token with
-# "Contents: read and write" on ZHdK-Critical-Coding/critical-coding-web.
+# "Contents: read and write" on ZHdK-Critical-Coding/ZHdK-Critical-Coding.github.io.
 
-name: Notify critical-coding-web
+name: Notify Critical Coding page
 
 on:
   push:
@@ -20,5 +20,5 @@ jobs:
           curl -fsS -X POST \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.SITE_DISPATCH_TOKEN }}" \
-            https://api.github.com/repos/ZHdK-Critical-Coding/critical-coding-web/dispatches \
+            https://api.github.com/repos/ZHdK-Critical-Coding/ZHdK-Critical-Coding.github.io/dispatches \
             -d '{"event_type":"example-updated","client_payload":{"repo":"${{ github.repository }}"}}'

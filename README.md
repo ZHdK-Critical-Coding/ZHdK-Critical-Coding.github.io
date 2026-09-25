@@ -1,7 +1,7 @@
 # Critical Coding – Code Samples
 
 Jekyll site listing the coding examples of the [ZHdK-Critical-Coding](https://github.com/ZHdK-Critical-Coding) organisation.
-Published with GitHub Pages at https://zhdk-critical-coding.github.io/critical-coding-web/.
+Published with GitHub Pages at https://zhdk-critical-coding.github.io/.
 
 - **Start page text:** `index.md`
 - **Layout / design:** `_layouts/`, `assets/css/style.css`
@@ -29,7 +29,7 @@ images referenced in it are copied into the site, other relative links point to 
 ```sh
 bundle exec ruby scripts/update.rb                  # pull all repos of the organisation from GitHub
 bundle exec ruby scripts/update.rb --local ../Examples  # or read existing local clones
-bundle exec jekyll serve                    # preview on http://127.0.0.1:4000/critical-coding-web/
+bundle exec jekyll serve                    # preview on http://127.0.0.1:4000/
 ```
 
 The script prints which repositories have no `example.yaml`, no or an empty README, or an invalid category.

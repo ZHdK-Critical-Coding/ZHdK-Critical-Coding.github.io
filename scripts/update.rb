@@ -35,7 +35,7 @@ ROOT        = File.expand_path("..", __dir__)
 CONFIG      = YAML.safe_load(File.read(File.join(ROOT, "_config.yml")))
 ORG         = CONFIG.fetch("github_org")
 CATEGORIES  = CONFIG.fetch("example_categories")
-SKIP_REPOS  = %w[critical-coding-web .github].freeze
+SKIP_REPOS  = %w[ZHdK-Critical-Coding.github.io .github].map(&:downcase).freeze
 OUT_DIR     = File.join(ROOT, "_examples")
 ASSET_DIR   = File.join(ROOT, "assets", "examples")
 CACHE_DIR   = File.join(ROOT, ".cache", "repos")
@@ -84,7 +84,7 @@ def org_repos(token)
     repos.concat(batch)
     break if batch.size < 100
   end
-  repos.reject { |r| r["archived"] || SKIP_REPOS.include?(r["name"]) }.sort_by { |r| r["name"].downcase }
+  repos.reject { |r| r["archived"] || SKIP_REPOS.include?(r["name"].downcase) }.sort_by { |r| r["name"].downcase }
 end
 
 def has_meta_file?(repo, token)

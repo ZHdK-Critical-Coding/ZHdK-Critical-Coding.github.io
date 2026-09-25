@@ -2,7 +2,7 @@ title: Critical Coding
 subtitle: Code Samples
 description: Coding examples of the Critical Coding course at ZHdK.
 url: https://zhdk-critical-coding.github.io
-baseurl: /critical-coding-web
+baseurl: ""
 
 # GitHub organisation the examples are collected from (see scripts/update.rb)
 github_org: ZHdK-Critical-Coding
