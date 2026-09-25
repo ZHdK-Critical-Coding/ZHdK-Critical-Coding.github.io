@@ -9,6 +9,7 @@
   --row: 44px;
   --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --mono: "Courier New", Courier, ui-monospace, monospace;
+  --green: #7ba920; /* grass of assets/img/wallpaper.jpg */
 }
 
 * { box-sizing: border-box; }
@@ -130,13 +131,13 @@ body.detail {
   margin: 0 auto;
   padding: 12px;
   border-radius: 3px;
-  background: #ddd;
+  background: var(--green);
   color: #000;
   text-align: center;
   text-transform: uppercase;
 }
 
-.button:hover { background: #fff; }
+.button:hover { background: #93c93a; }
 
 .meta dl {
   width: 184px;
@@ -223,3 +224,38 @@ body.detail {
 .readme .related-label { color: #999; min-width: 6em; }
 .readme .related a { text-decoration: none; }
 .readme .related a:hover { color: #999; }
+
+/* ---------- page transition: flip the page like a card ----------
+   Cross-document View Transitions (Chrome, Edge, Safari 18.2+);
+   other browsers just load the page. Direction set in assets/js/flip.js. */
+
+@view-transition { navigation: auto; }
+
+::view-transition {
+  background: #3a6ea5 url("../img/wallpaper.jpg") center / cover no-repeat;
+}
+
+::view-transition-group(root) { animation: none; }
+::view-transition-image-pair(root) { isolation: auto; }
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: 0.9s cubic-bezier(0.45, 0, 0.55, 1) both;
+  backface-visibility: hidden;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) { animation-name: flip-out; }
+::view-transition-new(root) { animation-name: flip-in; }
+
+html:active-view-transition-type(flip-back)::view-transition-old(root) { animation-name: flip-out-back; }
+html:active-view-transition-type(flip-back)::view-transition-new(root) { animation-name: flip-in-back; }
+
+@keyframes flip-out      { from { transform: perspective(2000px) rotateY(0); }       50% { transform: perspective(2000px) rotateY(90deg) scale(0.8); }  to { transform: perspective(2000px) rotateY(180deg); } }
+@keyframes flip-in       { from { transform: perspective(2000px) rotateY(-180deg); } 50% { transform: perspective(2000px) rotateY(-90deg) scale(0.8); } to { transform: perspective(2000px) rotateY(0); } }
+@keyframes flip-out-back { from { transform: perspective(2000px) rotateY(0); }       50% { transform: perspective(2000px) rotateY(-90deg) scale(0.8); } to { transform: perspective(2000px) rotateY(-180deg); } }
+@keyframes flip-in-back  { from { transform: perspective(2000px) rotateY(180deg); }  50% { transform: perspective(2000px) rotateY(90deg) scale(0.8); }  to { transform: perspective(2000px) rotateY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}

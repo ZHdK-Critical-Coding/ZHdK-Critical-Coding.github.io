@@ -13,7 +13,7 @@ body_class: detail
 {%- assign next = ordered_examples[next_idx] -%}
 <header class="bar">
   <span>{{ page.category }} &gt; {{ page.title }}</span>
-  <a href="{{ '/' | relative_url }}" data-key="Escape">Close</a>
+  <a href="{{ '/' | relative_url }}" data-key="Escape" data-flip="back">Close</a>
 </header>
 
 <main class="detail-body">
@@ -53,7 +53,7 @@ body_class: detail
 </main>
 
 <footer class="bar pager">
-  <a href="{{ prev.url | relative_url }}" data-key="ArrowLeft">&lt; {{ prev.title }}</a>
+  <a href="{{ prev.url | relative_url }}" data-key="ArrowLeft" data-flip="back">&lt; {{ prev.title }}</a>
   <a href="{{ next.url | relative_url }}" data-key="ArrowRight">{{ next.title }} &gt;</a>
 </footer>
 <script src="{{ '/assets/js/keys.js' | relative_url }}"></script>
