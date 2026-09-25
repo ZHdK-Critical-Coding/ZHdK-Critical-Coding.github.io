@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Watch Image Folder
+# P5.js: Watch Image Folder
 
 A p5.js sketch that displays all images from the folder `assets/files` in a
 grid. Images added to or removed from the folder appear or disappear while

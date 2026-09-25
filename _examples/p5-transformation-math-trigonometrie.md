@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Trigonometrie
+# P5.js: Trigonometry
 
 Visualises `sin()`, `cos()` and `tan()` as animated dots with fading trails
 running across the screen. Each curve is an instance of a small

@@ -11,7 +11,7 @@ related:
 render_with_liquid: false
 ---
 
-# Pusher p5 example
+# Node.js: Pusher Server
 
 A p5 sketch (no canvas — just a text field + Send button) that pushes a
 message to a Pusher channel. The browser can't trigger Pusher events itself

@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Get Points
+# P5.js: Get Points
 
 Samples the outline of a text with `font.textToPoints()` using the font
 `assets/pixelmix.ttf`. Sliders control the sample factor and the font size; the

@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Physics
+# P5.js: Physics
 
 Letters as physical bodies using [matter.js](https://brm.io/matter-js/). The
 glyph outline of each typed character is converted to points

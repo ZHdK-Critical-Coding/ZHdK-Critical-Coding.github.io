@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# rpi_servers
+# Node.js: Raspberry Pi Servers
 
 RPI Server Scripts. Connecting deviced to a Raspberry PI and offering websocket connections.
 

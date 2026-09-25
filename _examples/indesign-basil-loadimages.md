@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# Basil.js Examples
+# Basil.js: Load Images
 
 This repository collects coding examples for scripting Adobe InDesign with [basil.js](https://basiljs2.netlify.app), a library that brings the spirit of Processing to InDesign. Scripts are written in ExtendScript (an old dialect of JavaScript) and run directly inside InDesign, where they can create pages, draw shapes, place images and manipulate text.
 

@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Infotag
+# P5.js: Infotag
 
 A small tool to create animated text tags: layers with growing, alternating
 black/white outlines are stacked on top of the text. Speed and interval can be

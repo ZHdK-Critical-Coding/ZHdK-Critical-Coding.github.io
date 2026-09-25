@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Züri wie neu
+# P5.js: Züri wie neu
 
 A p5.js sketch that loads the latest reports from
 [Züri wie neu](https://www.zueriwieneu.ch) (the City of Zurich's platform for

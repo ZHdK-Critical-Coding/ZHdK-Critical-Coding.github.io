@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# WebSocket Drucker-Sender mit p5.js
+# P5.js: Line Printer
 
 Dieses Projekt zeigt, wie man mit **p5.js** Text an einen **WebSocket-fähigen Drucker** sendet.  
 Der Benutzer kann Text eingeben, Stil und Größe festlegen und über einen Button an den Drucker senden.

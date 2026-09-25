@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Voice Recognition
+# P5.js: Voice Recognition
 
 A p5.js sketch that uses the browser's Web Speech API to transcribe German
 speech from the microphone continuously. Interim results are shown in grey,

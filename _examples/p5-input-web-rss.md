@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> RSS
+# P5.js: RSS
 
 A p5.js sketch that loads an RSS 2.0 or Atom feed, parses the XML and draws
 title, date and summary of every entry on the canvas. The feed is re-fetched

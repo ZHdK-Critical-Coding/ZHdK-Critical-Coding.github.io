@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# WebSocket Display Sender
+# P5.js: E-Ink
 
 Dieses Projekt zeigt, wie man mit **p5.js** Inhalte eines Canvas an einen **WebSocket-Server** überträgt.  
 Der Benutzer kann durch Mausklicks den Zähler erhöhen, und der aktuelle Frame wird als PNG-Bild an den Server gesendet.  

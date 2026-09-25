@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Audio Volume Measure
+# P5.js: Audio Volume
 
 Measures the loudness of the microphone and shows it as a number from 0 to 100.
 The mic signal is run through a `p5.FFT`; the average energy of all frequency

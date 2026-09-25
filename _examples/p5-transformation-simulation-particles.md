@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Particles
+# P5.js: Particles
 
 A simple particle system: every frame a new particle (a random letter of
 "ZHDK") is emitted with a random force and mass, pulled by gravity and removed

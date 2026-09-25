@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# p5.js SVG Export Sketch
+# P5.js: Vector Export
 
 Dieses Projekt zeigt, wie man mit **p5.js** eine einfache Zeichnung erstellt und diese als **SVG-Datei** exportiert.  
 Das Sketch zeichnet einen Kreis in der Mitte des Canvas und ermöglicht es, das Bild durch Drücken der Taste **"s"** zu speichern.  

@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> RTMP Stream
+# P5.js: RTMP Stream
 
 A p5.js sketch that plays an HLS (`.m3u8`) video stream in a 640x480 canvas.
 A shell script uses ffmpeg to convert a live camera stream (RTSP) into HLS

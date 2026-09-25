@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Comfy Stable Diffusion
+# P5.js: Comfy Stable Diffusion
 
 A p5.js sketch that sends a text prompt to a ComfyUI server, runs a basic
 Stable Diffusion 1.5 text-to-image workflow and shows the result on the canvas.

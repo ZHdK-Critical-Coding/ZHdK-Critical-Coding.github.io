@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> ASCII
+# P5.js: ASCII
 
 Converts `assets/150.jpg` to ASCII art: the image is scaled down, each pixel's
 brightness is mapped to a character from a density string and drawn as text.

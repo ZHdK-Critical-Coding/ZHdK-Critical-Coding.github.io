@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> P5.5
+# P5.js: P5.5 Interface
 
 Example for p5.5.js by Kris Heyse: work
 in real-world units (millimeters) with `mmpx()`, set up with

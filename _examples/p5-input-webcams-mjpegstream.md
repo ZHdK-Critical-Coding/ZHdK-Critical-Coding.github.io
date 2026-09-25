@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> MJPEG Stream
+# P5.js: MJPEG Stream
 
 A p5.js sketch that reads an MJPEG stream (e.g. from an IP camera) and draws
 it into the canvas as an image, repeated four times in a 2x2 grid, so the

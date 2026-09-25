@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# WebSocket Canvas Streaming
+# P5.js: CRT
 
 Dieses Projekt zeigt, wie man mit **p5.js** Frames von einem Canvas über einen **WebSocket** an einen Server streamt.  
 Dabei werden die Frames als JPEG komprimiert und als Binärdaten verschickt.  

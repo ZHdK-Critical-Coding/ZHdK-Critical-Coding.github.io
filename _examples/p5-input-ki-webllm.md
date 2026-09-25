@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> WebLLM
+# P5.js: WebLLM
 
 A p5.js sketch that runs two instances of a small language model
 (`Llama-3.2-1B-Instruct`) directly in the browser using

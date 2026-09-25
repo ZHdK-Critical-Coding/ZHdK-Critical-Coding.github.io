@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Pixelmover
+# P5.js: Pixelmover
 
 Samples the pixels of `assets/150.jpg` on a grid and turns each one into a
 particle.

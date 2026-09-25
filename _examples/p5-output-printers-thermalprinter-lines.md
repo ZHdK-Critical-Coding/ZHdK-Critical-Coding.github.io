@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# WebSocket Drucker-Sender (async) mit p5.js
+# P5.js: Thermal Printer Lines
 
 Dieses Projekt zeigt, wie man mit **p5.js** Text an einen **WebSocket-fähigen Drucker** sendet und dabei auf die Antwort des Servers wartet.  
 Durch die asynchrone Umsetzung wird sichergestellt, dass jeder Druckbefehl bestätigt wird, bevor der nächste gesendet wird.

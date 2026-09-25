@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> ASCII Animated
+# P5.js: ASCII Animated
 
 Renders `assets/150.jpg` as ASCII art where every character is a particle.
 Uses [q5.js](https://q5js.org) (a faster p5.js-compatible library) instead of p5.js.

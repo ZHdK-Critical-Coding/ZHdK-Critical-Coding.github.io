@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# Electron P5 Starter — p5.js in a Fullscreen App
+# Electron: Fullscreen App
 
 > A minimal p5.js sketch packaged in an [Electron](https://www.electronjs.org/) application that opens fullscreen — ideal for installations and exhibitions. Includes a develop mode with live reload and ready-made builds for macOS, Windows and Linux.
 > Ein minimaler p5.js-Sketch in einer [Electron](https://www.electronjs.org/)-Applikation, die im Vollbild startet — ideal für Installationen und Ausstellungen. Mit Entwicklungsmodus inklusive Live-Reload und fertigen Builds für macOS, Windows und Linux.

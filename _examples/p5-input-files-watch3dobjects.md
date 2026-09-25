@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Watch 3D Objects
+# P5.js: Watch 3D Objects
 
 A p5.js sketch that displays all 3D models from the folder `assets/files`
 in a grid on a WEBGL canvas. Models added to or removed from the folder

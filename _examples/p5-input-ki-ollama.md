@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Ollama
+# P5.js: Ollama
 
 A p5.js sketch in which two AI personas talk to each other endlessly via a
 local Ollama server. Each answer is streamed and becomes the prompt for the

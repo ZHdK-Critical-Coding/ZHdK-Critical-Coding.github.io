@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Watch Text List
+# P5.js: Watch Text List
 
 A p5.js sketch that reads the text file `assets/list.txt` every five seconds
 and draws its lines on the canvas. Edit the file while the sketch is running

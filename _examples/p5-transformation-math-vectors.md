@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Vectors
+# P5.js: Vectors
 
 Two eyes follow the mouse. Uses `p5.Vector` (`createVector`, `mag`, `setMag`,
 `p5.Vector.add`) to limit the pupil movement to the eyeball. Helper lines and

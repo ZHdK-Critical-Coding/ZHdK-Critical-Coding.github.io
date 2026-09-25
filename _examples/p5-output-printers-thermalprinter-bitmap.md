@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# Drucker-Frame-Sender mit p5.js
+# P5.js: Thermal Printer Bitmap
 
 Dieses Projekt zeigt, wie man mit **p5.js** Frames eines Canvas an einen **WebSocket-fähigen Drucker** senden kann.  
 Der Benutzer kann durch Mausklicks einzelne Frames an den Drucker senden, optional mit Schneidbefehl.

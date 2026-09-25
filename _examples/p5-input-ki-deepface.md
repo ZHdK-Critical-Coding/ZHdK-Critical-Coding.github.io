@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> DeepFace
+# P5.js: Deepface
 
 A p5.js sketch that captures the webcam and sends the current frame (Base64
 JPEG) to a [DeepFace](https://github.com/serengil/deepface) analysis server.

@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# Electron P5 Printers — Line Printer and Thermal Printer from p5.js
+# Electron: Printers
 
 > A p5.js sketch in an [Electron](https://www.electronjs.org/) app that prints directly on an Epson dot matrix printer (line printer) and an Epson TM thermal printer — text and images. Based on [Electron_P5_Starter](https://github.com/ZHdK-Critical-Coding/Electron_P5_Starter).
 > Ein p5.js-Sketch in einer [Electron](https://www.electronjs.org/)-App, der direkt auf einem Epson-Nadeldrucker und einem Epson-TM-Thermodrucker druckt — Text und Bilder. Basiert auf [Electron_P5_Starter](https://github.com/ZHdK-Critical-Coding/Electron_P5_Starter).

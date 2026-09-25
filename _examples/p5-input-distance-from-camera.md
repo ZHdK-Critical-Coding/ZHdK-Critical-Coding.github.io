@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Distance From Camera
+# P5.js: Camera Distance
 
 Estimates how far a viewer is from the screen using the webcam. ml5.js
 `faceMesh` detects the face; the closer you are, the wider the face box

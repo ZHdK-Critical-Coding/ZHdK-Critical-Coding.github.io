@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> ISS Position
+# P5.js: ISS Position
 
 A p5.js sketch that fetches the current position of the International Space
 Station every two seconds and draws its track as dots on the canvas

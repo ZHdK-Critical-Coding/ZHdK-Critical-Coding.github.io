@@ -11,7 +11,7 @@ related:
 render_with_liquid: false
 ---
 
-# P5 -> Pusher
+# P5.js: Pusher
 
 Send messages from one p5 sketch to another over [Pusher Channels](https://pusher.com).
 

@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# SearXNG Search — p5.js
+# P5.js: SearXNG Search
 
 A text input and a search button. The query is sent to a SearXNG instance and the result urls are drawn as text on the canvas.
 

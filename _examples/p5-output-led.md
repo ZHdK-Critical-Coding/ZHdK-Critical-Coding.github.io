@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# LED-Matrix Lauftext mit p5.js
+# P5.js: LED Matrix
 
 Dieses Projekt zeigt, wie man mit **p5.js** einen farbigen Lauftext auf einer **LED-Matrix** anzeigt und die Frames über **WebSocket / ZMQ** an den LED-Server sendet.  
 Der Text scrollt kontinuierlich, und jeder Matrix-Block kann unterschiedliche Farben im Verlauf darstellen.

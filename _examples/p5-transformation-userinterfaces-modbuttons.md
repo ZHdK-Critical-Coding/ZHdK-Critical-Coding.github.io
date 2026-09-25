@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# Modbuttons
+# P5.js: Modbuttons
 a simple and modular button system for p5js
 
 Modbuttons provides the framework to quickly create a variety of custom buttons, sliders, and dials, with a focus on modularity and customizability.

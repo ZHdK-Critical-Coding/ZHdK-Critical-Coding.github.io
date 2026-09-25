@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Joystick
+# P5.js: Joystick
 
 A p5.js sketch that reads a USB joystick through the WebHID API and moves a
 circle according to the X/Y axes. A small square shows the button state.

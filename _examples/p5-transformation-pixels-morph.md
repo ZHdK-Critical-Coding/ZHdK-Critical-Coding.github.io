@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# Image Morph
+# P5.js: Image Morph
 
 A small [p5.js](https://p5js.org/) sketch that **morphs** one bitmap into another.
 A morph is more than a fade: the geometry of matching features travels from one

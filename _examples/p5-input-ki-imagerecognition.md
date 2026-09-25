@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Image Recognition
+# P5.js: Image Recognition
 
 A p5.js sketch that classifies a live video image with the ml5.js image
 classifier (Darknet model) and lists the recognised labels with their

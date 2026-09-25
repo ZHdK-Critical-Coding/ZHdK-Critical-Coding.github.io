@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Comfy Flux Lora
+# P5.js: Comfy Flux Lora
 
 A p5.js sketch that sends a text prompt to a ComfyUI server, runs a Flux
 workflow with a LoRA and shows the generated image on a 1024 x 1024 canvas.

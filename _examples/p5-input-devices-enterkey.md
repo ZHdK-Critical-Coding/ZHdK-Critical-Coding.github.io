@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Enter Key
+# P5.js: Enter Key
 
 A p5.js sketch that shows three ways to react to the **Enter** key: while it
 is held down, as a one-shot action on press, and as an on/off toggle. Each

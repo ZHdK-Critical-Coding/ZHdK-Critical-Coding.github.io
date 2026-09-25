@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Image Segmentation
+# P5.js: Image Segmentation
 
 A p5.js sketch that captures a frame from the webcam (or an MJPEG stream) and
 runs a panoptic image segmentation model on it. For every detected segment it

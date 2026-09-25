@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Hand and Sound
+# P5.js: Hand and Sound
 
 Play tones and chords with one hand in front of the webcam. ml5.js `handPose`
 tracks 21 hand landmarks, Tone.js produces the sound.

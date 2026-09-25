@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# Empty Sketch — p5.js Starter Template
+# P5.js: Empty Sketch
 
 > A minimal p5.js starter template for the ZHdK *Coding Basic* module (FS26).
 > Ein minimales p5.js-Starter-Template für das ZHdK-Modul *Coding Basic* (FS26).

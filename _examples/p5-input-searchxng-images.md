@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# SearXNG Image Search — p5.js
+# P5.js: SearXNG Images
 
 A text input and a search button. The query is sent to a SearXNG instance (`categories=images`). All result images are loaded and drawn as a pattern of 250×250 pixel tiles (center-cropped squares). The full JSON answer is logged to the console.
 

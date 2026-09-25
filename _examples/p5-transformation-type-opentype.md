@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Opentype
+# P5.js: OpenType
 
 Works directly with the underlying [opentype.js](https://opentype.js.org) font
 of a p5 font: `font.getPath()` returns the raw path commands, which are sampled

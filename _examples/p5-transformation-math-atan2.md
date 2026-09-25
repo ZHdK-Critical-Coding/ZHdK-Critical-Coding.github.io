@@ -10,7 +10,7 @@ related: []
 render_with_liquid: false
 ---
 
-# P5 -> Atan2
+# P5.js: Atan2
 
 Demonstrates `atan2()`: three crosses rotate so that they always point towards
 the mouse. The angle is computed from the canvas center and shown in degrees.
