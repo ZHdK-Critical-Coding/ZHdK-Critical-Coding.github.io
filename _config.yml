@@ -36,7 +36,6 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
-  - Layout
   - scripts
   - docs
   - vendor

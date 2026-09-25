@@ -4,7 +4,7 @@ Jekyll site listing the coding examples of the [ZHdK-Critical-Coding](https://gi
 Published with GitHub Pages at https://zhdk-critical-coding.github.io/critical-coding-web/.
 
 - **Start page text:** `index.md`
-- **Layout / design:** `_layouts/`, `assets/css/style.css` (reference: `Layout/layout.pdf`)
+- **Layout / design:** `_layouts/`, `assets/css/style.css`
 - **Detail pages:** generated into `_examples/` by `scripts/update.rb` – don't edit them by hand
 
 ## Adding an example
