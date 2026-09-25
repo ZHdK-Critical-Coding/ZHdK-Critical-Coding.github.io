@@ -9,7 +9,7 @@
   --row: 44px;
   --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --mono: "Courier New", Courier, ui-monospace, monospace;
-  --green: #7ba920; /* grass of assets/img/wallpaper.jpg */
+  --green: #00ff00;
 }
 
 * { box-sizing: border-box; }
@@ -137,7 +137,7 @@ body.detail {
   text-transform: uppercase;
 }
 
-.button:hover { background: #93c93a; }
+.button:hover { background: #7fff7f; }
 
 .meta dl {
   width: 184px;
@@ -240,7 +240,7 @@ body.detail {
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation: 0.9s cubic-bezier(0.45, 0, 0.55, 1) both;
+  animation: 0.9s linear both; /* easing per half, see keyframes */
   backface-visibility: hidden;
   mix-blend-mode: normal;
 }
@@ -251,10 +251,29 @@ body.detail {
 html:active-view-transition-type(flip-back)::view-transition-old(root) { animation-name: flip-out-back; }
 html:active-view-transition-type(flip-back)::view-transition-new(root) { animation-name: flip-in-back; }
 
-@keyframes flip-out      { from { transform: perspective(2000px) rotateY(0); }       50% { transform: perspective(2000px) rotateY(90deg) scale(0.8); }  to { transform: perspective(2000px) rotateY(180deg); } }
-@keyframes flip-in       { from { transform: perspective(2000px) rotateY(-180deg); } 50% { transform: perspective(2000px) rotateY(-90deg) scale(0.8); } to { transform: perspective(2000px) rotateY(0); } }
-@keyframes flip-out-back { from { transform: perspective(2000px) rotateY(0); }       50% { transform: perspective(2000px) rotateY(-90deg) scale(0.8); } to { transform: perspective(2000px) rotateY(-180deg); } }
-@keyframes flip-in-back  { from { transform: perspective(2000px) rotateY(180deg); }  50% { transform: perspective(2000px) rotateY(90deg) scale(0.8); }  to { transform: perspective(2000px) rotateY(0); } }
+/* 0–50 %: the old page turns away, accelerating (ease-in).
+   50–100 %: the new page turns in, decelerating (ease-out).
+   Old and new share the same keyframe timing, so they move as one card. */
+@keyframes flip-out {
+  from { transform: perspective(2000px) rotateY(0);                  animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+  50%  { transform: perspective(2000px) rotateY(90deg) scale(0.8);   animation-timing-function: cubic-bezier(0, 0.55, 0.45, 1); }
+  to   { transform: perspective(2000px) rotateY(180deg); }
+}
+@keyframes flip-in {
+  from { transform: perspective(2000px) rotateY(-180deg);            animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+  50%  { transform: perspective(2000px) rotateY(-90deg) scale(0.8);  animation-timing-function: cubic-bezier(0, 0.55, 0.45, 1); }
+  to   { transform: perspective(2000px) rotateY(0); }
+}
+@keyframes flip-out-back {
+  from { transform: perspective(2000px) rotateY(0);                  animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+  50%  { transform: perspective(2000px) rotateY(-90deg) scale(0.8);  animation-timing-function: cubic-bezier(0, 0.55, 0.45, 1); }
+  to   { transform: perspective(2000px) rotateY(-180deg); }
+}
+@keyframes flip-in-back {
+  from { transform: perspective(2000px) rotateY(180deg);             animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+  50%  { transform: perspective(2000px) rotateY(90deg) scale(0.8);   animation-timing-function: cubic-bezier(0, 0.55, 0.45, 1); }
+  to   { transform: perspective(2000px) rotateY(0); }
+}
 
 @media (prefers-reduced-motion: reduce) {
   @view-transition { navigation: none; }
