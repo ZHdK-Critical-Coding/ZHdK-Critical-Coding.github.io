@@ -3,8 +3,14 @@ layout: default
 body_class: home
 ---
 <header class="bar">
-  <p>{{ site.title }}</p>
-  <span>{{ site.subtitle }}</span>
+  <div class="bar-start">
+    <p>{{ site.title }}</p>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="de">DE</button>
+    </div>
+  </div>
+  <span><span class="lang" lang="en">{{ site.subtitle }}</span><span class="lang" lang="de">{{ site.subtitle_de }}</span></span>
 </header>
 
 <section class="intro">
@@ -43,3 +49,4 @@ body_class: home
     } catch (e) {}
   })();
 </script>
+<script src="{{ '/assets/js/lang.js' | relative_url }}"></script>

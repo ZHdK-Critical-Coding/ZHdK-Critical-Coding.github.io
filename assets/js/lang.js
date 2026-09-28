@@ -1,4 +1,4 @@
-// README language switch on detail pages: EN / DE, remembered across pages.
+// Language switch on the start page: EN / DE, remembered for the detail pages.
 var langButtons = document.querySelectorAll(".lang-switch [data-lang]");
 
 function setLang(lang) {

@@ -214,24 +214,29 @@ body.detail {
 
 .button:hover { background: #7fff7f; }
 
-/* language switch next to the GitHub button (only if a README_DE.md exists) */
-.meta-link:has(.lang-switch) { display: flex; gap: 8px; }
-.meta-link:has(.lang-switch) .button { flex: 1; }
+/* language switch next to the brand on the start page, styled like "Close" */
+.bar-start {
+  display: flex;
+  align-items: center;
+  gap: var(--gutter);
+  min-width: 0;
+}
 
-.lang-switch { display: flex; }
+.lang-switch { display: flex; flex-shrink: 0; }
 
 .lang-switch button {
-  padding: 0 12px;
+  font: inherit;
+  font-size: 0.75em;
+  text-transform: uppercase;
   border: 1px solid var(--line);
+  padding: 4px 8px;
   background: var(--bg);
   color: var(--fg);
-  font: inherit;
   cursor: pointer;
 }
 
 .lang-switch button:first-child { border-radius: 3px 0 0 3px; }
 .lang-switch button:last-child { border-radius: 0 3px 3px 0; border-left: 0; }
-.lang-switch button:hover { color: var(--green); }
 
 html:not([data-lang="de"]) .lang-switch [data-lang="en"],
 html[data-lang="de"] .lang-switch [data-lang="de"] {
