@@ -87,7 +87,7 @@ a { color: inherit; text-decoration: none; }
   padding: var(--gutter);
 }
 
-.intro p { margin: 0 0 1em; }
+.intro p { margin: 0 0 1em; font-size: 2rem; }
 .intro p:last-child { margin-bottom: 0; }
 .intro a { text-decoration: underline; }
 
