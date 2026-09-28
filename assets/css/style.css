@@ -238,15 +238,23 @@ html[data-lang="de"] .lang[lang="en"] { display: none; }
   margin: 1.35em 0;
 }
 
-/* h1 border lines up with the border below the GitHub button:
-   readme padding + h1 line = meta-link padding + button line,
-   so the rest is the button's vertical padding plus the bottom gutter */
+/* h1 is a flex box centred between the header line and its own border,
+   and as tall as the GitHub button block (meta-link padding + button padding
+   + one line), so its border lines up with the border below the button.
+   As first element it pulls up over the readme padding to the header line. */
 .readme h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(2 * var(--gutter) + 2 * 10px + 1.35em + 1.5px);
+  padding: 0;
   color: rgb(255, 100, 100);
   text-align: center;
-  padding-bottom: calc(2 * 10px + var(--gutter));
   border-bottom: 1.5px solid;
 }
+
+.readme > h1:first-child,
+.readme .lang > h1:first-child { margin-top: calc(-1 * var(--gutter)); }
 
 .readme h2 {
   padding-bottom: 0.5em;
