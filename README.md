@@ -18,11 +18,29 @@ author: Urs Hofer
 technology: "P5.js"         # shown right of the title
 category: input             # input | transformation | output
 readme: "sub/readme.md"     # optional, if the README is not in the repo root
+readme_de: "sub/README_DE.md" # optional, if the German README is not next to the README
 related: Servers_Pusher     # optional, repo name or list of names, linked above the README
 ```
 
 Repositories without `example.yaml` are ignored. The README becomes the detail page;
 images referenced in it are copied into the site, other relative links point to GitHub.
+
+### README structure
+
+Every example has an English `README.md` and a German `README_DE.md` next to it.
+If both exist, the detail page shows an EN / DE switch (the choice is remembered).
+
+```markdown
+# P5.js: Joystick               <- "technology: name" from example.yaml
+
+[Deutsch](README_DE.md)          <- in README_DE.md: [English](README.md); hidden on the site
+
+Short abstract, 2–4 sentences.
+
+## Installation                  <- requirements, steps to run, libraries
+
+## Coding Help                   <- DE: "Coding-Hilfe"; what happens in which part of the code
+```
 
 ## Updating
 

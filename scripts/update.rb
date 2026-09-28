@@ -12,6 +12,7 @@
 #   technology: "P5.js"         # shown right of the title
 #   category: input             # input | transformation | output
 #   readme: "sub/readme.md"     # optional, default: README.md in the repo root
+#   readme_de: "sub/README_DE.md" # optional, default: README_DE.md next to the README
 #   related: Servers_Pusher     # optional, repository name or list of names
 #
 # Usage:
@@ -139,6 +140,25 @@ def find_readme(dir, meta)
      .find { |f| File.basename(f).casecmp?("readme.md") }
 end
 
+# German README: `readme_de` from example.yaml or README_DE.md next to the README
+def find_readme_de(dir, meta, readme)
+  if meta["readme_de"]
+    path = File.join(dir, meta["readme_de"])
+    return path if File.file?(path)
+  end
+  return nil unless readme
+
+  base = File.dirname(readme)
+  file = Dir.children(base).find { |f| f.casecmp?("readme_de.md") }
+  file && File.join(base, file)
+end
+
+# Drops the "[Deutsch](README_DE.md)" / "[English](README.md)" lines that
+# link the two language versions on GitHub; the page has its own switch.
+def strip_language_links(markdown)
+  markdown.gsub(/^\[(?:Deutsch|English)\]\([^)\s]*readme(?:_de)?\.md\)[ \t]*\n(?:[ \t]*\n)?/i, "")
+end
+
 # Rewrites relative links in the README: images are copied into
 # assets/examples/<slug>/, everything else points to the file on GitHub.
 def rewrite_links(markdown, readme_path, repo_dir, repo, slug)
@@ -254,7 +274,12 @@ repos.each do |repo|
   body   = readme ? File.read(readme, encoding: "bom|utf-8") : ""
   report[:no_readme] << name unless readme
   report[:empty_readme] << name if readme && body.strip.empty?
-  body = rewrite_links(body, readme, dir, repo, slug) unless body.strip.empty?
+  body = rewrite_links(strip_language_links(body), readme, dir, repo, slug) unless body.strip.empty?
+
+  readme_de = find_readme_de(dir, meta, readme)
+  body_de   = readme_de ? File.read(readme_de, encoding: "bom|utf-8") : ""
+  body_de   = body_de.strip.empty? ? nil : rewrite_links(strip_language_links(body_de), readme_de, dir, repo, slug)
+  report[:no_readme_de] << name if readme && !body.strip.empty? && !body_de
 
   date = meta["date"]
   date = Date.parse(date.to_s) rescue nil unless date.is_a?(Date)
@@ -270,7 +295,29 @@ repos.each do |repo|
     "related" => Array(meta["related"]).map { |r| r.to_s.strip }.reject(&:empty?),
     "render_with_liquid" => false
   }.compact
-  body = normalize_title(body, "#{front["technology"]}: #{front["title"]}") unless front["technology"].empty?
+  unless front["technology"].empty?
+    title   = "#{front["technology"]}: #{front["title"]}"
+    body    = normalize_title(body, title)
+    body_de = normalize_title(body_de, title) if body_de
+  end
+
+  # Both languages go into the page; the language switch shows one of them.
+  if body_de && !body.strip.empty?
+    front["languages"] = %w[en de]
+    body = <<~HTML
+      <div class="lang" lang="en" markdown="1">
+
+      #{body.strip}
+
+      </div>
+
+      <div class="lang" lang="de" markdown="1">
+
+      #{body_de.strip}
+
+      </div>
+    HTML
+  end
 
   File.write(File.join(OUT_DIR, "#{slug}.md"), "#{YAML.dump(front)}---\n\n#{body}")
   report[:published] << name
@@ -290,6 +337,7 @@ puts "Published #{report[:published].size} examples to _examples/"
   no_yaml: "Repositories without #{META_FILE} (not listed)",
   no_readme: "Examples without README (page shows placeholder)",
   empty_readme: "Examples with an empty README (page shows placeholder)",
+  no_readme_de: "Examples without German README_DE.md (no language switch)",
   no_name: "Examples without name (repository name used)",
   related: "Related repositories",
   errors: "Errors (not listed)"

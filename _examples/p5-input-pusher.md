@@ -9,38 +9,35 @@ repo_url: https://github.com/ZHdK-Critical-Coding/P5_Input_Pusher
 related:
 - Servers_Pusher
 render_with_liquid: false
+languages:
+- en
+- de
 ---
+
+<div class="lang" lang="en" markdown="1">
 
 # P5.js: Pusher
 
-Send messages from one p5 sketch to another over [Pusher Channels](https://pusher.com).
+Sends messages from one p5 sketch to another over
+[Pusher Channels](https://pusher.com). `Client/` has a text field and a
+**Send** button, `Display/` shows the latest message on a black canvas. A
+starting point for remote-controlling a sketch from a phone or another
+computer.
 
 ```
 Client/ (p5 sender)  --POST /message-->  Servers_Pusher (Node)  --trigger-->  Pusher "chat"  -->  Display/ (p5 receiver)
 ```
 
-The browser can't trigger Pusher events itself — that needs the app secret,
-which must never live in browser code. So the client POSTs to a tiny Node
-server, which triggers the `new-message` event on the `chat` channel. The
-display sketch subscribes to that channel with the public key only.
+## Installation
 
-## Folders
+Requirements: a free Channels app on https://pusher.com and the relay server
+[Servers_Pusher](https://github.com/ZHdK-Critical-Coding/Servers_Pusher)
+(locally `../Servers_Pusher`, not part of this repo). The browser can't
+trigger Pusher events itself — that needs the app secret, which must never
+live in browser code — so the client POSTs to the server instead.
 
-| Folder     | Role                                                                    |
-|------------|-------------------------------------------------------------------------|
-| `Client/`  | p5 sketch without canvas: text field + **Send** button.                 |
-| `Display/` | p5 sketch that shows the latest message on a black 448 × 256 canvas.    |
-
-## Server
-
-The relay server is **not part of this repo**. It lives in its own repository:
-[ZHdK-Critical-Coding/Servers_Pusher](https://github.com/ZHdK-Critical-Coding/Servers_Pusher)
-(locally `../Servers_Pusher`).
-
-## How to Use
-
-1. Create a free Channels app on https://pusher.com and copy its **App Keys**.
-2. Start the server from the Servers_Pusher repo:
+1. Create the Channels app and copy its **App Keys**.
+2. Start the server:
    ```bash
    git clone https://github.com/ZHdK-Critical-Coding/Servers_Pusher.git
    cd Servers_Pusher
@@ -48,12 +45,94 @@ The relay server is **not part of this repo**. It lives in its own repository:
    cp .env.example .env   # paste your keys into .env
    npm start              # -> http://localhost:3000
    ```
-3. Put your public key and cluster into `PUSHER_KEY` / `PUSHER_CLUSTER` in `Display/sketch.js`.
-4. Open `Display/index.html` and `Client/index.html` with Live Server.
-5. Type a message in the client and click **Send** — it appears on the display.
+3. Put your public key and cluster into `PUSHER_KEY` / `PUSHER_CLUSTER` in
+   `Display/sketch.js`.
+4. Open the folder in Visual Studio Code and open `Display/index.html` and
+   `Client/index.html` with Live Server (right-click → **Open with Live
+   Server**).
+5. Type a message in the client and click **Send** — it appears on the
+   display.
 
-If the server runs on another machine, change `SERVER_URL` in `Client/sketch.js`.
+If the server runs on another machine, change `SERVER_URL` in
+`Client/sketch.js`.
 
-## Libraries
+Libraries (CDN): p5.js 1.9.4, Pusher JS 8.4.0 (Display only).
 
-- p5.js 1.9.4, Pusher JS 8.4 (CDN); `express`, `cors`, `dotenv`, `pusher` (npm)
+## Coding Help
+
+- **`Client/sketch.js` → `setup()`**: no canvas (`noCanvas()`), only an
+  input field and a **Send** button.
+- **`Client/sketch.js` → `sendMessage()`**: POSTs `{ message }` as JSON to
+  `SERVER_URL` and clears the field. Empty messages are ignored.
+- **`Display/sketch.js` → `setup()`**: creates the 448 × 256 canvas,
+  connects with `new Pusher(PUSHER_KEY, { cluster })`, subscribes to
+  `chat` and binds `new-message`, which stores `data.message` in
+  `latestMessage`. Channel and event must match the server.
+- **`Display/sketch.js` → `draw()`**: black background, draws
+  `latestMessage` wrapped into the whole canvas. Change size, font or
+  layout here.
+
+</div>
+
+<div class="lang" lang="de" markdown="1">
+
+# P5.js: Pusher
+
+Schickt Nachrichten von einem p5-Sketch zu einem anderen über
+[Pusher Channels](https://pusher.com). `Client/` hat ein Textfeld und einen
+**Send**-Knopf, `Display/` zeigt die letzte Nachricht auf einer schwarzen
+Zeichenfläche. Ein Ausgangspunkt, um einen Sketch vom Handy oder von einem
+anderen Computer aus fernzusteuern.
+
+```
+Client/ (p5-Sender)  --POST /message-->  Servers_Pusher (Node)  --trigger-->  Pusher "chat"  -->  Display/ (p5-Empfänger)
+```
+
+## Installation
+
+Voraussetzungen: eine kostenlose Channels-App auf https://pusher.com und der
+Relay-Server
+[Servers_Pusher](https://github.com/ZHdK-Critical-Coding/Servers_Pusher)
+(lokal `../Servers_Pusher`, nicht Teil dieses Repos). Der Browser kann
+selbst keine Pusher-Events auslösen – dafür braucht es das App-Secret, das
+nie im Browser-Code stehen darf –, deshalb schickt der Client per POST an
+den Server.
+
+1. Die Channels-App erstellen und die **App Keys** kopieren.
+2. Den Server starten:
+   ```bash
+   git clone https://github.com/ZHdK-Critical-Coding/Servers_Pusher.git
+   cd Servers_Pusher
+   npm install
+   cp .env.example .env   # Keys in .env eintragen
+   npm start              # -> http://localhost:3000
+   ```
+3. Den öffentlichen Key und den Cluster in `PUSHER_KEY` / `PUSHER_CLUSTER`
+   in `Display/sketch.js` eintragen.
+4. Den Ordner in Visual Studio Code öffnen und `Display/index.html` und
+   `Client/index.html` mit Live Server öffnen (Rechtsklick → **Open with
+   Live Server**).
+5. Im Client eine Nachricht eingeben und auf **Send** klicken – sie
+   erscheint auf dem Display.
+
+Läuft der Server auf einem anderen Rechner, `SERVER_URL` in
+`Client/sketch.js` anpassen.
+
+Bibliotheken (CDN): p5.js 1.9.4, Pusher JS 8.4.0 (nur Display).
+
+## Coding-Hilfe
+
+- **`Client/sketch.js` → `setup()`**: keine Zeichenfläche (`noCanvas()`),
+  nur ein Eingabefeld und ein **Send**-Knopf.
+- **`Client/sketch.js` → `sendMessage()`**: schickt `{ message }` als JSON
+  per POST an `SERVER_URL` und leert das Feld. Leere Nachrichten werden
+  ignoriert.
+- **`Display/sketch.js` → `setup()`**: erstellt die 448 × 256 grosse
+  Zeichenfläche, verbindet sich mit `new Pusher(PUSHER_KEY, { cluster })`,
+  abonniert `chat` und bindet `new-message`, das `data.message` in
+  `latestMessage` speichert. Kanal und Event müssen zum Server passen.
+- **`Display/sketch.js` → `draw()`**: schwarzer Hintergrund, zeichnet
+  `latestMessage` umbrochen über die ganze Fläche. Grösse, Schrift oder
+  Layout hier ändern.
+
+</div>

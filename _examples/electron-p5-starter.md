@@ -8,53 +8,28 @@ repo: Electron_P5_Starter
 repo_url: https://github.com/ZHdK-Critical-Coding/Electron_P5_Starter
 related: []
 render_with_liquid: false
+languages:
+- en
+- de
 ---
+
+<div class="lang" lang="en" markdown="1">
 
 # Electron: Fullscreen App
 
-> A minimal p5.js sketch packaged in an [Electron](https://www.electronjs.org/) application that opens fullscreen — ideal for installations and exhibitions. Includes a develop mode with live reload and ready-made builds for macOS, Windows and Linux.
-> Ein minimaler p5.js-Sketch in einer [Electron](https://www.electronjs.org/)-Applikation, die im Vollbild startet — ideal für Installationen und Ausstellungen. Mit Entwicklungsmodus inklusive Live-Reload und fertigen Builds für macOS, Windows und Linux.
+A minimal p5.js sketch packaged in an [Electron](https://www.electronjs.org/)
+app that opens fullscreen without any browser interface — for installations
+and exhibitions. Includes a develop mode with live reload and ready-made
+builds for macOS, Windows and Linux that run without Node.js or VS Code.
 
----
+## Installation
 
-## 🇬🇧 English
+Requirements: [Node.js](https://nodejs.org/) (LTS) and
+[Visual Studio Code](https://code.visualstudio.com/).
 
-### Overview
-
-Instead of running the sketch in a browser via Live Server, this template runs it inside its own desktop app. The app opens fullscreen without any browser interface, and the canvas always fills the whole screen. When the sketch is finished, you can build a standalone app that runs on a computer without Node.js or VS Code.
-
-### Project Structure
-
-```
-Electron_P5_Starter/
-├── .vscode/
-│   ├── extensions.json     # Recommended VS Code extensions
-│   ├── global.d.ts         # p5.js type definitions for autocomplete
-│   └── settings.json       # Editor settings
-├── build/                  # (optional) app icon, see "App Icon"
-├── dist/                   # Built apps end up here (created by the build)
-├── sketch/
-│   ├── libraries/
-│   │   ├── p5.min.js       # p5.js core library
-│   │   └── p5.sound.min.js # p5.sound add-on library
-│   ├── index.html          # HTML host page (loads libraries + sketch)
-│   ├── sketch.js           # Your sketch — edit this file
-│   └── style.css           # Page styling
-├── .gitignore
-├── jsconfig.json           # JS IntelliSense configuration
-├── main.js                 # Electron main process (creates the window)
-└── package.json            # Scripts and build configuration
-```
-
-### Requirements
-
-- **[Node.js](https://nodejs.org/)** (LTS version)
-- **[Visual Studio Code](https://code.visualstudio.com/)** — recommended editor
-
-### Getting Started
-
-1. **Open the folder** in Visual Studio Code.
-2. Open a terminal (`Terminal → New Terminal`) and install the dependencies (only needed once):
+1. Open the folder in Visual Studio Code.
+2. Open a terminal (`Terminal → New Terminal`) and install the dependencies
+   (only needed once):
    ```sh
    npm install
    ```
@@ -63,93 +38,104 @@ Electron_P5_Starter/
    npm run dev
    ```
 
-### Develop Mode
+`npm run dev` opens the app in a window, with the developer tools in a
+separate window (for `console.log()` output and errors). Saving a file in
+`sketch/` reloads the sketch; changing `main.js` restarts the app.
+`npm start` runs the app as in the exhibition: fullscreen, no dev tools, no
+reload, and the display is kept from going to sleep.
 
-`npm run dev` is the mode to work in:
+Keys: `Escape` quits the app, `Cmd/Ctrl` + `F` toggles fullscreen, `F12`
+toggles the developer tools.
 
-- The app opens in a **window** instead of fullscreen.
-- The **developer tools** open in a separate window, so you can see `console.log()` output and errors.
-- **Live reload**: every time you save a file in `sketch/`, the sketch reloads automatically.
-- When you change `main.js`, the whole app restarts.
-
-To see the app exactly as it will run in the exhibition (fullscreen, no dev tools, no reload), use:
-
-```sh
-npm start
-```
-
-In this mode, the screen is also kept from going to sleep.
-
-### Keys
-
-| Key                | Action                           |
-| ------------------ | -------------------------------- |
-| `Escape`           | Quit the app                     |
-| `Cmd/Ctrl` + `F`   | Toggle fullscreen                |
-| `F12`              | Toggle developer tools (console) |
+Dependencies (`package.json`): Electron 44, electron-builder 26. Libraries
+in `sketch/libraries/`: p5.js 1.10.0, p5.sound 1.0.1 (included, not used).
 
 ### Building the App
 
-A build turns the project into a standalone app. All results are saved in the `dist/` folder.
+A build turns the project into a standalone app. All results are saved in
+`dist/`.
 
-| Command               | Result                                                         |
-| --------------------- | -------------------------------------------------------------- |
-| `npm run pack`        | Quick test build for your own computer, no installer (`dist/*-unpacked` or `dist/mac-universal`) |
-| `npm run build`       | Build for the computer you are working on                      |
-| `npm run build:mac`   | macOS: `.dmg` and `.zip` (runs on Apple Silicon and Intel)     |
+| Command               | Result                                                                        |
+| --------------------- | ----------------------------------------------------------------------------- |
+| `npm run pack`        | Quick test build for your own computer, no installer                          |
+| `npm run build`       | Build for the computer you are working on                                     |
+| `npm run build:mac`   | macOS: `.dmg` and `.zip` (runs on Apple Silicon and Intel)                    |
 | `npm run build:win`   | Windows: installer (`Setup.exe`) and `portable.exe` (runs without installing) |
-| `npm run build:linux` | Linux: `.AppImage`                                             |
-| `npm run build:all`   | All of the above                                               |
+| `npm run build:linux` | Linux: `.AppImage`                                                            |
+| `npm run build:all`   | All of the above                                                              |
 
-All platforms can be built from a Mac. The first build takes a while, because the needed tools are downloaded.
+All platforms can be built from a Mac. The first build takes a while,
+because the needed tools are downloaded.
 
-**Name and version:** change `productName` in the `build` section and `version` in `package.json`. Both appear in the file names of the built app.
+- **Name and version:** change `productName` in the `build` section and
+  `version` in `package.json`. Both appear in the file names of the build.
+- **App icon:** create a folder `build/` with a square `icon.png` (at least
+  1024 × 1024 px). Without it, the default Electron icon is used.
+- **Opening the app on another computer:** the builds are not signed, so
+  the system warns the first time. macOS: right-click the app → *Open* →
+  *Open*; if macOS says the app is "damaged", run
+  `xattr -cr "/Applications/Electron P5 Starter.app"`. Windows: in the
+  SmartScreen dialog, click *More info* → *Run anyway*. Linux:
+  `chmod +x *.AppImage`.
 
-#### App Icon
+## Coding Help
 
-Create a folder `build/` and put a square `icon.png` (at least 1024 × 1024 px) in it. It is used automatically for all platforms. Without it, the default Electron icon is used.
+### Project Structure
 
-#### Opening the App on Another Computer
-
-The built apps are **not signed**, so the operating system shows a warning the first time:
-
-- **macOS:** right-click the app → *Open* → *Open*. If macOS says the app is "damaged", run `xattr -cr "/Applications/Electron P5 Starter.app"` in the terminal.
-- **Windows:** in the SmartScreen dialog, click *More info* → *Run anyway*.
-- **Linux:** make the file executable: `chmod +x *.AppImage`.
-
-### The Sketch
-
-`sketch/sketch.js` creates a canvas the size of the window and draws an "X" across it. `windowResized()` keeps the canvas in sync with the screen size:
-
-```js
-function setup() {
-  createCanvas(windowWidth, windowHeight);
-}
-
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
+```
+Electron_P5_Starter/
+├── .vscode/                # VS Code settings, p5.js autocomplete
+├── build/                  # (optional) app icon
+├── dist/                   # Built apps end up here
+├── sketch/
+│   ├── libraries/
+│   │   ├── p5.min.js
+│   │   └── p5.sound.min.js
+│   ├── index.html          # Loads libraries + sketch
+│   ├── sketch.js           # Your sketch — edit this file
+│   └── style.css
+├── main.js                 # Electron main process (creates the window)
+└── package.json            # Scripts and build configuration
 ```
 
-Tip: for an installation, add `noCursor();` in `setup()` to hide the mouse pointer.
+### What Happens Where
 
----
+- **`sketch/sketch.js`**: `setup()` creates a canvas the size of the
+  window, `draw()` paints it white and draws an "X" across it,
+  `windowResized()` keeps the canvas in sync with the screen size. Replace
+  this with your own sketch. For an installation, add `noCursor();` in
+  `setup()` to hide the mouse pointer.
+- **`main.js` → `createWindow()`**: opens a 1280×800 window, fullscreen
+  unless started with `--dev`, and loads `sketch/index.html`. The
+  `before-input-event` handler implements the keys.
+- **`main.js` → `watchForChanges()`**: only in dev mode. Reloads the page
+  when a file in `sketch/` changes and restarts the app when `main.js`
+  changes.
+- **`main.js` (end)**: allows only one running instance and, outside dev
+  mode, keeps the display awake with `powerSaveBlocker`.
+- **`package.json` → `build`**: electron-builder settings (app id, product
+  name, which files go into the app, targets per platform).
 
-## 🇩🇪 Deutsch
+</div>
 
-### Überblick
+<div class="lang" lang="de" markdown="1">
 
-Statt den Sketch mit Live Server im Browser auszuführen, läuft er in diesem Template in einer eigenen Desktop-App. Die App startet im Vollbild ohne Browser-Oberfläche, und die Zeichenfläche füllt immer den ganzen Bildschirm. Ist der Sketch fertig, lässt sich eine eigenständige App bauen, die auch auf einem Computer ohne Node.js oder VS Code läuft.
+# Electron: Fullscreen App
 
-### Voraussetzungen
+Ein minimaler p5.js-Sketch in einer
+[Electron](https://www.electronjs.org/)-App, die im Vollbild ohne
+Browser-Oberfläche startet – für Installationen und Ausstellungen. Mit
+Entwicklungsmodus inklusive Live-Reload und fertigen Builds für macOS,
+Windows und Linux, die ohne Node.js oder VS Code laufen.
 
-- **[Node.js](https://nodejs.org/)** (LTS-Version)
-- **[Visual Studio Code](https://code.visualstudio.com/)** — empfohlener Editor
+## Installation
 
-### Erste Schritte
+Voraussetzungen: [Node.js](https://nodejs.org/) (LTS) und
+[Visual Studio Code](https://code.visualstudio.com/).
 
-1. **Ordner** in Visual Studio Code öffnen.
-2. Ein Terminal öffnen (`Terminal → New Terminal`) und die Abhängigkeiten installieren (nur einmal nötig):
+1. Den Ordner in Visual Studio Code öffnen.
+2. Ein Terminal öffnen (`Terminal → New Terminal`) und die Abhängigkeiten
+   installieren (nur einmal nötig):
    ```sh
    npm install
    ```
@@ -158,62 +144,86 @@ Statt den Sketch mit Live Server im Browser auszuführen, läuft er in diesem Te
    npm run dev
    ```
 
-### Entwicklungsmodus
+`npm run dev` öffnet die App in einem Fenster, die Entwicklertools in einem
+eigenen Fenster (für `console.log()`-Ausgaben und Fehler). Beim Speichern
+einer Datei in `sketch/` lädt der Sketch neu; bei Änderungen an `main.js`
+startet die App neu. `npm start` zeigt die App wie in der Ausstellung:
+Vollbild, ohne Entwicklertools und Reload, und der Bildschirm geht nicht in
+den Ruhezustand.
 
-Mit `npm run dev` wird gearbeitet:
+Tasten: `Escape` beendet die App, `Cmd/Ctrl` + `F` schaltet Vollbild
+ein/aus, `F12` die Entwicklertools.
 
-- Die App öffnet sich in einem **Fenster** statt im Vollbild.
-- Die **Entwicklertools** öffnen sich in einem eigenen Fenster — dort erscheinen `console.log()`-Ausgaben und Fehler.
-- **Live-Reload**: Bei jedem Speichern einer Datei in `sketch/` lädt der Sketch automatisch neu.
-- Bei Änderungen an `main.js` startet die ganze App neu.
-
-Um die App so zu sehen, wie sie in der Ausstellung läuft (Vollbild, ohne Entwicklertools und Reload):
-
-```sh
-npm start
-```
-
-In diesem Modus geht der Bildschirm zudem nicht in den Ruhezustand.
-
-### Tasten
-
-| Taste              | Aktion                            |
-| ------------------ | --------------------------------- |
-| `Escape`           | App beenden                       |
-| `Cmd/Ctrl` + `F`   | Vollbild ein/aus                  |
-| `F12`              | Entwicklertools (Konsole) ein/aus |
+Abhängigkeiten (`package.json`): Electron 44, electron-builder 26.
+Bibliotheken in `sketch/libraries/`: p5.js 1.10.0, p5.sound 1.0.1
+(eingebunden, nicht verwendet).
 
 ### App bauen
 
-Ein Build macht aus dem Projekt eine eigenständige App. Alle Ergebnisse landen im Ordner `dist/`.
+Ein Build macht aus dem Projekt eine eigenständige App. Alle Ergebnisse
+landen in `dist/`.
 
-| Befehl                | Ergebnis                                                       |
-| --------------------- | -------------------------------------------------------------- |
-| `npm run pack`        | Schneller Test-Build für den eigenen Computer, ohne Installer  |
-| `npm run build`       | Build für den Computer, auf dem gearbeitet wird                |
-| `npm run build:mac`   | macOS: `.dmg` und `.zip` (läuft auf Apple Silicon und Intel)   |
+| Befehl                | Ergebnis                                                                      |
+| --------------------- | ----------------------------------------------------------------------------- |
+| `npm run pack`        | Schneller Test-Build für den eigenen Computer, ohne Installer                 |
+| `npm run build`       | Build für den Computer, auf dem gearbeitet wird                               |
+| `npm run build:mac`   | macOS: `.dmg` und `.zip` (läuft auf Apple Silicon und Intel)                  |
 | `npm run build:win`   | Windows: Installer (`Setup.exe`) und `portable.exe` (läuft ohne Installation) |
-| `npm run build:linux` | Linux: `.AppImage`                                             |
-| `npm run build:all`   | Alle oben genannten                                            |
+| `npm run build:linux` | Linux: `.AppImage`                                                            |
+| `npm run build:all`   | Alle oben genannten                                                           |
 
-Alle Plattformen lassen sich auf einem Mac bauen. Der erste Build dauert länger, weil die nötigen Werkzeuge heruntergeladen werden.
+Alle Plattformen lassen sich auf einem Mac bauen. Der erste Build dauert
+länger, weil die nötigen Werkzeuge heruntergeladen werden.
 
-**Name und Version:** `productName` im Abschnitt `build` und `version` in `package.json` anpassen. Beides erscheint in den Dateinamen der gebauten App.
+- **Name und Version:** `productName` im Abschnitt `build` und `version` in
+  `package.json` anpassen. Beides erscheint in den Dateinamen des Builds.
+- **App-Icon:** einen Ordner `build/` mit einem quadratischen `icon.png`
+  (mindestens 1024 × 1024 px) anlegen. Ohne Icon erscheint das
+  Standard-Icon von Electron.
+- **App auf einem anderen Computer öffnen:** Die Builds sind nicht
+  signiert, deshalb warnt das System beim ersten Start. macOS: Rechtsklick
+  auf die App → *Öffnen* → *Öffnen*; meldet macOS, die App sei
+  «beschädigt», `xattr -cr "/Applications/Electron P5 Starter.app"`
+  ausführen. Windows: im SmartScreen-Dialog auf *Weitere Informationen* →
+  *Trotzdem ausführen* klicken. Linux: `chmod +x *.AppImage`.
 
-#### App-Icon
+## Coding-Hilfe
 
-Einen Ordner `build/` anlegen und darin ein quadratisches `icon.png` (mindestens 1024 × 1024 px) ablegen. Es wird automatisch für alle Plattformen verwendet. Ohne Icon erscheint das Standard-Icon von Electron.
+### Projektstruktur
 
-#### App auf einem anderen Computer öffnen
+```
+Electron_P5_Starter/
+├── .vscode/                # VS-Code-Einstellungen, p5.js-Autovervollständigung
+├── build/                  # (optional) App-Icon
+├── dist/                   # Hier landen die gebauten Apps
+├── sketch/
+│   ├── libraries/
+│   │   ├── p5.min.js
+│   │   └── p5.sound.min.js
+│   ├── index.html          # Lädt Bibliotheken + Sketch
+│   ├── sketch.js           # Dein Sketch — diese Datei bearbeiten
+│   └── style.css
+├── main.js                 # Electron-Hauptprozess (erstellt das Fenster)
+└── package.json            # Scripts und Build-Konfiguration
+```
 
-Die gebauten Apps sind **nicht signiert**, deshalb zeigt das Betriebssystem beim ersten Start eine Warnung:
+### Was passiert wo
 
-- **macOS:** Rechtsklick auf die App → *Öffnen* → *Öffnen*. Meldet macOS, die App sei «beschädigt», im Terminal `xattr -cr "/Applications/Electron P5 Starter.app"` ausführen.
-- **Windows:** Im SmartScreen-Dialog auf *Weitere Informationen* → *Trotzdem ausführen* klicken.
-- **Linux:** Datei ausführbar machen: `chmod +x *.AppImage`.
+- **`sketch/sketch.js`**: `setup()` erstellt eine Zeichenfläche in
+  Fenstergrösse, `draw()` füllt sie weiss und zeichnet ein «X» darüber,
+  `windowResized()` passt die Zeichenfläche an die Bildschirmgrösse an. Das
+  durch den eigenen Sketch ersetzen. Für eine Installation `noCursor();` in
+  `setup()` einfügen, um den Mauszeiger auszublenden.
+- **`main.js` → `createWindow()`**: öffnet ein Fenster mit 1280×800, im
+  Vollbild, ausser mit `--dev`, und lädt `sketch/index.html`. Der Handler
+  `before-input-event` setzt die Tasten um.
+- **`main.js` → `watchForChanges()`**: nur im Entwicklungsmodus. Lädt die
+  Seite neu, wenn sich eine Datei in `sketch/` ändert, und startet die App
+  neu, wenn sich `main.js` ändert.
+- **`main.js` (Ende)**: erlaubt nur eine laufende Instanz und hält
+  ausserhalb des Entwicklungsmodus den Bildschirm mit `powerSaveBlocker`
+  wach.
+- **`package.json` → `build`**: Einstellungen für electron-builder (App-ID,
+  Produktname, welche Dateien in die App kommen, Ziele pro Plattform).
 
-### Der Sketch
-
-`sketch/sketch.js` erstellt eine Zeichenfläche in Fenstergrösse und zeichnet ein «X» darüber. `windowResized()` passt die Zeichenfläche an die Bildschirmgrösse an.
-
-Tipp: Für eine Installation `noCursor();` in `setup()` einfügen, um den Mauszeiger auszublenden.
+</div>

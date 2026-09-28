@@ -8,27 +8,76 @@ repo: P5_Input_Files_WatchTextList
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Input_Files_WatchTextList
 related: []
 render_with_liquid: false
+languages:
+- en
+- de
 ---
+
+<div class="lang" lang="en" markdown="1">
 
 # P5.js: Watch Text List
 
-A p5.js sketch that reads the text file `assets/list.txt` every five seconds
-and draws its lines on the canvas. Edit the file while the sketch is running
-and the display follows the changes.
+Reads the text file `assets/list.txt` every five seconds and draws its
+lines on the canvas. Edit the file while the sketch is running and the
+display follows the changes – useful when another program writes data into
+a text file that a sketch should show.
 
-## How to Use
+## Installation
 
-1. Start Live Server (click **Go Live** in the VS Code status bar).
+Requirements: a current browser.
+
+1. Open the folder in Visual Studio Code and start Live Server (click
+   **Go Live** in the status bar).
 2. Open `assets/list.txt`, change, add or remove lines and save the file.
 3. The canvas shows the new content within about five seconds.
 
-## How it Works
+Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
+used).
 
-`watcher()` loads the file with `loadStrings()` and, once it has arrived,
-schedules itself again with `setTimeout(..., 5000)`. `draw()` renders the
-current lines one below the other (10 px apart), so the text list can be
-updated from outside the sketch, e.g. by another program writing the file.
+## Coding Help
 
-## Libraries
+- **`sketch.js` → `watcher()`**: loads `assets/list.txt` with
+  `loadStrings()` into the array `list`. Once the file has arrived, it
+  schedules itself again with `setTimeout(..., 5000)`. Change the 5000 ms
+  to poll faster or slower. Started once in `preload()`.
+- **`setup()`**: creates a 400 × 400 canvas and sets the text size to 12.
+- **`draw()`**: draws the lines one below the other, starting at y = 20
+  with 10 px line spacing. Increase the step (`y += 10`) for larger text.
 
-- p5.js 1.10.0, p5.sound 1.0.1 (in `libraries/`)
+</div>
+
+<div class="lang" lang="de" markdown="1">
+
+# P5.js: Watch Text List
+
+Liest die Textdatei `assets/list.txt` alle fünf Sekunden und zeichnet ihre
+Zeilen auf die Zeichenfläche. Wird die Datei geändert, während der Sketch
+läuft, folgt die Anzeige den Änderungen – nützlich, wenn ein anderes
+Programm Daten in eine Textdatei schreibt, die ein Sketch anzeigen soll.
+
+## Installation
+
+Voraussetzungen: ein aktueller Browser.
+
+1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
+   Statusleiste auf **Go Live** klicken).
+2. `assets/list.txt` öffnen, Zeilen ändern, hinzufügen oder löschen und die
+   Datei speichern.
+3. Die Zeichenfläche zeigt den neuen Inhalt nach etwa fünf Sekunden.
+
+Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
+nicht verwendet).
+
+## Coding-Hilfe
+
+- **`sketch.js` → `watcher()`**: lädt `assets/list.txt` mit
+  `loadStrings()` in das Array `list`. Sobald die Datei da ist, plant es
+  sich mit `setTimeout(..., 5000)` erneut ein. Die 5000 ms ändern, um
+  schneller oder langsamer abzufragen. Wird einmal in `preload()` gestartet.
+- **`setup()`**: erstellt eine Zeichenfläche von 400 × 400 Pixeln und setzt
+  die Textgrösse auf 12.
+- **`draw()`**: zeichnet die Zeilen untereinander, beginnend bei y = 20 mit
+  10 px Zeilenabstand. Bei grösserer Schrift den Schritt (`y += 10`)
+  erhöhen.
+
+</div>

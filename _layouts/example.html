@@ -46,6 +46,13 @@ body_class: detail
   <aside class="meta">
     <div class="meta-link">
       <a class="button" href="{{ page.repo_url }}">GitHub</a>
+      {%- if page.languages %}
+      <div class="lang-switch" role="group" aria-label="Language">
+        {%- for lang in page.languages %}
+        <button type="button" data-lang="{{ lang }}">{{ lang | upcase }}</button>
+        {%- endfor %}
+      </div>
+      {%- endif %}
     </div>
     <dl>
       <dt>Technology</dt><dd>{{ page.technology }}</dd>
@@ -61,3 +68,6 @@ body_class: detail
   <a href="{{ next.url | relative_url }}" data-key="ArrowRight">{{ next.title }} &rarr;</a>
 </footer>
 <script src="{{ '/assets/js/keys.js' | relative_url }}"></script>
+{%- if page.languages %}
+<script src="{{ '/assets/js/lang.js' | relative_url }}"></script>
+{%- endif %}

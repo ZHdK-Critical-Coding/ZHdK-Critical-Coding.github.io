@@ -8,201 +8,144 @@ repo: P5_Empty_Sketch
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Empty_Sketch
 related: []
 render_with_liquid: false
+languages:
+- en
+- de
 ---
+
+<div class="lang" lang="en" markdown="1">
 
 # P5.js: Empty Sketch
 
-> A minimal p5.js starter template for the ZHdK *Coding Basic* module (FS26).
-> Ein minimales p5.js-Starter-Template für das ZHdK-Modul *Coding Basic* (FS26).
+An empty starter template for [p5.js](https://p5js.org/): the p5.js
+library, the p5.sound add-on, a minimal HTML page and a pre-configured
+Visual Studio Code workspace. The sketch only draws an "X" across the
+canvas. Copy it as a fresh starting point for every new sketch or exercise.
 
----
+## Installation
 
-## 🇬🇧 English
+Requirements: [Visual Studio Code](https://code.visualstudio.com/) and a
+browser (Live Server is configured to open Chrome).
 
-### Overview
+1. Open the folder in Visual Studio Code.
+2. Install the recommended extensions when prompted (or run
+   `Extensions: Show Recommended Extensions` from the Command Palette):
+   `samplavigne.p5-vscode` (p5.js snippets), `ritwickdey.liveserver`
+   (local server with auto-reload) and `continue.continue` (AI coding
+   assistant, optional).
+3. Start Live Server (click **Go Live** in the status bar). The sketch opens
+   at `http://127.0.0.1:5500` and reloads whenever you save a file.
 
-This is an empty starter sketch for [p5.js](https://p5js.org/) — a JavaScript library for creative coding. It provides everything you need to begin sketching in code: the p5.js core library, the p5.sound add-on, a minimal HTML host page, and a pre-configured Visual Studio Code workspace.
+Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
+used — sound functions work without adding a `<script>` tag).
 
-Use this template as a fresh starting point whenever you begin a new sketch or exercise.
+## Coding Help
 
 ### Project Structure
 
 ```
-Empty Sketch/
+P5_Empty_Sketch/
+├── .continue/              # Configuration for the Continue AI assistant
 ├── .vscode/
 │   ├── extensions.json     # Recommended VS Code extensions
 │   ├── global.d.ts         # p5.js type definitions for autocomplete
 │   └── settings.json       # Live Server configuration
 ├── libraries/
-│   ├── p5.min.js           # p5.js core library
-│   └── p5.sound.min.js     # p5.sound add-on library
-├── .gitignore
-├── index.html              # HTML host page (loads libraries + sketch)
+│   ├── p5.min.js
+│   └── p5.sound.min.js
+├── index.html              # Loads libraries + sketch
 ├── jsconfig.json           # JS IntelliSense configuration
 ├── sketch.js               # Your sketch — edit this file
-└── style.css               # Page styling (removes margins, etc.)
+└── style.css               # Removes margins
 ```
 
-### Requirements
+### What Happens Where
 
-- **[Visual Studio Code](https://code.visualstudio.com/)** — recommended editor
-- The following VS Code extensions (you will be prompted to install them automatically):
-  - [`samplavigne.p5-vscode`](https://marketplace.visualstudio.com/items?itemName=samplavigne.p5-vscode) — p5.js snippets and helpers
-  - [`ritwickdey.liveserver`](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) — local development server with auto-reload
-  - [`continue.continue`](https://marketplace.visualstudio.com/items?itemName=continue.continue) — AI coding assistant (optional)
-- A modern web browser (Chrome is preconfigured for Live Server)
+- **`sketch.js` → `setup()`**: runs once and creates a 448×256 canvas.
+  Change the size in `createCanvas(width, height)`.
+- **`sketch.js` → `draw()`**: runs about 60 times per second, fills the
+  canvas light grey and draws two diagonal lines.
+- **`sketch.js` → `keyPressed()`**: pressing **F** toggles fullscreen.
+- **`index.html`**: loads `p5.min.js`, `p5.sound.min.js` and `sketch.js`.
+  Add further libraries or scripts here.
+- **Autocomplete**: `.vscode/global.d.ts` and `jsconfig.json` give code
+  completion and parameter hints for p5.js functions.
+- **Console**: open the browser's developer tools (⌥⌘I on macOS) to see
+  `console.log()` output and errors.
 
-### Getting Started
+More: [p5.js reference](https://p5js.org/reference/),
+[p5.js examples](https://p5js.org/examples/),
+[The Coding Train](https://thecodingtrain.com/).
 
-1. **Open the folder** in Visual Studio Code.
-2. **Install the recommended extensions** when prompted (or run `Extensions: Show Recommended Extensions` from the Command Palette).
-3. **Start the Live Server**: click the **"Go Live"** button in the bottom-right of the status bar, or right-click `index.html` → *Open with Live Server*.
-4. The sketch will open in your browser at `http://127.0.0.1:5500` and reload automatically whenever you save a file.
+</div>
 
-### The Sketch
+<div class="lang" lang="de" markdown="1">
 
-The default `sketch.js` draws two diagonal lines forming an "X" across the canvas:
+# P5.js: Empty Sketch
 
-```js
-function setup() {
-  createCanvas(448, 256);
-  fullscreen(true);
-}
+Ein leeres Starter-Template für [p5.js](https://p5js.org/): die
+p5.js-Bibliothek, das p5.sound-Add-on, eine minimale HTML-Seite und eine
+vorkonfigurierte Visual-Studio-Code-Umgebung. Der Sketch zeichnet nur ein
+«X» über die Zeichenfläche. Als sauberen Ausgangspunkt für jeden neuen
+Sketch und jede Übung kopieren.
 
-function draw() {
-  background(220);
-  line(0, 0, width, height);
-  line(0, height, width, 0);
-}
+## Installation
 
-function keyPressed() {
-  if (key === 'f' || key === 'F') {
-    let fs = fullscreen();
-    fullscreen(!fs);
-  }
-}
-```
+Voraussetzungen: [Visual Studio Code](https://code.visualstudio.com/) und
+ein Browser (Live Server ist so eingestellt, dass Chrome öffnet).
 
-- **`setup()`** runs once when the sketch starts. The canvas is created at 448×256 pixels and immediately switched to fullscreen mode.
-- **`draw()`** runs continuously (≈60 times per second). It clears the canvas to light gray and draws the two diagonal lines.
-- **`keyPressed()`** toggles fullscreen mode when the **F** key is pressed.
+1. Den Ordner in Visual Studio Code öffnen.
+2. Die empfohlenen Erweiterungen installieren, wenn VS Code danach fragt
+   (oder in der Befehlspalette `Extensions: Show Recommended Extensions`):
+   `samplavigne.p5-vscode` (p5.js-Snippets), `ritwickdey.liveserver`
+   (lokaler Server mit automatischem Neuladen) und `continue.continue`
+   (KI-Coding-Assistent, optional).
+3. Live Server starten (in der Statusleiste auf **Go Live** klicken). Der
+   Sketch öffnet sich unter `http://127.0.0.1:5500` und lädt bei jedem
+   Speichern neu.
 
-### Customising the Sketch
+Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
+nicht verwendet – Sound-Funktionen gehen ohne zusätzlichen
+`<script>`-Tag).
 
-Replace the contents of `sketch.js` with your own code. A few common starting points:
-
-- Change the canvas size in `createCanvas(width, height)`.
-- Remove `fullscreen(true)` if you do not want the sketch to enter fullscreen on launch.
-- Use `background()`, `fill()`, `stroke()`, `ellipse()`, `rect()`, `line()`, etc. to draw shapes.
-- See the [p5.js reference](https://p5js.org/reference/) for the full API.
-
-### Tips
-
-- **Autocomplete**: p5.js type definitions are bundled in `.vscode/global.d.ts`, so functions like `createCanvas`, `ellipse`, `fill`, etc. will autocomplete and show parameter hints.
-- **Console**: open your browser's developer tools (⌥⌘I on macOS) to view `console.log()` output and errors.
-- **Sound**: `p5.sound.min.js` is already loaded — you can use sound features without adding extra `<script>` tags.
-
-### License
-
-This template is intended for educational use within the ZHdK *Basic* module.
-
----
-
-## 🇩🇪 Deutsch
-
-### Übersicht
-
-Dies ist ein leeres Starter-Sketch für [p5.js](https://p5js.org/) — eine JavaScript-Bibliothek für kreatives Programmieren. Es enthält alles, was du brauchst, um mit Code zu skizzieren: die p5.js-Kernbibliothek, das p5.sound-Add-on, eine minimale HTML-Datei und eine vorkonfigurierte Visual-Studio-Code-Arbeitsumgebung.
-
-Verwende dieses Template als sauberen Ausgangspunkt für jeden neuen Sketch oder jede neue Übung.
+## Coding-Hilfe
 
 ### Projektstruktur
 
 ```
-Empty Sketch/
+P5_Empty_Sketch/
+├── .continue/              # Konfiguration für den KI-Assistenten Continue
 ├── .vscode/
 │   ├── extensions.json     # Empfohlene VS-Code-Erweiterungen
 │   ├── global.d.ts         # p5.js-Typdefinitionen für Autovervollständigung
 │   └── settings.json       # Live-Server-Konfiguration
 ├── libraries/
-│   ├── p5.min.js           # p5.js-Kernbibliothek
-│   └── p5.sound.min.js     # p5.sound-Add-on
-├── .gitignore
-├── index.html              # HTML-Hostseite (lädt Bibliotheken + Sketch)
+│   ├── p5.min.js
+│   └── p5.sound.min.js
+├── index.html              # Lädt Bibliotheken + Sketch
 ├── jsconfig.json           # JS-IntelliSense-Konfiguration
 ├── sketch.js               # Dein Sketch — diese Datei bearbeiten
-└── style.css               # Seitenstyling (Ränder entfernen usw.)
+└── style.css               # Entfernt die Ränder
 ```
 
-### Voraussetzungen
+### Was passiert wo
 
-- **[Visual Studio Code](https://code.visualstudio.com/)** — empfohlener Editor
-- Die folgenden VS-Code-Erweiterungen (du wirst automatisch zur Installation aufgefordert):
-  - [`samplavigne.p5-vscode`](https://marketplace.visualstudio.com/items?itemName=samplavigne.p5-vscode) — p5.js-Snippets und Hilfen
-  - [`ritwickdey.liveserver`](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) — lokaler Entwicklungs-Server mit automatischem Neuladen
-  - [`continue.continue`](https://marketplace.visualstudio.com/items?itemName=continue.continue) — KI-Coding-Assistent (optional)
-- Ein moderner Webbrowser (Chrome ist für Live Server vorkonfiguriert)
+- **`sketch.js` → `setup()`**: läuft einmal und erstellt eine
+  Zeichenfläche mit 448×256 Pixeln. Die Grösse in
+  `createCanvas(breite, höhe)` ändern.
+- **`sketch.js` → `draw()`**: läuft etwa 60 Mal pro Sekunde, füllt die
+  Zeichenfläche hellgrau und zeichnet zwei Diagonalen.
+- **`sketch.js` → `keyPressed()`**: Die Taste **F** schaltet Vollbild
+  ein/aus.
+- **`index.html`**: lädt `p5.min.js`, `p5.sound.min.js` und `sketch.js`.
+  Weitere Bibliotheken oder Scripts hier einbinden.
+- **Autovervollständigung**: `.vscode/global.d.ts` und `jsconfig.json`
+  sorgen für Vervollständigung und Parameter-Hinweise zu p5.js-Funktionen.
+- **Konsole**: Die Entwicklertools des Browsers öffnen (⌥⌘I auf macOS),
+  um `console.log()`-Ausgaben und Fehler zu sehen.
 
-### Erste Schritte
+Mehr: [p5.js-Referenz](https://p5js.org/reference/),
+[p5.js-Beispiele](https://p5js.org/examples/),
+[The Coding Train](https://thecodingtrain.com/).
 
-1. **Ordner öffnen** in Visual Studio Code.
-2. **Empfohlene Erweiterungen installieren**, wenn du dazu aufgefordert wirst (oder über die Befehlspalette: `Erweiterungen: Empfohlene Erweiterungen anzeigen`).
-3. **Live Server starten**: Klicke auf die Schaltfläche **„Go Live"** unten rechts in der Statusleiste, oder Rechtsklick auf `index.html` → *Open with Live Server*.
-4. Der Sketch öffnet sich im Browser unter `http://127.0.0.1:5500` und wird bei jeder Speicherung automatisch neu geladen.
-
-### Der Sketch
-
-Der mitgelieferte `sketch.js` zeichnet zwei diagonale Linien, die ein „X" über die Leinwand bilden:
-
-```js
-function setup() {
-  createCanvas(448, 256);
-  fullscreen(true);
-}
-
-function draw() {
-  background(220);
-  line(0, 0, width, height);
-  line(0, height, width, 0);
-}
-
-function keyPressed() {
-  if (key === 'f' || key === 'F') {
-    let fs = fullscreen();
-    fullscreen(!fs);
-  }
-}
-```
-
-- **`setup()`** wird einmal beim Start des Sketches ausgeführt. Die Leinwand wird mit 448×256 Pixeln erstellt und sofort in den Vollbildmodus geschaltet.
-- **`draw()`** läuft kontinuierlich (ca. 60 Mal pro Sekunde). Die Funktion leert die Leinwand mit hellgrauem Hintergrund und zeichnet die beiden Diagonalen.
-- **`keyPressed()`** schaltet den Vollbildmodus um, wenn die Taste **F** gedrückt wird.
-
-### Den Sketch anpassen
-
-Ersetze den Inhalt von `sketch.js` durch deinen eigenen Code. Einige typische Anpassungen:
-
-- Leinwandgrösse ändern mit `createCanvas(breite, höhe)`.
-- `fullscreen(true)` entfernen, falls der Sketch nicht automatisch im Vollbild starten soll.
-- `background()`, `fill()`, `stroke()`, `ellipse()`, `rect()`, `line()` usw. verwenden, um Formen zu zeichnen.
-- Vollständige API-Dokumentation: [p5.js Reference](https://p5js.org/reference/).
-
-### Tipps
-
-- **Autovervollständigung**: Die p5.js-Typdefinitionen sind in `.vscode/global.d.ts` enthalten, sodass Funktionen wie `createCanvas`, `ellipse`, `fill` usw. automatisch vervollständigt werden und Parameter-Hinweise anzeigen.
-- **Konsole**: Öffne die Entwicklerwerkzeuge deines Browsers (⌥⌘I auf macOS), um Ausgaben von `console.log()` sowie Fehlermeldungen zu sehen.
-- **Sound**: `p5.sound.min.js` ist bereits geladen — Sound-Funktionen können ohne zusätzliche `<script>`-Tags verwendet werden.
-
-### Lizenz
-
-Dieses Template ist für den Unterricht im ZHdK-Modul *Basic* vorgesehen.
-
----
-
-## Resources / Ressourcen
-
-- [p5.js Website](https://p5js.org/)
-- [p5.js Reference](https://p5js.org/reference/)
-- [p5.js Examples](https://p5js.org/examples/)
-- [The Coding Train (YouTube)](https://thecodingtrain.com/) — Tutorials by Daniel Shiffman
-- [ZHdK](https://www.zhdk.ch/)
+</div>

@@ -8,33 +8,103 @@ repo: P5_Input_Files_WatchImageFolder
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Input_Files_WatchImageFolder
 related: []
 render_with_liquid: false
+languages:
+- en
+- de
 ---
+
+<div class="lang" lang="en" markdown="1">
 
 # P5.js: Watch Image Folder
 
-A p5.js sketch that displays all images from the folder `assets/files` in a
-grid. Images added to or removed from the folder appear or disappear while
-the sketch is running.
+Displays all images from the folder `assets/files` in a grid. Images added
+to or removed from the folder appear or disappear while the sketch is
+running. Useful for installations where new pictures arrive in a folder,
+e.g. from a camera, a scanner or another program.
 
-## How to Use
+## Installation
+
+Requirements: macOS or Linux (the watcher is a bash script; on Windows use
+Git Bash or WSL) and a current browser.
 
 1. Put images (e.g. `.jpg`, `.png`) into `assets/files` (seven sample
    images are included).
 2. In a terminal, run the watcher script from the project folder:
    `bash watch.sh` (leave it running).
-3. Start Live Server (click **Go Live** in the VS Code status bar).
+3. Open the folder in Visual Studio Code and start Live Server (click
+   **Go Live** in the status bar).
 4. Add or remove images in `assets/files`.
 
-## How it Works
+A browser cannot list the contents of a folder. That is why `watch.sh`
+writes the file list into `assets/list.txt`, which the sketch then reads.
 
-A browser cannot list the contents of a folder, so `watch.sh` checks
-`assets/files` every second and writes the file paths into
-`assets/list.txt` whenever the contents change. The sketch reloads
-`list.txt` every second with `loadStrings()`, loads new images with
-`loadImage()` and removes images no longer in the list. Loaded images are
-drawn as squares, four per row, on a 400 x 400 canvas.
+Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
+used).
 
-## Libraries
+## Coding Help
 
-- p5.js 1.10.0
-- p5.sound 1.0.1 (included, not used)
+- **`watch.sh`**: checks `assets/files` every second and rewrites
+  `assets/list.txt` with the file paths whenever the contents change.
+  `WATCH_DIR` and `OUTPUT_FILE` at the top set the folders.
+- **`sketch.js` → `watcher()`**: loads `list.txt` with `loadStrings()`,
+  loads new images with `loadImage()` and removes images that are no longer
+  in the list. Then it calls itself again after 1000 ms. Started once in
+  `preload()`.
+- **`images`**: object with one entry per file path, holding `status`
+  (`loading` / `ok`) and the `source` image.
+- **`setup()`**: creates a 400 × 400 canvas.
+- **`draw()`**: draws every loaded image as a square, `itemsPerLine` (4)
+  per row. Change `itemsPerLine` or the canvas size to fit more images;
+  images are stretched to squares, so use `size` and the image ratio if
+  you want to keep proportions.
+
+</div>
+
+<div class="lang" lang="de" markdown="1">
+
+# P5.js: Watch Image Folder
+
+Zeigt alle Bilder aus dem Ordner `assets/files` in einem Raster an. Bilder,
+die dem Ordner hinzugefügt oder daraus entfernt werden, erscheinen oder
+verschwinden, während der Sketch läuft. Nützlich für Installationen, bei
+denen neue Bilder in einem Ordner landen, z. B. von einer Kamera, einem
+Scanner oder einem anderen Programm.
+
+## Installation
+
+Voraussetzungen: macOS oder Linux (der Watcher ist ein Bash-Skript; unter
+Windows Git Bash oder WSL verwenden) und ein aktueller Browser.
+
+1. Bilder (z. B. `.jpg`, `.png`) in `assets/files` legen (sieben
+   Beispielbilder sind dabei).
+2. In einem Terminal im Projektordner das Watcher-Skript starten:
+   `bash watch.sh` (laufen lassen).
+3. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
+   Statusleiste auf **Go Live** klicken).
+4. Bilder in `assets/files` hinzufügen oder entfernen.
+
+Ein Browser kann den Inhalt eines Ordners nicht auflisten. Deshalb schreibt
+`watch.sh` die Dateiliste in `assets/list.txt`, die der Sketch dann liest.
+
+Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
+nicht verwendet).
+
+## Coding-Hilfe
+
+- **`watch.sh`**: prüft `assets/files` jede Sekunde und schreibt
+  `assets/list.txt` mit den Dateipfaden neu, sobald sich der Inhalt ändert.
+  `WATCH_DIR` und `OUTPUT_FILE` oben legen die Ordner fest.
+- **`sketch.js` → `watcher()`**: lädt `list.txt` mit `loadStrings()`, lädt
+  neue Bilder mit `loadImage()` und entfernt Bilder, die nicht mehr in der
+  Liste stehen. Danach ruft es sich nach 1000 ms selbst wieder auf. Wird
+  einmal in `preload()` gestartet.
+- **`images`**: Objekt mit einem Eintrag pro Dateipfad, mit `status`
+  (`loading` / `ok`) und dem Bild in `source`.
+- **`setup()`**: erstellt eine Zeichenfläche von 400 × 400 Pixeln.
+- **`draw()`**: zeichnet alle geladenen Bilder als Quadrate,
+  `itemsPerLine` (4) pro Zeile. Für mehr Bilder `itemsPerLine` oder die
+  Grösse der Zeichenfläche ändern. Die Bilder werden quadratisch verzerrt;
+  um die Proportionen zu behalten, `size` mit dem Seitenverhältnis des
+  Bildes verrechnen.
+
+</div>

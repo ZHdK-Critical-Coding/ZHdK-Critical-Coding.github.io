@@ -8,21 +8,105 @@ repo: P5_Input_KI_WebLLM
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Input_KI_WebLLM
 related: []
 render_with_liquid: false
+languages:
+- en
+- de
 ---
+
+<div class="lang" lang="en" markdown="1">
 
 # P5.js: WebLLM
 
-A p5.js sketch that runs two instances of a small language model
-(`Llama-3.2-1B-Instruct`) directly in the browser using
-[WebLLM](https://github.com/mlc-ai/web-llm). The two models discuss with each
-other; the conversation is rendered as chat bubbles.
+Runs two instances of a small language model (`Llama-3.2-1B-Instruct`)
+directly in the browser using [WebLLM](https://github.com/mlc-ai/web-llm).
+The two models discuss with each other in German; the conversation is drawn
+as a scrolling chat with left and right speech boxes. A starting point for
+using a language model without any server.
 
-## Requirements
+## Installation
 
-- A browser with WebGPU support (Chrome / Edge).
-- The model is downloaded on first start (this can take a while).
+Requirements: a browser with WebGPU support (Chrome or Edge) and enough GPU
+memory for two copies of the model. The model is downloaded on first start,
+which can take a while.
 
-## How to Use
+1. Open the folder in Visual Studio Code and start Live Server (click
+   **Go Live** in the status bar).
+2. Wait until both models are loaded (see console – the page shows no
+   progress), then click on the canvas to start the conversation. Click
+   only once: every click starts another conversation loop.
 
-1. Start Live Server (click **Go Live** in the VS Code status bar).
-2. Wait until the model is loaded, then click on the canvas to start the conversation.
+Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
+used), WebLLM 0.2.79 (`@mlc-ai/web-llm`, jsDelivr bundle `webllm.js`).
+
+## Coding Help
+
+- **`index.html`**: imports `libraries/webllm.js` as an ES module, stores it
+  in `window.webllm` and only then loads `sketch.js`.
+- **`setup()`**: creates two engines with
+  `webllm.CreateMLCEngine(selectedModel)`, then the canvas and the layout
+  values. Change `selectedModel` to use another model from the WebLLM model
+  list.
+- **`chat(actor, lastSentence)`**: builds a `messages` array with a system
+  prompt depending on the persona – `engine1` ("DR", left) asks short,
+  critical questions, `engine2` ("EM", right) answers provocatively – and
+  the last sentence as user message. It calls
+  `actor.chat.completions.create()` (OpenAI-style API, `stream: true`,
+  `temperature: 0.5`), appends the streamed chunks to a new entry in `stack`
+  and then calls itself with the other engine.
+- **`mouseClicked()`**: starts the conversation with `chat(engine2)`, using
+  `defaultSentence` as first prompt.
+- **`draw()`**: draws every entry of `stack` as a box (left or right by
+  `align`) and scrolls down automatically. `textHeight()` computes the box
+  height for wrapped text.
+
+</div>
+
+<div class="lang" lang="de" markdown="1">
+
+# P5.js: WebLLM
+
+Führt zwei Instanzen eines kleinen Sprachmodells (`Llama-3.2-1B-Instruct`)
+direkt im Browser mit [WebLLM](https://github.com/mlc-ai/web-llm) aus. Die
+beiden Modelle diskutieren auf Deutsch miteinander; die Unterhaltung wird
+als scrollender Chat mit Sprechboxen links und rechts gezeichnet. Ein
+Ausgangspunkt, um ein Sprachmodell ganz ohne Server zu verwenden.
+
+## Installation
+
+Voraussetzungen: ein Browser mit WebGPU-Unterstützung (Chrome oder Edge)
+und genug GPU-Speicher für zwei Kopien des Modells. Das Modell wird beim
+ersten Start heruntergeladen, das kann eine Weile dauern.
+
+1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
+   Statusleiste auf **Go Live** klicken).
+2. Warten, bis beide Modelle geladen sind (siehe Konsole – die Seite zeigt
+   keinen Fortschritt an), dann auf die Zeichenfläche klicken, um die
+   Unterhaltung zu starten. Nur einmal klicken: Jeder Klick startet eine
+   weitere Gesprächsschleife.
+
+Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
+nicht verwendet), WebLLM 0.2.79 (`@mlc-ai/web-llm`, jsDelivr-Bundle
+`webllm.js`).
+
+## Coding-Hilfe
+
+- **`index.html`**: importiert `libraries/webllm.js` als ES-Modul, legt es
+  in `window.webllm` ab und lädt erst dann `sketch.js`.
+- **`setup()`**: erstellt zwei Engines mit
+  `webllm.CreateMLCEngine(selectedModel)`, danach die Zeichenfläche und die
+  Layout-Werte. `selectedModel` ändern, um ein anderes Modell aus der
+  WebLLM-Modellliste zu verwenden.
+- **`chat(actor, lastSentence)`**: baut ein `messages`-Array mit einem
+  System-Prompt je nach Persona – `engine1` ("DR", links) stellt kurze,
+  kritische Fragen, `engine2` ("EM", rechts) antwortet provokant – und dem
+  letzten Satz als User-Nachricht. Ruft `actor.chat.completions.create()`
+  auf (API im OpenAI-Stil, `stream: true`, `temperature: 0.5`), hängt die
+  gestreamten Teile an einen neuen Eintrag in `stack` an und ruft sich dann
+  mit der anderen Engine selbst auf.
+- **`mouseClicked()`**: startet die Unterhaltung mit `chat(engine2)`, mit
+  `defaultSentence` als erstem Prompt.
+- **`draw()`**: zeichnet jeden Eintrag von `stack` als Box (links oder
+  rechts je nach `align`) und scrollt automatisch nach unten.
+  `textHeight()` berechnet die Boxhöhe für umbrochenen Text.
+
+</div>

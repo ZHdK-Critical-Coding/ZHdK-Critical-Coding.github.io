@@ -9,39 +9,113 @@ repo_url: https://github.com/ZHdK-Critical-Coding/Servers_Pusher
 related:
 - P5_Input_Pusher
 render_with_liquid: false
+languages:
+- en
+- de
 ---
+
+<div class="lang" lang="en" markdown="1">
 
 # Node.js: Pusher Server
 
-A p5 sketch (no canvas — just a text field + Send button) that pushes a
-message to a Pusher channel. The browser can't trigger Pusher events itself
-(that needs the app secret), so the flow is:
+A tiny Express server that relays messages from a p5 sketch to a Pusher
+Channels app. The browser can't trigger Pusher events itself (that needs the
+app secret, which must never live in browser code), so the sketch POSTs its
+message here and the server triggers the event. Used by
+[P5_Input_Pusher](https://github.com/ZHdK-Critical-Coding/P5_Input_Pusher).
 
 ```
-p5 sketch (P5_Input_Pusher/Client)  --POST /message-->  this Node server  --trigger-->  Pusher channel "chat"
+P5_Input_Pusher/Client  --POST /message-->  this server  --trigger-->  Pusher "chat"  -->  P5_Input_Pusher/Display
 ```
 
-## 1. Get Pusher keys
+## Installation
 
-Create a free app at https://pusher.com (Channels). Copy its keys from
-**App Keys**.
+Requirements: Node.js and a free Channels app on https://pusher.com.
 
-## 2. Run the server
+1. Create the Channels app and copy its keys from **App Keys**.
+2. Install and configure:
+   ```bash
+   npm install
+   cp .env.example .env      # paste app id, key, secret and cluster into .env
+   npm start                 # -> http://localhost:3000
+   ```
+3. Open `Client/index.html` from
+   [P5_Input_Pusher](https://github.com/ZHdK-Critical-Coding/P5_Input_Pusher)
+   with Live Server, type a message and click **Send**.
+4. Check the **Debug Console** of your app on pusher.com: each Send shows up
+   as a `new-message` event on the `chat` channel.
 
-```bash
-npm install
-cp .env.example .env      # then paste your real keys into .env
-npm start                 # -> http://localhost:3000
+Settings in `.env`: `PUSHER_APP_ID`, `PUSHER_KEY`, `PUSHER_SECRET`,
+`PUSHER_CLUSTER` (default `eu`) and `PORT` (default 3000). `.env` is in
+`.gitignore` — never commit it.
+
+Packages (npm): express 4, cors 2, dotenv 16, pusher 5.
+
+## Coding Help
+
+- **`server.js` → `new Pusher({...})`**: creates the Pusher client from the
+  values in `.env` (loaded by `dotenv`).
+- **`app.use(cors())`**: allows the sketch, which is served from another
+  port, to call the server. `express.json()` parses the JSON body.
+- **`app.post("/message")`**: expects `{ message: "..." }`, answers 400 if
+  it is missing, otherwise calls `pusher.trigger("chat", "new-message",
+  { message })`. Change the channel or event name here — the receiving
+  sketch must subscribe to the same ones.
+- **`app.listen(PORT)`**: starts the server on `PORT` from `.env` or 3000.
+
+</div>
+
+<div class="lang" lang="de" markdown="1">
+
+# Node.js: Pusher Server
+
+Ein kleiner Express-Server, der Nachrichten von einem p5-Sketch an eine
+Pusher-Channels-App weiterleitet. Der Browser kann selbst keine
+Pusher-Events auslösen (dafür braucht es das App-Secret, das nie im
+Browser-Code stehen darf). Deshalb schickt der Sketch seine Nachricht per
+POST hierher, und der Server löst das Event aus. Wird von
+[P5_Input_Pusher](https://github.com/ZHdK-Critical-Coding/P5_Input_Pusher)
+verwendet.
+
+```
+P5_Input_Pusher/Client  --POST /message-->  dieser Server  --trigger-->  Pusher "chat"  -->  P5_Input_Pusher/Display
 ```
 
-## 3. Open the sketch
+## Installation
 
-Open `Client/index.html` from the
-[P5_Input_Pusher](https://github.com/ZHdK-Critical-Coding/P5_Input_Pusher) repo in a browser (e.g. with VS Code's "Live Server", or
-the p5 web editor). Type a message, click **Send**.
+Voraussetzungen: Node.js und eine kostenlose Channels-App auf
+https://pusher.com.
 
-## 4. See it arrive
+1. Die Channels-App erstellen und die Keys unter **App Keys** kopieren.
+2. Installieren und konfigurieren:
+   ```bash
+   npm install
+   cp .env.example .env      # App-ID, Key, Secret und Cluster in .env eintragen
+   npm start                 # -> http://localhost:3000
+   ```
+3. `Client/index.html` aus
+   [P5_Input_Pusher](https://github.com/ZHdK-Critical-Coding/P5_Input_Pusher)
+   mit Live Server öffnen, eine Nachricht eingeben und auf **Send** klicken.
+4. In der **Debug Console** der App auf pusher.com nachschauen: Jedes Send
+   erscheint als `new-message`-Event auf dem Kanal `chat`.
 
-Watch the **Debug Console** for your app on pusher.com: each Send shows up as
-a `new-message` event on the `chat` channel. (A subscriber would listen for
-that same channel + event.)
+Einstellungen in `.env`: `PUSHER_APP_ID`, `PUSHER_KEY`, `PUSHER_SECRET`,
+`PUSHER_CLUSTER` (Standard `eu`) und `PORT` (Standard 3000). `.env` steht in
+`.gitignore` – nie committen.
+
+Pakete (npm): express 4, cors 2, dotenv 16, pusher 5.
+
+## Coding-Hilfe
+
+- **`server.js` → `new Pusher({...})`**: erstellt den Pusher-Client mit den
+  Werten aus `.env` (geladen mit `dotenv`).
+- **`app.use(cors())`**: erlaubt dem Sketch, der von einem anderen Port
+  ausgeliefert wird, den Server aufzurufen. `express.json()` liest den
+  JSON-Body.
+- **`app.post("/message")`**: erwartet `{ message: "..." }`, antwortet mit
+  400, wenn sie fehlt, und ruft sonst `pusher.trigger("chat", "new-message",
+  { message })` auf. Kanal- oder Event-Namen hier ändern – der empfangende
+  Sketch muss dieselben abonnieren.
+- **`app.listen(PORT)`**: startet den Server auf `PORT` aus `.env` oder 3000.
+
+</div>

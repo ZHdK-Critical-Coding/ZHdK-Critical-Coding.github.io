@@ -180,6 +180,34 @@ body.detail {
 
 .button:hover { background: #7fff7f; }
 
+/* language switch next to the GitHub button (only if a README_DE.md exists) */
+.meta-link:has(.lang-switch) { display: flex; gap: 8px; }
+.meta-link:has(.lang-switch) .button { flex: 1; }
+
+.lang-switch { display: flex; }
+
+.lang-switch button {
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+  cursor: pointer;
+}
+
+.lang-switch button:first-child { border-radius: 3px 0 0 3px; }
+.lang-switch button:last-child { border-radius: 0 3px 3px 0; border-left: 0; }
+.lang-switch button:hover { color: var(--green); }
+
+html:not([data-lang="de"]) .lang-switch [data-lang="en"],
+html[data-lang="de"] .lang-switch [data-lang="de"] {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+html:not([data-lang="de"]) .lang[lang="de"],
+html[data-lang="de"] .lang[lang="en"] { display: none; }
+
 .meta dl { margin: 0; padding: var(--gutter); }
 .meta dt { text-transform: uppercase; }
 .meta dd { margin: 0 0 1.35em; overflow-wrap: anywhere; }
@@ -214,7 +242,8 @@ body.detail {
   color: rgb(255, 100, 100); 
 }
 
-.readme > :first-child { margin-top: 0; }
+.readme > :first-child,
+.readme .lang > :first-child { margin-top: 0; }
 
 .readme p, .readme ul, .readme ol, .readme table, .readme blockquote { margin: 1.35em 0; }
 
