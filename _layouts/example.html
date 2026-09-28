@@ -60,6 +60,9 @@ body_class: detail
       <dt>Date</dt><dd>{{ page.date | date: "%d.%m.%Y" }}</dd>
       <dt>Repository</dt><dd>{{ page.repo }}</dd>
     </dl>
+    {%- if page.screenshot %}
+    <img class="screenshot" src="{{ page.screenshot | relative_url }}" width="640" alt="Screenshot of {{ page.title }}">
+    {%- endif %}
   </aside>
 </main>
 

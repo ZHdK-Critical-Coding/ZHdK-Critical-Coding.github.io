@@ -15,6 +15,8 @@
 #   readme_de: "sub/README_DE.md" # optional, default: README_DE.md next to the README
 #   related: Servers_Pusher     # optional, repository name or list of names
 #
+# A `screenshot.png` in the repository root is shown in the sidebar.
+#
 # Usage:
 #   bundle exec ruby scripts/update.rb                  # list + shallow-clone repos from GitHub
 #   bundle exec ruby scripts/update.rb --local ../Examples  # use existing local clones instead
@@ -41,6 +43,7 @@ OUT_DIR     = File.join(ROOT, "_examples")
 ASSET_DIR   = File.join(ROOT, "assets", "examples")
 CACHE_DIR   = File.join(ROOT, ".cache", "repos")
 META_FILE   = "example.yaml"
+SCREENSHOT  = "screenshot.png"
 IMAGE_EXT   = %w[.png .jpg .jpeg .gif .svg .webp .avif].freeze
 
 options = {}
@@ -281,6 +284,14 @@ repos.each do |repo|
   body_de   = body_de.strip.empty? ? nil : rewrite_links(strip_language_links(body_de), readme_de, dir, repo, slug)
   report[:no_readme_de] << name if readme && !body.strip.empty? && !body_de
 
+  screenshot = File.join(dir, SCREENSHOT)
+  if File.file?(screenshot)
+    FileUtils.mkdir_p(File.join(ASSET_DIR, slug))
+    FileUtils.cp(screenshot, File.join(ASSET_DIR, slug, SCREENSHOT))
+  else
+    report[:no_screenshot] << name
+  end
+
   date = meta["date"]
   date = Date.parse(date.to_s) rescue nil unless date.is_a?(Date)
 
@@ -292,6 +303,7 @@ repos.each do |repo|
     "date" => date,
     "repo" => name,
     "repo_url" => repo["html_url"],
+    "screenshot" => File.file?(screenshot) ? "/assets/examples/#{slug}/#{SCREENSHOT}" : nil,
     "related" => Array(meta["related"]).map { |r| r.to_s.strip }.reject(&:empty?),
     "render_with_liquid" => false
   }.compact
@@ -338,6 +350,7 @@ puts "Published #{report[:published].size} examples to _examples/"
   no_readme: "Examples without README (page shows placeholder)",
   empty_readme: "Examples with an empty README (page shows placeholder)",
   no_readme_de: "Examples without German README_DE.md (no language switch)",
+  no_screenshot: "Examples without #{SCREENSHOT}",
   no_name: "Examples without name (repository name used)",
   related: "Related repositories",
   errors: "Errors (not listed)"

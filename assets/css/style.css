@@ -230,6 +230,14 @@ html[data-lang="de"] .lang[lang="en"] { display: none; }
 .meta dt { text-transform: uppercase; }
 .meta dd { margin: 0 0 1.35em; overflow-wrap: anywhere; }
 
+.meta .screenshot {
+  display: block;
+  width: 640px;
+  max-width: calc(100% - 2 * var(--gutter));
+  height: auto;
+  margin: 0 var(--gutter) var(--gutter);
+}
+
 @media (max-width: 800px) {
   .detail-body { grid-template-columns: 1fr; }
   /* button and details become rows of the page: the button sticks below
@@ -243,6 +251,7 @@ html[data-lang="de"] .lang[lang="en"] { display: none; }
     background: var(--bg);
   }
   .meta dl { order: -1; border-bottom: 1px solid var(--line); }
+  .meta .screenshot { order: -1; margin-top: var(--gutter); }
 }
 
 /* README content: everything in one size, like the layout */
