@@ -43,6 +43,14 @@ a { color: inherit; text-decoration: none; }
   background: var(--bg);
 }
 
+/* title stays on one line and is cut with an ellipsis */
+.bar p {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .bar p span:first-child {
   margin-right: 1em;
 }
@@ -56,6 +64,16 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--line);
   border-radius: 3px;
   padding: 4px 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* pager titles can be long: shrink with an ellipsis instead of breaking */
+.pager a {
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .bar a:hover { 
