@@ -26,13 +26,15 @@ react to sound, clapping or voice level.
 Requirements: a microphone and a current browser (Chrome, Edge, Firefox or
 Safari).
 
+Libraries (loaded from a CDN in `index.html`): p5.js 1.9.4, p5.sound 1.9.4.
+
+## How to Run
+
 1. Open the folder in Visual Studio Code and start Live Server (click
    **Go Live** in the status bar).
 2. Allow microphone access in the browser.
 3. Click into the canvas once – browsers only start audio after a user
    gesture.
-
-Libraries (loaded from a CDN in `index.html`): p5.js 1.9.4, p5.sound 1.9.4.
 
 ## Coding Help
 
@@ -62,14 +64,16 @@ die auf Geräusche, Klatschen oder Stimmen reagieren.
 Voraussetzungen: ein Mikrofon und ein aktueller Browser (Chrome, Edge,
 Firefox oder Safari).
 
+Bibliotheken (über ein CDN in `index.html` geladen): p5.js 1.9.4,
+p5.sound 1.9.4.
+
+## Ausführen
+
 1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
    Statusleiste auf **Go Live** klicken).
 2. Im Browser den Zugriff auf das Mikrofon erlauben.
 3. Einmal in die Zeichenfläche klicken – Browser starten Audio erst nach
    einer Benutzeraktion.
-
-Bibliotheken (über ein CDN in `index.html` geladen): p5.js 1.9.4,
-p5.sound 1.9.4.
 
 ## Coding-Hilfe
 

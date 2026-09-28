@@ -28,12 +28,15 @@ visualising geolocated open data from a web API.
 Requirements: a browser and an internet connection (the data is loaded
 through a public proxy).
 
+Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
+used).
+
+## How to Run
+
 1. Open the folder in Visual Studio Code and start Live Server (click
    **Go Live** in the status bar).
 2. The first page of reports is loaded and drawn. After all photos have
    loaded, the sketch waits 10 seconds and loads the next (older) page.
-
-Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not used).
 
 ## Coding Help
 
@@ -48,8 +51,8 @@ Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not used).
   (`https://www.zueriwieneu.ch/photo/<id>.0.jpeg`) one after the other with
   `loadImage()` and appends each image (or `false`) to its pin. Each pin is
   an array: `[0]` latitude, `[1]` longitude, `[3]` report id, `[4]` title;
-  the photo ends up at `[7]`. The loop stops one before the end, so the last
-  pin gets no photo.
+  the photo ends up at `[7]`. When all pins are done, it calls
+  `allImagesLoaded()`.
 - **`allImagesLoaded()`**: waits 10 seconds, increases `page` and loads the
   next page. Change the delay here.
 - **`draw()`**: normalises latitude and longitude to the bounding box
@@ -75,14 +78,16 @@ Web-API zu visualisieren.
 Voraussetzungen: ein Browser und eine Internetverbindung (die Daten werden
 über einen öffentlichen Proxy geladen).
 
+Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
+nicht verwendet).
+
+## Ausführen
+
 1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
    Statusleiste auf **Go Live** klicken).
 2. Die erste Seite mit Meldungen wird geladen und gezeichnet. Sobald alle
    Fotos geladen sind, wartet der Sketch 10 Sekunden und lädt die nächste
    (ältere) Seite.
-
-Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
-nicht verwendet).
 
 ## Coding-Hilfe
 
@@ -98,8 +103,8 @@ nicht verwendet).
   (`https://www.zueriwieneu.ch/photo/<id>.0.jpeg`) nacheinander mit
   `loadImage()` und hängt jedes Bild (oder `false`) an seinen Pin an. Jeder
   Pin ist ein Array: `[0]` Breitengrad, `[1]` Längengrad, `[3]` Melde-ID,
-  `[4]` Titel; das Foto landet in `[7]`. Die Schleife hört einen Eintrag vor
-  dem Ende auf, der letzte Pin bekommt also kein Foto.
+  `[4]` Titel; das Foto landet in `[7]`. Sind alle Pins bearbeitet, ruft es
+  `allImagesLoaded()` auf.
 - **`allImagesLoaded()`**: wartet 10 Sekunden, erhöht `page` und lädt die
   nächste Seite. Hier die Wartezeit anpassen.
 - **`draw()`**: normalisiert Breiten- und Längengrad auf den Ausschnitt

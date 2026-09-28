@@ -39,15 +39,17 @@ chooses the chord – a starting point for gesture-controlled instruments.
 Requirements: a webcam, speakers or headphones and a current browser
 (Chrome or Edge recommended).
 
+Libraries (loaded from a CDN in `index.html`): p5.js 1.11.0, ml5.js 1.x,
+Tone.js 14.8.49.
+
+## How to Run
+
 1. Open the folder in Visual Studio Code and start Live Server (click
    **Go Live** in the status bar).
 2. Allow camera access in the browser.
 3. Click into the canvas to enable sound (browsers block audio until a
    user gesture).
 4. Press **f** to toggle fullscreen.
-
-Libraries (loaded from a CDN in `index.html`): p5.js 1.11.0, ml5.js 1.x,
-Tone.js 14.8.49.
 
 ## Coding Help
 
@@ -103,15 +105,17 @@ Akkord – ein Ausgangspunkt für gestengesteuerte Instrumente.
 Voraussetzungen: eine Webcam, Lautsprecher oder Kopfhörer und ein aktueller
 Browser (Chrome oder Edge empfohlen).
 
+Bibliotheken (über ein CDN in `index.html` geladen): p5.js 1.11.0,
+ml5.js 1.x, Tone.js 14.8.49.
+
+## Ausführen
+
 1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
    Statusleiste auf **Go Live** klicken).
 2. Im Browser den Zugriff auf die Kamera erlauben.
 3. In die Zeichenfläche klicken, um den Ton einzuschalten (Browser
    blockieren Audio bis zu einer Benutzeraktion).
 4. Mit **f** den Vollbildmodus ein- und ausschalten.
-
-Bibliotheken (über ein CDN in `index.html` geladen): p5.js 1.11.0,
-ml5.js 1.x, Tone.js 14.8.49.
 
 ## Coding-Hilfe
 

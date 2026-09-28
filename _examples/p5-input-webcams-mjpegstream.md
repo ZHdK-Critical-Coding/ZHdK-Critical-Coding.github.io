@@ -32,15 +32,18 @@ one yourself.
    (MJPEG cameras often serve streams at paths like `/?action=stream`).
 2. Set `proxyUrl` to your proxy. The sketch expects an endpoint of the
    form `http://<host>:<port>/stream?url=`.
-3. Open the folder in Visual Studio Code and start Live Server (click
-   **Go Live** in the status bar).
+
+Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not used).
+
+## How to Run
+
+Open the folder in Visual Studio Code and start Live Server (click
+**Go Live** in the status bar).
 
 While the stream is loading, the stream URL is shown on a black canvas.
 If you run into CORS problems, use the debugger configuration
 **Launch Chrome (no Security)** (Run and Debug panel), which opens Chrome
 with web security disabled on `http://127.0.0.1:5500`.
-
-Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not used).
 
 ## Coding Help
 
@@ -78,16 +81,19 @@ du musst selbst einen betreiben.
    (MJPEG-Kameras liefern Streams oft unter Pfaden wie `/?action=stream`).
 2. `proxyUrl` auf den eigenen Proxy setzen. Der Sketch erwartet einen
    Endpunkt der Form `http://<host>:<port>/stream?url=`.
-3. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
-   Statusleiste auf **Go Live** klicken).
+
+Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
+nicht verwendet).
+
+## Ausführen
+
+Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
+Statusleiste auf **Go Live** klicken).
 
 Solange der Stream lädt, wird die Stream-URL auf schwarzem Grund angezeigt.
 Bei CORS-Problemen die Debugger-Konfiguration **Launch Chrome (no
 Security)** verwenden (Bereich Run and Debug). Sie öffnet Chrome mit
 deaktivierter Web-Security auf `http://127.0.0.1:5500`.
-
-Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
-nicht verwendet).
 
 ## Coding-Hilfe
 

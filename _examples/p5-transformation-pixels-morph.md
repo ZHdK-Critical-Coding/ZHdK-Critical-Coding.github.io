@@ -31,12 +31,14 @@ Requirements: a browser and an internet connection (p5.js is loaded from a
 CDN). The sketch reads image pixels, which only works over HTTP – opening
 `index.html` directly from `file://` does not work.
 
+Libraries: p5.js 1.9.4 (from jsDelivr, linked in `index.html`).
+
+## How to Run
+
 1. Open the folder in Visual Studio Code and start Live Server (click
    **Go Live** in the status bar). Any static server works too, e.g.
    `python3 -m http.server` and then `http://localhost:8000`.
 2. Drag the slider below the image.
-
-Libraries: p5.js 1.9.4 (from jsDelivr, linked in `index.html`).
 
 ## Coding Help
 
@@ -92,12 +94,14 @@ Voraussetzungen: ein Browser und eine Internetverbindung (p5.js wird von
 einem CDN geladen). Der Sketch liest Bildpixel aus, was nur über HTTP
 funktioniert – `index.html` direkt über `file://` zu öffnen geht nicht.
 
+Bibliotheken: p5.js 1.9.4 (von jsDelivr, eingebunden in `index.html`).
+
+## Ausführen
+
 1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
    Statusleiste auf **Go Live** klicken). Jeder andere statische Server geht
    auch, z. B. `python3 -m http.server` und dann `http://localhost:8000`.
 2. Den Schieberegler unter dem Bild bewegen.
-
-Bibliotheken: p5.js 1.9.4 (von jsDelivr, eingebunden in `index.html`).
 
 ## Coding-Hilfe
 

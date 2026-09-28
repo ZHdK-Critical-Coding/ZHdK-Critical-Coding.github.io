@@ -28,14 +28,17 @@ Requirements: a microphone, a browser that supports the Web Speech API
 (e.g. Chrome) and an internet connection – recognition is done by the
 browser's online speech service.
 
+To recognise another language, change `'de-DE'` in `sketch.js`
+(e.g. `'en-US'`).
+
+Libraries (in `libraries/`): p5.js 1.10.0, p5.speech 0.0.3. p5.sound 1.0.1
+is also in the folder but not loaded.
+
+## How to Run
+
 1. Open the folder in Visual Studio Code and start Live Server (click
    **Go Live** in the status bar).
 2. Allow microphone access and start speaking (German).
-3. To recognise another language, change `'de-DE'` in `sketch.js`
-   (e.g. `'en-US'`).
-
-Libraries (in `libraries/`): p5.js 1.10.0, p5.speech 0.0.3, p5.sound 1.0.1
-(included, not used).
 
 ## Coding Help
 
@@ -69,14 +72,17 @@ Voraussetzungen: ein Mikrofon, ein Browser mit Unterstützung für die
 Web-Speech-API (z. B. Chrome) und eine Internetverbindung – die Erkennung
 läuft über den Online-Sprachdienst des Browsers.
 
+Um eine andere Sprache zu erkennen, `'de-DE'` in `sketch.js` ändern
+(z. B. `'en-US'`).
+
+Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.speech 0.0.3. p5.sound
+1.0.1 liegt ebenfalls im Ordner, wird aber nicht geladen.
+
+## Ausführen
+
 1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
    Statusleiste auf **Go Live** klicken).
 2. Den Zugriff auf das Mikrofon erlauben und (auf Deutsch) sprechen.
-3. Um eine andere Sprache zu erkennen, `'de-DE'` in `sketch.js` ändern
-   (z. B. `'en-US'`).
-
-Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.speech 0.0.3, p5.sound
-1.0.1 (eingebunden, nicht verwendet).
 
 ## Coding-Hilfe
 

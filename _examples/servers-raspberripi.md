@@ -39,10 +39,13 @@ use. Each server is a separate folder; only copy the ones you need.
      `pip install ...`.
 3. Enable the hardware interface if needed (`sudo raspi-config` →
    **Interface Options**): I2C for the OLED, SPI for the e-ink display.
-4. Start the server with `bash run.sh` (or `python server.py` /
+
+## How to Run
+
+1. Start the server with `bash run.sh` (or `python server.py` /
    `node <file>.js`). To start it on boot, call `run.sh` from e.g. a
    crontab `@reboot` entry.
-5. Most servers show or print their own address (`ws://<ip>:<port>`) on
+2. Most servers show or print their own address (`ws://<ip>:<port>`) on
    start. Put that address into the sketch.
 
 ## Coding Help
@@ -162,10 +165,13 @@ Jeder Server ist ein eigener Ordner; nur die benötigten kopieren.
      `pip install ...` installieren.
 3. Falls nötig die Hardware-Schnittstelle aktivieren (`sudo raspi-config`
    → **Interface Options**): I2C für das OLED, SPI für das E-Ink-Display.
-4. Den Server mit `bash run.sh` starten (oder `python server.py` /
+
+## Ausführen
+
+1. Den Server mit `bash run.sh` starten (oder `python server.py` /
    `node <datei>.js`). Für den Start beim Booten `run.sh` z. B. über einen
    Crontab-Eintrag `@reboot` aufrufen.
-5. Die meisten Server zeigen oder drucken beim Start ihre eigene Adresse
+2. Die meisten Server zeigen oder drucken beim Start ihre eigene Adresse
    (`ws://<ip>:<port>`). Diese Adresse im Sketch eintragen.
 
 ## Coding-Hilfe

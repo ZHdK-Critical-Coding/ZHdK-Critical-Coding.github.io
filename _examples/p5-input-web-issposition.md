@@ -26,6 +26,11 @@ live data into a drawing.
 
 Requirements: an internet connection and a current browser.
 
+Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
+used).
+
+## How to Run
+
 1. Open the folder in Visual Studio Code and start Live Server (click
    **Go Live** in the status bar).
 2. Leave the page open: a new dot is added every two seconds, so the orbit
@@ -36,9 +41,6 @@ The position comes from the [Where the ISS at?](https://wheretheiss.at) API
 proxy (`api.allorigins.win`) to avoid CORS restrictions, so no special
 browser setup is needed.
 
-Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
-used).
-
 ## Coding Help
 
 - **`sketch.js` → `api_url`**: the API endpoint. Change it to fetch other
@@ -47,13 +49,11 @@ used).
   wraps the answer, so the real JSON is parsed from `d.contents`. Returns
   `latitude` and `longitude`.
 - **`setup()`**: creates a full-window canvas and starts a `setInterval`
-  that pushes a new position into `positions` every 2000 ms. The
-  `console.log(position)` line in there refers to an undefined variable and
-  throws an error each time; replace it with
-  `positions[positions.length - 1]` or remove it.
+  that pushes a new position into `positions` every 2000 ms and logs the
+  newest position to the console.
 - **`draw()`**: normalizes latitude (−90…90) and longitude (−180…180) to
-  0–1 and draws a circle for each stored position. Latitude is not
-  inverted, so north is at the bottom; use `1 - norm_lat` to flip it.
+  0–1 and draws a circle for each stored position. Latitude is inverted
+  (`1 - …`) so north is at the top.
 - **`windowResized()`**: resizes the canvas with the window.
 
 </div>
@@ -72,6 +72,11 @@ umsetzt.
 
 Voraussetzungen: eine Internetverbindung und ein aktueller Browser.
 
+Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
+nicht verwendet).
+
+## Ausführen
+
 1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
    Statusleiste auf **Go Live** klicken).
 2. Die Seite offen lassen: Alle zwei Sekunden kommt ein neuer Punkt dazu,
@@ -82,9 +87,6 @@ Die Position stammt von der API [Where the ISS at?](https://wheretheiss.at)
 (`api.allorigins.win`), um CORS-Einschränkungen zu umgehen; im Browser muss
 also nichts speziell eingestellt werden.
 
-Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
-nicht verwendet).
-
 ## Coding-Hilfe
 
 - **`sketch.js` → `api_url`**: der API-Endpunkt. Ändern, um andere Daten
@@ -94,13 +96,10 @@ nicht verwendet).
   gelesen. Gibt `latitude` und `longitude` zurück.
 - **`setup()`**: erstellt eine fensterfüllende Zeichenfläche und startet
   ein `setInterval`, das alle 2000 ms eine neue Position in `positions`
-  speichert. Die Zeile `console.log(position)` darin verweist auf eine
-  nicht definierte Variable und wirft jedes Mal einen Fehler; durch
-  `positions[positions.length - 1]` ersetzen oder löschen.
+  speichert und die neueste Position in der Konsole ausgibt.
 - **`draw()`**: rechnet Breitengrad (−90…90) und Längengrad (−180…180) auf
   0–1 um und zeichnet für jede gespeicherte Position einen Kreis. Der
-  Breitengrad ist nicht umgekehrt, Norden liegt also unten; mit
-  `1 - norm_lat` umdrehen.
+  Breitengrad wird umgekehrt (`1 - …`), damit Norden oben liegt.
 - **`windowResized()`**: passt die Zeichenfläche an die Fenstergrösse an.
 
 </div>

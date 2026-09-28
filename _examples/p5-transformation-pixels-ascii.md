@@ -23,29 +23,34 @@ string and drawn as text. A starting point for text-based image effects.
 
 ## Installation
 
-1. Open the folder in Visual Studio Code and start Live Server (click
-   **Go Live** in the status bar).
-
 To use another picture, put it in `assets/` and change the path in
 `preload()`.
 
 Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not used).
+
+## How to Run
+
+1. Open the folder in Visual Studio Code and start Live Server (click
+   **Go Live** in the status bar).
 
 ## Coding Help
 
 - **`sketch.js` → `fontCharacters`**: the characters from light to dark
   (space first, `$` last). Try shorter strings or other symbols.
 - **`preload()`**: loads the image.
-- **`setup()`**: creates a full-window canvas and sets the grid:
-  `cols = windowWidth / 4`, `rows = cols / 3` (fixed ratio, not the image's
-  aspect ratio). Sets the text style (Courier New, bold, size 6, leading
-  10), resizes the image to `cols` × `rows` and draws once with `noLoop()`.
+- **`setup()`**: creates a full-window canvas,
+  sets the text style (Courier New, bold, size 6), then the grid:
+  `cols = windowWidth / 4` and `rows` from the image's aspect ratio,
+  corrected by the width-to-height ratio of a character cell
+  (`textWidth('M') / textSize()`). Resizes the image to `cols` × `rows` and
+  draws once with `noLoop()`.
 - **`draw()`**: loops over all pixels of the small image, averages R, G and
   B and uses `map()` to pick the matching character. Each character is
-  placed at `x * charWidth` and `y * textSize() - textLeading()`; change
-  the spacing here.
-- **`brightness()`**: a simple average of R, G and B. It replaces p5's own
-  `brightness()` function in this sketch.
+  placed in the middle of its cell (`x * charWidth + charWidth / 2`,
+  `y * textSize() + textSize() / 2`, because of `textAlign(CENTER,
+  CENTER)`); change the spacing here.
+- **`averageBrightness()`**: a simple average of R, G and B. It has its
+  own name so p5's `brightness()` function stays available.
 
 </div>
 
@@ -60,14 +65,16 @@ für textbasierte Bildeffekte.
 
 ## Installation
 
-1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
-   Statusleiste auf **Go Live** klicken).
-
 Für ein anderes Bild dieses in `assets/` ablegen und den Pfad in
 `preload()` ändern.
 
 Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
 nicht verwendet).
+
+## Ausführen
+
+1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
+   Statusleiste auf **Go Live** klicken).
 
 ## Coding-Hilfe
 
@@ -75,16 +82,19 @@ nicht verwendet).
   (zuerst das Leerzeichen, zuletzt `$`). Kürzere Zeichenketten oder andere
   Symbole ausprobieren.
 - **`preload()`**: lädt das Bild.
-- **`setup()`**: erstellt eine fensterfüllende Zeichenfläche und legt das
-  Raster fest: `cols = windowWidth / 4`, `rows = cols / 3` (festes
-  Verhältnis, nicht das Seitenverhältnis des Bildes). Setzt den Textstil
-  (Courier New, fett, Grösse 6, Zeilenabstand 10), verkleinert das Bild auf
-  `cols` × `rows` und zeichnet mit `noLoop()` einmal.
+- **`setup()`**: erstellt eine fensterfüllende Zeichenfläche, setzt den
+  Textstil (Courier New, fett, Grösse 6) und legt dann das Raster fest:
+  `cols = windowWidth / 4` und `rows` aus dem Seitenverhältnis des Bildes,
+  korrigiert um das Breite-zu-Höhe-Verhältnis einer Zeichenzelle
+  (`textWidth('M') / textSize()`). Verkleinert das Bild auf `cols` ×
+  `rows` und zeichnet mit `noLoop()` einmal.
 - **`draw()`**: geht alle Pixel des kleinen Bildes durch, mittelt R, G und
-  B und wählt mit `map()` das passende Zeichen. Jedes Zeichen wird bei
-  `x * charWidth` und `y * textSize() - textLeading()` platziert; hier die
-  Abstände anpassen.
-- **`brightness()`**: ein einfacher Mittelwert aus R, G und B. Sie ersetzt
-  in diesem Sketch die p5-eigene Funktion `brightness()`.
+  B und wählt mit `map()` das passende Zeichen. Jedes Zeichen wird in der
+  Mitte seiner Zelle platziert (`x * charWidth + charWidth / 2`,
+  `y * textSize() + textSize() / 2`, wegen `textAlign(CENTER, CENTER)`);
+  hier die Abstände anpassen.
+- **`averageBrightness()`**: ein einfacher Mittelwert aus R, G und B. Sie
+  hat einen eigenen Namen, damit die p5-Funktion `brightness()` verfügbar
+  bleibt.
 
 </div>

@@ -29,6 +29,12 @@ Requirements: a Raspberry Pi with a 128 × 32 SSD1306 OLED on I2C running
 [Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
 (port 8200), and a browser on the same network.
 
+Libraries (in `libraries/`): p5.js 1.11.10, p5.sound 1.0.1 (included, not used).
+
+License: MIT
+
+## How to Run
+
 1. Start the server on the Pi. The OLED shows its IP address and port.
 2. Enter that address in `connection` at the top of `sketch.js`, e.g.
    `ws://192.168.2.7:8200`.
@@ -36,18 +42,14 @@ Requirements: a Raspberry Pi with a 128 × 32 SSD1306 OLED on I2C running
    **Go Live** in the status bar).
 4. The frames are sent as soon as the connection is open.
 
-Libraries (in `libraries/`): p5.js 1.11.10, p5.sound 1.0.1 (included, not used).
-
-License: MIT
-
 ## Coding Help
 
 - **`sketch.js` → `connection`, `crt`**: server address and canvas size
-  (64 × 16). The server does not resize: the PNG must match the OLED
-  (128 × 32). The canvas is exported at the screen's pixel density, so on
-  a Retina screen 64 × 16 becomes 128 × 32. On other screens, set the size
-  to 128 × 32.
-- **`setup()`**: creates the canvas, sets 25 fps and opens the WebSocket.
+  (128 × 32). The server does not resize: the PNG must match the OLED
+  (128 × 32) exactly.
+- **`setup()`**: sets `pixelDensity(1)` so the canvas has exactly 128 × 32
+  pixels on every screen (also Retina), creates the canvas, turns off
+  smoothing with `noSmooth()`, sets 25 fps and opens the WebSocket.
   `onopen` sends the first frame, every `ok` from the server triggers the
   next one.
 - **`sendFrame()`**: encodes the canvas as PNG and sends the bytes. The
@@ -74,6 +76,13 @@ auf dem `oled-websockets` aus
 [Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
 läuft (Port 8200), und ein Browser im selben Netzwerk.
 
+Bibliotheken (in `libraries/`): p5.js 1.11.10, p5.sound 1.0.1 (eingebunden,
+nicht verwendet).
+
+Lizenz: MIT
+
+## Ausführen
+
 1. Den Server auf dem Pi starten. Das OLED zeigt IP-Adresse und Port.
 2. Diese Adresse oben in `sketch.js` bei `connection` eintragen, z. B.
    `ws://192.168.2.7:8200`.
@@ -81,20 +90,15 @@ läuft (Port 8200), und ein Browser im selben Netzwerk.
    Statusleiste auf **Go Live** klicken).
 4. Die Frames werden gesendet, sobald die Verbindung steht.
 
-Bibliotheken (in `libraries/`): p5.js 1.11.10, p5.sound 1.0.1 (eingebunden,
-nicht verwendet).
-
-Lizenz: MIT
-
 ## Coding-Hilfe
 
 - **`sketch.js` → `connection`, `crt`**: Server-Adresse und Grösse der
-  Zeichenfläche (64 × 16). Der Server skaliert nicht: Das PNG muss so gross
-  wie das OLED sein (128 × 32). Die Zeichenfläche wird in der Pixeldichte
-  des Bildschirms exportiert, auf einem Retina-Bildschirm wird 64 × 16 also
-  zu 128 × 32. Auf anderen Bildschirmen die Grösse auf 128 × 32 setzen.
-- **`setup()`**: erstellt die Zeichenfläche, setzt 25 fps und öffnet den
-  WebSocket. `onopen` schickt den ersten Frame, jedes `ok` vom Server löst
+  Zeichenfläche (128 × 32). Der Server skaliert nicht: Das PNG muss genau
+  so gross wie das OLED sein (128 × 32).
+- **`setup()`**: setzt `pixelDensity(1)`, damit die Zeichenfläche auf jedem
+  Bildschirm (auch Retina) genau 128 × 32 Pixel hat, erstellt die
+  Zeichenfläche, schaltet mit `noSmooth()` die Kantenglättung aus, setzt
+  25 fps und öffnet den WebSocket. `onopen` schickt den ersten Frame, jedes `ok` vom Server löst
   den nächsten aus.
 - **`sendFrame()`**: kodiert die Zeichenfläche als PNG und schickt die
   Bytes. Der Server wandelt sie in 1 Bit um, sinnvoll sind also nur

@@ -27,13 +27,17 @@ input for a sketch.
 Requirements: a browser and an internet connection (the feed is loaded
 through a public proxy).
 
-1. Set the feed URL in `RSS_URL` at the top of `sketch.js` (default: NZZ
-   recent news).
-2. Open the folder in Visual Studio Code and start Live Server (click
-   **Go Live** in the status bar).
-3. The entries appear on the canvas and are also logged to the console.
+Set the feed URL in `RSS_URL` at the top of `sketch.js` (default: NZZ
+recent news).
 
-Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not used).
+Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
+used).
+
+## How to Run
+
+1. Open the folder in Visual Studio Code and start Live Server (click
+   **Go Live** in the status bar).
+2. The entries appear on the canvas.
 
 ## Coding Help
 
@@ -72,15 +76,17 @@ verwenden.
 Voraussetzungen: ein Browser und eine Internetverbindung (der Feed wird über
 einen öffentlichen Proxy geladen).
 
-1. In `sketch.js` oben die Feed-URL in `RSS_URL` eintragen (Standard: NZZ
-   Neueste Meldungen).
-2. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
-   Statusleiste auf **Go Live** klicken).
-3. Die Einträge erscheinen auf der Zeichenfläche und werden zusätzlich in
-   der Konsole ausgegeben.
+In `sketch.js` oben die Feed-URL in `RSS_URL` eintragen (Standard: NZZ
+Neueste Meldungen).
 
 Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
 nicht verwendet).
+
+## Ausführen
+
+1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
+   Statusleiste auf **Go Live** klicken).
+2. Die Einträge erscheinen auf der Zeichenfläche.
 
 ## Coding-Hilfe
 

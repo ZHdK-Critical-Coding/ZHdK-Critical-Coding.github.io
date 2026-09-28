@@ -25,20 +25,26 @@ point for using face analysis on a server as input for a sketch.
 ## Installation
 
 Requirements: a webcam, and a running DeepFace server that is reachable from
-your computer and exposes `POST /analyze`. The sketch sends the body
-`{ "image": "<base64 jpeg>" }` – the server has to accept this format and
-allow cross-origin requests (CORS).
+your computer. The sketch is made for the small Flask server `deepface` in
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
+(`deepface_server.py`, port 7777): it exposes `POST /analyze`, expects the
+body `{ "image": "<base64 jpeg>" }` and allows cross-origin requests (CORS).
+The official DeepFace API (`img` / `img_path`) uses a different format and
+does not work without changes.
 
-1. Set `serverURL` at the top of `sketch.js` to your server (default
-   `http://10.21.4.117:7777/analyze`).
-2. Open the folder in Visual Studio Code and start Live Server (click
-   **Go Live** in the status bar).
-3. Allow webcam access.
-4. Press **Space** to send a frame for analysis. A red dot is shown while
-   waiting for the answer.
+Set `serverURL` at the top of `sketch.js` to your server (default
+`http://10.21.4.117:7777/analyze`).
 
 Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
 used).
+
+## How to Run
+
+1. Open the folder in Visual Studio Code and start Live Server (click
+   **Go Live** in the status bar).
+2. Allow webcam access.
+3. Press **Space** to send a frame for analysis. A red dot is shown while
+   waiting for the answer.
 
 ## Coding Help
 
@@ -71,20 +77,28 @@ für einen Sketch zu verwenden.
 ## Installation
 
 Voraussetzungen: eine Webcam und ein laufender DeepFace-Server, der vom
-eigenen Computer aus erreichbar ist und `POST /analyze` anbietet. Der Sketch
-schickt den Body `{ "image": "<base64 jpeg>" }` – der Server muss dieses
-Format akzeptieren und Cross-Origin-Anfragen (CORS) erlauben.
+eigenen Computer aus erreichbar ist. Der Sketch ist für den kleinen
+Flask-Server `deepface` in
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
+gemacht (`deepface_server.py`, Port 7777): Er bietet `POST /analyze` an,
+erwartet den Body `{ "image": "<base64 jpeg>" }` und erlaubt
+Cross-Origin-Anfragen (CORS). Die offizielle DeepFace-API (`img` /
+`img_path`) verwendet ein anderes Format und funktioniert nicht ohne
+Anpassungen.
 
-1. `serverURL` oben in `sketch.js` auf den eigenen Server setzen (Standard
-   `http://10.21.4.117:7777/analyze`).
-2. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
-   Statusleiste auf **Go Live** klicken).
-3. Den Zugriff auf die Webcam erlauben.
-4. **Leertaste** drücken, um ein Bild zur Analyse zu schicken. Während auf
-   die Antwort gewartet wird, erscheint ein roter Punkt.
+`serverURL` oben in `sketch.js` auf den eigenen Server setzen (Standard
+`http://10.21.4.117:7777/analyze`).
 
 Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
 nicht verwendet).
+
+## Ausführen
+
+1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
+   Statusleiste auf **Go Live** klicken).
+2. Den Zugriff auf die Webcam erlauben.
+3. **Leertaste** drücken, um ein Bild zur Analyse zu schicken. Während auf
+   die Antwort gewartet wird, erscheint ein roter Punkt.
 
 ## Coding-Hilfe
 

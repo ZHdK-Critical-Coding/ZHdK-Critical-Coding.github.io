@@ -27,19 +27,22 @@ are dropped into a folder, e.g. from a scanner or another program.
 Requirements: macOS or Linux (the watcher is a bash script; on Windows use
 Git Bash or WSL) and a current browser.
 
-1. Put `.obj` files into `assets/files` (a `teapot.obj` is included).
-2. In a terminal, run the watcher script from the project folder:
+Put `.obj` files into `assets/files` (a `teapot.obj` is included).
+
+Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
+used).
+
+## How to Run
+
+1. In a terminal, run the watcher script from the project folder:
    `bash watch.sh` (leave it running).
-3. Open the folder in Visual Studio Code and start Live Server (click
+2. Open the folder in Visual Studio Code and start Live Server (click
    **Go Live** in the status bar).
-4. Add or remove models in `assets/files`. Drag with the mouse to rotate
+3. Add or remove models in `assets/files`. Drag with the mouse to rotate
    the scene.
 
 A browser cannot list the contents of a folder. That is why `watch.sh`
 writes the file list into `assets/list.txt`, which the sketch then reads.
-
-Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
-used).
 
 ## Coding Help
 
@@ -55,8 +58,9 @@ used).
 - **`setup()`**: creates a 600 × 600 WEBGL canvas and sets `angleMode`
   to degrees.
 - **`draw()`**: enables `orbitControl()` and `lights()` and draws every
-  loaded model in a grid, `itemsPerLine` (4) per row. The `translate()`
-  offsets set the grid position, `rotateZ(180)` / `rotateY(180)` turn the
+  loaded model in a grid, `itemsPerLine` (4) per row. `offset` is
+  calculated from `itemsPerLine` so the grid is centred on the canvas;
+  `translate()` sets each model's grid position, `rotateZ(180)` / `rotateY(180)` turn the
   models upright – adjust these for your own files.
 
 </div>
@@ -76,19 +80,22 @@ landen, z. B. von einem Scanner oder einem anderen Programm.
 Voraussetzungen: macOS oder Linux (der Watcher ist ein Bash-Skript; unter
 Windows Git Bash oder WSL verwenden) und ein aktueller Browser.
 
-1. `.obj`-Dateien in `assets/files` legen (ein `teapot.obj` ist dabei).
-2. In einem Terminal im Projektordner das Watcher-Skript starten:
+`.obj`-Dateien in `assets/files` legen (ein `teapot.obj` ist dabei).
+
+Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
+nicht verwendet).
+
+## Ausführen
+
+1. In einem Terminal im Projektordner das Watcher-Skript starten:
    `bash watch.sh` (laufen lassen).
-3. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
+2. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
    Statusleiste auf **Go Live** klicken).
-4. Modelle in `assets/files` hinzufügen oder entfernen. Mit der Maus ziehen,
+3. Modelle in `assets/files` hinzufügen oder entfernen. Mit der Maus ziehen,
    um die Szene zu drehen.
 
 Ein Browser kann den Inhalt eines Ordners nicht auflisten. Deshalb schreibt
 `watch.sh` die Dateiliste in `assets/list.txt`, die der Sketch dann liest.
-
-Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
-nicht verwendet).
 
 ## Coding-Hilfe
 
@@ -105,8 +112,10 @@ nicht verwendet).
 - **`setup()`**: erstellt eine WEBGL-Zeichenfläche von 600 × 600 Pixeln und
   stellt `angleMode` auf Grad.
 - **`draw()`**: aktiviert `orbitControl()` und `lights()` und zeichnet alle
-  geladenen Modelle in einem Raster, `itemsPerLine` (4) pro Zeile. Die
-  Werte in `translate()` legen die Rasterposition fest, `rotateZ(180)` /
+  geladenen Modelle in einem Raster, `itemsPerLine` (4) pro Zeile. `offset`
+  wird aus `itemsPerLine` berechnet, damit das Raster auf der
+  Zeichenfläche zentriert ist; `translate()` legt die Rasterposition jedes
+  Modells fest, `rotateZ(180)` /
   `rotateY(180)` stellen die Modelle aufrecht – für eigene Dateien anpassen.
 
 </div>

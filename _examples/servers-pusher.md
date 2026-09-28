@@ -37,19 +37,25 @@ Requirements: Node.js and a free Channels app on https://pusher.com.
    ```bash
    npm install
    cp .env.example .env      # paste app id, key, secret and cluster into .env
-   npm start                 # -> http://localhost:3000
    ```
-3. Open `Client/index.html` from
-   [P5_Input_Pusher](https://github.com/ZHdK-Critical-Coding/P5_Input_Pusher)
-   with Live Server, type a message and click **Send**.
-4. Check the **Debug Console** of your app on pusher.com: each Send shows up
-   as a `new-message` event on the `chat` channel.
 
 Settings in `.env`: `PUSHER_APP_ID`, `PUSHER_KEY`, `PUSHER_SECRET`,
 `PUSHER_CLUSTER` (default `eu`) and `PORT` (default 3000). `.env` is in
 `.gitignore` — never commit it.
 
 Packages (npm): express 4, cors 2, dotenv 16, pusher 5.
+
+## How to Run
+
+1. Start the server:
+   ```bash
+   npm start                 # -> http://localhost:3000
+   ```
+2. Open `Client/index.html` from
+   [P5_Input_Pusher](https://github.com/ZHdK-Critical-Coding/P5_Input_Pusher)
+   with Live Server, type a message and click **Send**.
+3. Check the **Debug Console** of your app on pusher.com: each Send shows up
+   as a `new-message` event on the `chat` channel.
 
 ## Coding Help
 
@@ -91,19 +97,25 @@ https://pusher.com.
    ```bash
    npm install
    cp .env.example .env      # App-ID, Key, Secret und Cluster in .env eintragen
-   npm start                 # -> http://localhost:3000
    ```
-3. `Client/index.html` aus
-   [P5_Input_Pusher](https://github.com/ZHdK-Critical-Coding/P5_Input_Pusher)
-   mit Live Server öffnen, eine Nachricht eingeben und auf **Send** klicken.
-4. In der **Debug Console** der App auf pusher.com nachschauen: Jedes Send
-   erscheint als `new-message`-Event auf dem Kanal `chat`.
 
 Einstellungen in `.env`: `PUSHER_APP_ID`, `PUSHER_KEY`, `PUSHER_SECRET`,
 `PUSHER_CLUSTER` (Standard `eu`) und `PORT` (Standard 3000). `.env` steht in
 `.gitignore` – nie committen.
 
 Pakete (npm): express 4, cors 2, dotenv 16, pusher 5.
+
+## Ausführen
+
+1. Den Server starten:
+   ```bash
+   npm start                 # -> http://localhost:3000
+   ```
+2. `Client/index.html` aus
+   [P5_Input_Pusher](https://github.com/ZHdK-Critical-Coding/P5_Input_Pusher)
+   mit Live Server öffnen, eine Nachricht eingeben und auf **Send** klicken.
+3. In der **Debug Console** der App auf pusher.com nachschauen: Jedes Send
+   erscheint als `new-message`-Event auf dem Kanal `chat`.
 
 ## Coding-Hilfe
 

@@ -24,14 +24,16 @@ a faster p5.js-compatible library, instead of p5.js.
 
 ## Installation
 
-1. Open the folder in Visual Studio Code and start Live Server (click
-   **Go Live** in the status bar).
-2. Click on the canvas to let the characters fall.
-
 To use another picture, put it in `assets/` and change the path in
 `preload()`.
 
 Libraries (in `libraries/`): q5.js 3.3.
+
+## How to Run
+
+1. Open the folder in Visual Studio Code and start Live Server (click
+   **Go Live** in the status bar).
+2. Click on the canvas to let the characters fall.
 
 ## Coding Help
 
@@ -43,8 +45,11 @@ Libraries (in `libraries/`): q5.js 3.3.
   the image and calls `createCharParticles()`.
 - **`createCharParticles()`**: centres the grid on the canvas and creates
   one `CharParticle` per pixel with the pixel's average brightness.
+- **`getGlyph()`**: renders a character once into a small
+  `createGraphics()` buffer and keeps it in `glyphs`, so every character
+  exists only once, no matter how many particles show it.
 - **`class CharParticle`**: picks the character for the brightness and
-  pre-renders it into its own small `createGraphics()` buffer. Gravity and
+  gets its pre-rendered buffer from `getGlyph()`. Gravity and
   damping vary slightly per particle. `update()` lets it fall and bounce;
   when the bounce speed drops below 0.3 it is marked `dead`. `show()` draws
   the buffer.
@@ -66,14 +71,16 @@ kompatible Bibliothek.
 
 ## Installation
 
-1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
-   Statusleiste auf **Go Live** klicken).
-2. Auf die Zeichenfläche klicken, um die Zeichen fallen zu lassen.
-
 Für ein anderes Bild dieses in `assets/` ablegen und den Pfad in
 `preload()` ändern.
 
 Bibliotheken (in `libraries/`): q5.js 3.3.
+
+## Ausführen
+
+1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
+   Statusleiste auf **Go Live** klicken).
+2. Auf die Zeichenfläche klicken, um die Zeichen fallen zu lassen.
 
 ## Coding-Hilfe
 
@@ -87,8 +94,11 @@ Bibliotheken (in `libraries/`): q5.js 3.3.
 - **`createCharParticles()`**: zentriert das Raster auf der Zeichenfläche
   und erstellt pro Pixel ein `CharParticle` mit der mittleren Helligkeit des
   Pixels.
-- **`class CharParticle`**: wählt das Zeichen zur Helligkeit und zeichnet
-  es vorab in einen eigenen kleinen `createGraphics()`-Buffer. Schwerkraft
+- **`getGlyph()`**: zeichnet ein Zeichen einmal in einen kleinen
+  `createGraphics()`-Buffer und speichert ihn in `glyphs`, so gibt es jedes
+  Zeichen nur einmal, egal wie viele Partikel es zeigen.
+- **`class CharParticle`**: wählt das Zeichen zur Helligkeit und holt den
+  vorab gezeichneten Buffer mit `getGlyph()`. Schwerkraft
   und Dämpfung variieren pro Partikel leicht. `update()` lässt es fallen und
   abprallen; fällt die Geschwindigkeit beim Abprallen unter 0.3, wird es als
   `dead` markiert. `show()` zeichnet den Buffer.

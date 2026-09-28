@@ -26,15 +26,17 @@ image-based particle effects.
 
 Requirements: a current browser.
 
-1. Open the folder in Visual Studio Code and start Live Server (click
-   **Go Live** in the status bar).
-2. Move the mouse over the image to magnify the pixels.
-3. Click on the canvas to let the pixels fall down.
-
 To use another image, replace `assets/150.jpg` or change the path in
 `preload()`.
 
 Libraries (in `libraries/`): p5.js 1.10.0.
+
+## How to Run
+
+1. Open the folder in Visual Studio Code and start Live Server (click
+   **Go Live** in the status bar).
+2. Move the mouse over the image to magnify the pixels.
+3. Click on the canvas to let the pixels fall down.
 
 ## Coding Help
 
@@ -43,8 +45,8 @@ Libraries (in `libraries/`): p5.js 1.10.0.
   they bounce) are the values to play with.
 - **`createCharParticles()`**: scales the image down to
   `windowWidth / gridSize` pixels wide, reads `img.pixels` (4 values per
-  pixel: r, g, b, a) and creates one `CharParticle` per pixel. Pixels with a
-  red value of 0 are skipped.
+  pixel: r, g, b, a) and creates one `CharParticle` per pixel. Fully
+  transparent pixels (alpha 0, only in PNG images) are skipped.
 - **`draw()`**: sorts the particles by `getScale()` so magnified squares are
   drawn on top, updates them once `falling` is true and removes dead ones.
 - **`mousePressed()`**: sets `falling = true`.
@@ -68,15 +70,17 @@ und verschwinden. Ein Ausgangspunkt für bildbasierte Partikeleffekte.
 
 Voraussetzungen: ein aktueller Browser.
 
-1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
-   Statusleiste auf **Go Live** klicken).
-2. Die Maus über das Bild bewegen, um die Pixel zu vergrössern.
-3. Auf die Zeichenfläche klicken, um die Pixel fallen zu lassen.
-
 Für ein anderes Bild `assets/150.jpg` ersetzen oder den Pfad in `preload()`
 ändern.
 
 Bibliotheken (in `libraries/`): p5.js 1.10.0.
+
+## Ausführen
+
+1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
+   Statusleiste auf **Go Live** klicken).
+2. Die Maus über das Bild bewegen, um die Pixel zu vergrössern.
+3. Auf die Zeichenfläche klicken, um die Pixel fallen zu lassen.
 
 ## Coding-Hilfe
 
@@ -86,8 +90,8 @@ Bibliotheken (in `libraries/`): p5.js 1.10.0.
   Ausprobieren.
 - **`createCharParticles()`**: skaliert das Bild auf `windowWidth /
   gridSize` Pixel Breite, liest `img.pixels` (4 Werte pro Pixel: r, g, b, a)
-  und erzeugt pro Pixel ein `CharParticle`. Pixel mit einem Rotwert von 0
-  werden übersprungen.
+  und erzeugt pro Pixel ein `CharParticle`. Vollständig transparente Pixel
+  (Alpha 0, nur bei PNG-Bildern) werden übersprungen.
 - **`draw()`**: sortiert die Partikel nach `getScale()`, damit vergrösserte
   Quadrate zuoberst liegen, bewegt sie, sobald `falling` wahr ist, und
   entfernt tote Partikel.

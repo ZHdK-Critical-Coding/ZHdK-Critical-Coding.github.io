@@ -26,13 +26,15 @@ a text file that a sketch should show.
 
 Requirements: a current browser.
 
+Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
+used).
+
+## How to Run
+
 1. Open the folder in Visual Studio Code and start Live Server (click
    **Go Live** in the status bar).
 2. Open `assets/list.txt`, change, add or remove lines and save the file.
 3. The canvas shows the new content within about five seconds.
-
-Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
-used).
 
 ## Coding Help
 
@@ -40,9 +42,11 @@ used).
   `loadStrings()` into the array `list`. Once the file has arrived, it
   schedules itself again with `setTimeout(..., 5000)`. Change the 5000 ms
   to poll faster or slower. Started once in `preload()`.
-- **`setup()`**: creates a 400 × 400 canvas and sets the text size to 12.
+- **`setup()`**: creates a 400 × 400 canvas, sets the text size to 12 and
+  the line spacing (`textLeading`) to 18 (1.5 × text size).
 - **`draw()`**: draws the lines one below the other, starting at y = 20
-  with 10 px line spacing. Increase the step (`y += 10`) for larger text.
+  and moving down by `textLeading()` per line. If you change the text
+  size, adjust `textLeading` too.
 
 </div>
 
@@ -59,14 +63,16 @@ Programm Daten in eine Textdatei schreibt, die ein Sketch anzeigen soll.
 
 Voraussetzungen: ein aktueller Browser.
 
+Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
+nicht verwendet).
+
+## Ausführen
+
 1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
    Statusleiste auf **Go Live** klicken).
 2. `assets/list.txt` öffnen, Zeilen ändern, hinzufügen oder löschen und die
    Datei speichern.
 3. Die Zeichenfläche zeigt den neuen Inhalt nach etwa fünf Sekunden.
-
-Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
-nicht verwendet).
 
 ## Coding-Hilfe
 
@@ -74,10 +80,11 @@ nicht verwendet).
   `loadStrings()` in das Array `list`. Sobald die Datei da ist, plant es
   sich mit `setTimeout(..., 5000)` erneut ein. Die 5000 ms ändern, um
   schneller oder langsamer abzufragen. Wird einmal in `preload()` gestartet.
-- **`setup()`**: erstellt eine Zeichenfläche von 400 × 400 Pixeln und setzt
-  die Textgrösse auf 12.
-- **`draw()`**: zeichnet die Zeilen untereinander, beginnend bei y = 20 mit
-  10 px Zeilenabstand. Bei grösserer Schrift den Schritt (`y += 10`)
-  erhöhen.
+- **`setup()`**: erstellt eine Zeichenfläche von 400 × 400 Pixeln, setzt
+  die Textgrösse auf 12 und den Zeilenabstand (`textLeading`) auf 18
+  (1,5 × Textgrösse).
+- **`draw()`**: zeichnet die Zeilen untereinander, beginnend bei y = 20,
+  und rückt pro Zeile um `textLeading()` nach unten. Bei anderer
+  Schriftgrösse `textLeading` mit anpassen.
 
 </div>

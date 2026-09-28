@@ -37,7 +37,9 @@ If both exist, the detail page shows an EN / DE switch (the choice is remembered
 
 Short abstract, 2–4 sentences.
 
-## Installation                  <- requirements, steps to run, libraries
+## Installation                  <- requirements, setup, libraries
+
+## How to Run                    <- DE: "Ausführen"; starting it and using it
 
 ## Coding Help                   <- DE: "Coding-Hilfe"; what happens in which part of the code
 ```

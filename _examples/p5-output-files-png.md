@@ -23,13 +23,18 @@ sketch, e.g. for print or documentation.
 
 ## Installation
 
-1. Open the folder in Visual Studio Code and start Live Server (click
-   **Go Live** in the status bar).
-2. Press **s** to download the current frame as `<timestamp>-out.png`.
+Requirements: Visual Studio Code with the Live Server extension and a
+browser.
 
 Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not used).
 
 License: MIT
+
+## How to Run
+
+1. Open the folder in Visual Studio Code and start Live Server (click
+   **Go Live** in the status bar).
+2. Press **s** to download the current frame as `<timestamp>-out.png`.
 
 ## Coding Help
 
@@ -56,15 +61,20 @@ Dokumentation.
 
 ## Installation
 
-1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
-   Statusleiste auf **Go Live** klicken).
-2. **s** drücken, um den aktuellen Frame als `<zeitstempel>-out.png`
-   herunterzuladen.
+Voraussetzungen: Visual Studio Code mit der Erweiterung Live Server und ein
+Browser.
 
 Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
 nicht verwendet).
 
 Lizenz: MIT
+
+## Ausführen
+
+1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
+   Statusleiste auf **Go Live** klicken).
+2. **s** drücken, um den aktuellen Frame als `<zeitstempel>-out.png`
+   herunterzuladen.
 
 ## Coding-Hilfe
 

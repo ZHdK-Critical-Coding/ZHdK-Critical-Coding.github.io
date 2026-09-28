@@ -27,19 +27,22 @@ e.g. from a camera, a scanner or another program.
 Requirements: macOS or Linux (the watcher is a bash script; on Windows use
 Git Bash or WSL) and a current browser.
 
-1. Put images (e.g. `.jpg`, `.png`) into `assets/files` (seven sample
-   images are included).
-2. In a terminal, run the watcher script from the project folder:
-   `bash watch.sh` (leave it running).
-3. Open the folder in Visual Studio Code and start Live Server (click
-   **Go Live** in the status bar).
-4. Add or remove images in `assets/files`.
-
-A browser cannot list the contents of a folder. That is why `watch.sh`
-writes the file list into `assets/list.txt`, which the sketch then reads.
+Put images (e.g. `.jpg`, `.png`) into `assets/files` (seven sample images
+are included).
 
 Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
 used).
+
+## How to Run
+
+1. In a terminal, run the watcher script from the project folder:
+   `bash watch.sh` (leave it running).
+2. Open the folder in Visual Studio Code and start Live Server (click
+   **Go Live** in the status bar).
+3. Add or remove images in `assets/files`.
+
+A browser cannot list the contents of a folder. That is why `watch.sh`
+writes the file list into `assets/list.txt`, which the sketch then reads.
 
 ## Coding Help
 
@@ -53,10 +56,10 @@ used).
 - **`images`**: object with one entry per file path, holding `status`
   (`loading` / `ok`) and the `source` image.
 - **`setup()`**: creates a 400 × 400 canvas.
-- **`draw()`**: draws every loaded image as a square, `itemsPerLine` (4)
-  per row. Change `itemsPerLine` or the canvas size to fit more images;
-  images are stretched to squares, so use `size` and the image ratio if
-  you want to keep proportions.
+- **`draw()`**: draws every loaded image in a grid of square cells,
+  `itemsPerLine` (4) per row. Each image is scaled to fit its cell and
+  centred, keeping its aspect ratio. Change `itemsPerLine` or the canvas
+  size to fit more images.
 
 </div>
 
@@ -75,19 +78,22 @@ Scanner oder einem anderen Programm.
 Voraussetzungen: macOS oder Linux (der Watcher ist ein Bash-Skript; unter
 Windows Git Bash oder WSL verwenden) und ein aktueller Browser.
 
-1. Bilder (z. B. `.jpg`, `.png`) in `assets/files` legen (sieben
-   Beispielbilder sind dabei).
-2. In einem Terminal im Projektordner das Watcher-Skript starten:
-   `bash watch.sh` (laufen lassen).
-3. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
-   Statusleiste auf **Go Live** klicken).
-4. Bilder in `assets/files` hinzufügen oder entfernen.
-
-Ein Browser kann den Inhalt eines Ordners nicht auflisten. Deshalb schreibt
-`watch.sh` die Dateiliste in `assets/list.txt`, die der Sketch dann liest.
+Bilder (z. B. `.jpg`, `.png`) in `assets/files` legen (sieben Beispielbilder
+sind dabei).
 
 Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
 nicht verwendet).
+
+## Ausführen
+
+1. In einem Terminal im Projektordner das Watcher-Skript starten:
+   `bash watch.sh` (laufen lassen).
+2. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
+   Statusleiste auf **Go Live** klicken).
+3. Bilder in `assets/files` hinzufügen oder entfernen.
+
+Ein Browser kann den Inhalt eines Ordners nicht auflisten. Deshalb schreibt
+`watch.sh` die Dateiliste in `assets/list.txt`, die der Sketch dann liest.
 
 ## Coding-Hilfe
 
@@ -101,10 +107,10 @@ nicht verwendet).
 - **`images`**: Objekt mit einem Eintrag pro Dateipfad, mit `status`
   (`loading` / `ok`) und dem Bild in `source`.
 - **`setup()`**: erstellt eine Zeichenfläche von 400 × 400 Pixeln.
-- **`draw()`**: zeichnet alle geladenen Bilder als Quadrate,
-  `itemsPerLine` (4) pro Zeile. Für mehr Bilder `itemsPerLine` oder die
-  Grösse der Zeichenfläche ändern. Die Bilder werden quadratisch verzerrt;
-  um die Proportionen zu behalten, `size` mit dem Seitenverhältnis des
-  Bildes verrechnen.
+- **`draw()`**: zeichnet alle geladenen Bilder in einem Raster aus
+  quadratischen Zellen, `itemsPerLine` (4) pro Zeile. Jedes Bild wird
+  unter Beibehaltung des Seitenverhältnisses in seine Zelle eingepasst und
+  darin zentriert. Für mehr Bilder `itemsPerLine` oder die Grösse der
+  Zeichenfläche ändern.
 
 </div>

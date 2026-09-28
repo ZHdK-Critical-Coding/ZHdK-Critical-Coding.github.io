@@ -27,19 +27,22 @@ A starting point for using a local language model in a sketch.
 Requirements: [Ollama](https://ollama.com) running on your computer or on
 the local network, with the model `gpt-oss` (`ollama pull gpt-oss`).
 
-1. Set `ollama_host` at the top of `sketch.js` to the address of your Ollama
-   server (default `http://192.168.2.8:11434`, e.g.
-   `http://127.0.0.1:11434` for a local install). If the server runs on
-   another machine, it must listen on the network (`OLLAMA_HOST=0.0.0.0`).
-2. Open the folder in Visual Studio Code and start Live Server (click
-   **Go Live** in the status bar).
-3. If the browser blocks the requests (CORS), allow the origin on the server
-   (`OLLAMA_ORIGINS`) or start the debugger configuration
-   **Launch Chrome (no Security)** (Run and Debug panel).
-4. The conversation starts automatically with "Wie denkst du über den Mars?".
+Set `ollama_host` at the top of `sketch.js` to the address of your Ollama
+server (default `http://192.168.2.8:11434`, e.g. `http://127.0.0.1:11434`
+for a local install). If the server runs on another machine, it must listen
+on the network (`OLLAMA_HOST=0.0.0.0`).
 
 Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
 used), ollama-js 0.5.17 (browser build, `ollama_browser.mjs`).
+
+## How to Run
+
+1. Open the folder in Visual Studio Code and start Live Server (click
+   **Go Live** in the status bar).
+2. If the browser blocks the requests (CORS), allow the origin on the server
+   (`OLLAMA_ORIGINS`) or start the debugger configuration
+   **Launch Chrome (no Security)** (Run and Debug panel).
+3. The conversation starts automatically with "Wie denkst du über den Mars?".
 
 ## Coding Help
 
@@ -53,7 +56,7 @@ used), ollama-js 0.5.17 (browser build, `ollama_browser.mjs`).
   `gpt-oss`, `stream: true` and a system prompt depending on the persona:
   DR asks short, critical questions, EM answers provocatively. Change model
   and system prompts here. Sampling options (`top_k`, `top_p`,
-  `repetition_penalty`) are slightly randomised on each call. The streamed
+  `repeat_penalty`) are slightly randomised on each call. The streamed
   parts are appended to a new entry in `stack`; when the answer is complete,
   `chat()` calls itself with the other persona.
 - **`setup()`**: sets up the layout values and starts the conversation with
@@ -81,20 +84,22 @@ Voraussetzungen: [Ollama](https://ollama.com) läuft auf dem eigenen
 Computer oder im lokalen Netz, mit dem Modell `gpt-oss`
 (`ollama pull gpt-oss`).
 
-1. `ollama_host` oben in `sketch.js` auf die Adresse des Ollama-Servers
-   setzen (Standard `http://192.168.2.8:11434`, z. B.
-   `http://127.0.0.1:11434` bei einer lokalen Installation). Läuft der
-   Server auf einem anderen Rechner, muss er im Netzwerk erreichbar sein
-   (`OLLAMA_HOST=0.0.0.0`).
-2. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
-   Statusleiste auf **Go Live** klicken).
-3. Blockiert der Browser die Anfragen (CORS), den Origin auf dem Server
-   erlauben (`OLLAMA_ORIGINS`) oder die Debugger-Konfiguration
-   **Launch Chrome (no Security)** starten (Panel Run and Debug).
-4. Die Unterhaltung startet automatisch mit "Wie denkst du über den Mars?".
+`ollama_host` oben in `sketch.js` auf die Adresse des Ollama-Servers setzen
+(Standard `http://192.168.2.8:11434`, z. B. `http://127.0.0.1:11434` bei
+einer lokalen Installation). Läuft der Server auf einem anderen Rechner,
+muss er im Netzwerk erreichbar sein (`OLLAMA_HOST=0.0.0.0`).
 
 Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
 nicht verwendet), ollama-js 0.5.17 (Browser-Build, `ollama_browser.mjs`).
+
+## Ausführen
+
+1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
+   Statusleiste auf **Go Live** klicken).
+2. Blockiert der Browser die Anfragen (CORS), den Origin auf dem Server
+   erlauben (`OLLAMA_ORIGINS`) oder die Debugger-Konfiguration
+   **Launch Chrome (no Security)** starten (Panel Run and Debug).
+3. Die Unterhaltung startet automatisch mit "Wie denkst du über den Mars?".
 
 ## Coding-Hilfe
 
@@ -108,7 +113,7 @@ nicht verwendet), ollama-js 0.5.17 (Browser-Build, `ollama_browser.mjs`).
   `gpt-oss`, `stream: true` und einem System-Prompt je nach Persona auf: DR
   stellt kurze, kritische Fragen, EM antwortet provokant. Modell und
   System-Prompts hier ändern. Die Sampling-Optionen (`top_k`, `top_p`,
-  `repetition_penalty`) werden bei jedem Aufruf leicht zufällig variiert.
+  `repeat_penalty`) werden bei jedem Aufruf leicht zufällig variiert.
   Die gestreamten Teile werden an einen neuen Eintrag in `stack` angehängt;
   ist die Antwort fertig, ruft sich `chat()` mit der anderen Persona selbst
   auf.

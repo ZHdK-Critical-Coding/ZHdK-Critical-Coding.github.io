@@ -28,22 +28,27 @@ the name, the script expects an RTSP source (`rtsp://...`).
 Requirements: [ffmpeg](https://ffmpeg.org) (e.g. `brew install ffmpeg`)
 and the RTSP URL of an IP camera.
 
-1. Set the source stream in the `input` variable of
-   `streamer/createStream.sh`.
-2. Run the script in a terminal and keep it running:
+Replace the placeholder `rtsp://USER:PASS@CAMERA-IP:554/stream` in the
+`input` variable of `streamer/createStream.sh` with the RTSP address of
+your own camera. As long as the placeholder is there, the script stops
+with a hint.
+
+Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
+used), hls.js 1.6.9.
+
+## How to Run
+
+1. Run the script in a terminal and keep it running:
    `bash streamer/createStream.sh`
    It deletes old segments and writes `stream.m3u8` and numbered `.ts`
    files into `streamer/`.
-3. Open the folder in Visual Studio Code and start Live Server (click
+2. Open the folder in Visual Studio Code and start Live Server (click
    **Go Live** in the status bar). The sketch shows "Loading video..."
    until the stream can be played.
 
 The workspace settings tell Live Server to ignore `streamer/**`, `*.ts` and
 `*.m3u8`, so the constantly changing segments do not trigger reloads. The
 generated files are also excluded in `.gitignore`.
-
-Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
-used), hls.js 1.6.9.
 
 ## Coding Help
 
@@ -77,13 +82,21 @@ kein MJPEG anbieten. Trotz des Namens erwartet das Skript eine RTSP-Quelle
 Voraussetzungen: [ffmpeg](https://ffmpeg.org) (z. B.
 `brew install ffmpeg`) und die RTSP-URL einer IP-Kamera.
 
-1. In `streamer/createStream.sh` den Quellstream in der Variable `input`
-   eintragen.
-2. Das Skript in einem Terminal starten und laufen lassen:
+In `streamer/createStream.sh` den Platzhalter
+`rtsp://USER:PASS@CAMERA-IP:554/stream` in der Variable `input` durch die
+RTSP-Adresse der eigenen Kamera ersetzen. Solange der Platzhalter drin
+steht, bricht das Skript mit einem Hinweis ab.
+
+Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
+nicht verwendet), hls.js 1.6.9.
+
+## Ausführen
+
+1. Das Skript in einem Terminal starten und laufen lassen:
    `bash streamer/createStream.sh`
    Es löscht alte Segmente und schreibt `stream.m3u8` und nummerierte
    `.ts`-Dateien nach `streamer/`.
-3. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
+2. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
    Statusleiste auf **Go Live** klicken). Der Sketch zeigt "Loading
    video...", bis der Stream abgespielt werden kann.
 
@@ -91,9 +104,6 @@ Die Workspace-Einstellungen sagen Live Server, dass `streamer/**`, `*.ts`
 und `*.m3u8` ignoriert werden sollen, damit die ständig wechselnden
 Segmente kein Neuladen auslösen. Die erzeugten Dateien sind auch in
 `.gitignore` ausgeschlossen.
-
-Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
-nicht verwendet), hls.js 1.6.9.
 
 ## Coding-Hilfe
 

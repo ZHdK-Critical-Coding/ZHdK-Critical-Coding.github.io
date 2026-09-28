@@ -27,19 +27,21 @@ for reacting to objects in front of a camera.
 Requirements: a webcam (or an MJPEG stream) and an internet connection –
 the model is downloaded on first start.
 
+Optional, MJPEG stream instead of webcam: set `videoSrc` to the stream URL
+and `proxyUrl` to a proxy that forwards the stream with CORS headers (not
+included; it is called as `<proxyUrl><encoded videoSrc>`). The source is
+switched with the `useWebcam` constant: `true` (default) uses the webcam,
+`false` uses the stream.
+
+Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
+used), ml5.js 1.2.2.
+
+## How to Run
+
 1. Open the folder in Visual Studio Code and start Live Server (click
    **Go Live** in the status bar).
 2. Allow webcam access. The webcam image appears top left, the
    classification results on the right.
-
-Optional, MJPEG stream instead of webcam: set `videoSrc` to the stream URL
-and `proxyUrl` to a proxy that forwards the stream with CORS headers (not
-included; it is called as `<proxyUrl><encoded videoSrc>`). The source is
-switched with the `useWebcam` constant. Note that the logic is inverted:
-`false` (default) uses the webcam, `true` uses the stream.
-
-Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
-used), ml5.js 1.2.2.
 
 ## Coding Help
 
@@ -73,20 +75,21 @@ Ein Ausgangspunkt, um auf Objekte vor einer Kamera zu reagieren.
 Voraussetzungen: eine Webcam (oder ein MJPEG-Stream) und eine
 Internetverbindung – das Modell wird beim ersten Start heruntergeladen.
 
+Optional, MJPEG-Stream statt Webcam: `videoSrc` auf die Stream-URL setzen
+und `proxyUrl` auf einen Proxy, der den Stream mit CORS-Headern
+weiterleitet (nicht enthalten; er wird als `<proxyUrl><encoded videoSrc>`
+aufgerufen). Die Quelle wird mit der Konstante `useWebcam` umgeschaltet:
+`true` (Standard) verwendet die Webcam, `false` den Stream.
+
+Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
+nicht verwendet), ml5.js 1.2.2.
+
+## Ausführen
+
 1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
    Statusleiste auf **Go Live** klicken).
 2. Den Zugriff auf die Webcam erlauben. Oben links erscheint das
    Webcam-Bild, rechts die Klassifizierungsergebnisse.
-
-Optional, MJPEG-Stream statt Webcam: `videoSrc` auf die Stream-URL setzen
-und `proxyUrl` auf einen Proxy, der den Stream mit CORS-Headern
-weiterleitet (nicht enthalten; er wird als `<proxyUrl><encoded videoSrc>`
-aufgerufen). Die Quelle wird mit der Konstante `useWebcam` umgeschaltet.
-Achtung, die Logik ist verkehrt: `false` (Standard) verwendet die Webcam,
-`true` den Stream.
-
-Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
-nicht verwendet), ml5.js 1.2.2.
 
 ## Coding-Hilfe
 

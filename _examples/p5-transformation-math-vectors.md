@@ -26,11 +26,16 @@ Further reading: [Nature of Code – Vectors](https://natureofcode.com/vectors/)
 
 ## Installation
 
+Requirements: Visual Studio Code with the Live Server extension and a
+current browser.
+
+Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not used).
+
+## How to Run
+
 1. Open the folder in Visual Studio Code and start Live Server (click
    **Go Live** in the status bar).
 2. Move the mouse over the canvas.
-
-Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not used).
 
 ## Coding Help
 
@@ -63,12 +68,17 @@ Weiterlesen: [Nature of Code – Vectors](https://natureofcode.com/vectors/),
 
 ## Installation
 
-1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
-   Statusleiste auf **Go Live** klicken).
-2. Die Maus über die Zeichenfläche bewegen.
+Voraussetzungen: Visual Studio Code mit der Erweiterung Live Server und ein
+aktueller Browser.
 
 Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
 nicht verwendet).
+
+## Ausführen
+
+1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
+   Statusleiste auf **Go Live** klicken).
+2. Die Maus über die Zeichenfläche bewegen.
 
 ## Coding-Hilfe
 

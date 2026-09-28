@@ -27,14 +27,16 @@ static circles. Based on examples from
 
 Requirements: a current browser.
 
-1. Open the folder in Visual Studio Code and start Live Server (click
-   **Go Live** in the status bar).
-2. Type any key to drop that letter into the scene.
-
 To use another font, put the file (ttf/otf/woff) into `assets/` and change
 `FONT_PATH` in `sketch.js`.
 
-Libraries (in `libraries/`): p5.js 1.7.0, matter.js 0.19.0.
+Libraries (in `libraries/`): p5.js 1.7.0, matter.js 0.19.0, poly-decomp 0.3.0.
+
+## How to Run
+
+1. Open the folder in Visual Studio Code and start Live Server (click
+   **Go Live** in the status bar).
+2. Type any letter, digit or symbol to drop it into the scene.
 
 ## Coding Help
 
@@ -47,14 +49,18 @@ Libraries (in `libraries/`): p5.js 1.7.0, matter.js 0.19.0.
 - **`draw()`**: advances the physics with `Engine.update()`, draws all
   shapes and boundaries and removes shapes that fell below the canvas.
 - **`keyPressed()`**: creates a `CustomShape` for `key` at the top centre.
-  Special keys such as Shift pass their name (e.g. "Shift") as text.
+  Only single printable characters are accepted; special keys such as
+  Shift (whose `key` is "Shift") and the space bar are ignored.
 - **`shape.js` → `CustomShape`**: turns the character into points with
-  `font.textToPoints()` and builds a body with `Bodies.fromVertices()`,
+  `font.textToPoints()` (one point every 4 px, `SAMPLE_FACTOR`), splits
+  them into contours wherever there is a jump between two points (e.g. the
+  stem and the dot of "i") and builds a body with `Bodies.fromVertices()`,
   with a random sideways velocity and some spin. `restitution` sets the
-  bounciness. Without the poly-decomp library matter.js cannot split
-  concave outlines and uses their convex hull instead, which is what the
-  black outline shows. `show()` draws that outline and the red letter
-  rotated with the body.
+  bounciness. With poly-decomp (loaded in `index.html`) matter.js splits
+  each concave contour into convex parts, so the body follows the letter's
+  shape; holes like in "o" are filled. `show()` draws the outline of every
+  part (white) and the red letter rotated
+  with the body.
 - **`boundary.js` → `Boundary`**: a static circular body (`isStatic: true`)
   and its drawing.
 
@@ -75,14 +81,18 @@ Kreise fällt. Basiert auf Beispielen aus
 
 Voraussetzungen: ein aktueller Browser.
 
-1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
-   Statusleiste auf **Go Live** klicken).
-2. Eine beliebige Taste drücken, um den Buchstaben fallen zu lassen.
-
 Für eine andere Schrift die Datei (ttf/otf/woff) in `assets/` legen und
 `FONT_PATH` in `sketch.js` ändern.
 
-Bibliotheken (in `libraries/`): p5.js 1.7.0, matter.js 0.19.0.
+Bibliotheken (in `libraries/`): p5.js 1.7.0, matter.js 0.19.0, poly-decomp
+0.3.0.
+
+## Ausführen
+
+1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
+   Statusleiste auf **Go Live** klicken).
+2. Einen Buchstaben, eine Ziffer oder ein Zeichen tippen, um es fallen zu
+   lassen.
 
 ## Coding-Hilfe
 
@@ -96,16 +106,19 @@ Bibliotheken (in `libraries/`): p5.js 1.7.0, matter.js 0.19.0.
   alle Formen und Begrenzungen und entfernt Formen, die unter die
   Zeichenfläche gefallen sind.
 - **`keyPressed()`**: erzeugt oben in der Mitte eine `CustomShape` für
-  `key`. Sondertasten wie Shift übergeben ihren Namen (z. B. "Shift") als
-  Text.
+  `key`. Nur einzelne druckbare Zeichen werden angenommen; Sondertasten wie
+  Shift (deren `key` "Shift" ist) und die Leertaste werden ignoriert.
 - **`shape.js` → `CustomShape`**: wandelt das Zeichen mit
-  `font.textToPoints()` in Punkte um und baut mit `Bodies.fromVertices()`
-  einen Körper, mit zufälliger seitlicher Geschwindigkeit und etwas
-  Drehung. `restitution` bestimmt, wie stark er abprallt. Ohne die
-  poly-decomp-Bibliothek kann matter.js konkave Konturen nicht zerlegen und
-  verwendet stattdessen die konvexe Hülle – das zeigt die schwarze Kontur.
-  `show()` zeichnet diese Kontur und den roten Buchstaben, mit dem Körper
-  gedreht.
+  `font.textToPoints()` in Punkte um (alle 4 px ein Punkt,
+  `SAMPLE_FACTOR`), teilt sie dort, wo zwei Punkte weit auseinanderliegen,
+  in Konturen auf (z. B. Stamm und Punkt des "i") und baut mit
+  `Bodies.fromVertices()` einen Körper, mit zufälliger seitlicher
+  Geschwindigkeit und etwas Drehung. `restitution` bestimmt, wie stark er
+  abprallt. Mit poly-decomp (in `index.html` geladen) zerlegt matter.js
+  jede konkave Kontur in konvexe Teile, so folgt der Körper der Form des
+  Buchstabens; Löcher wie im "o" werden gefüllt. `show()` zeichnet die
+  Kontur jedes Teils (weiss) und den
+  roten Buchstaben, mit dem Körper gedreht.
 - **`boundary.js` → `Boundary`**: ein statischer, kreisförmiger Körper
   (`isStatic: true`) und seine Darstellung.
 
