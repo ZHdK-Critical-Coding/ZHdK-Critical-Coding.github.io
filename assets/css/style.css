@@ -238,8 +238,19 @@ html[data-lang="de"] .lang[lang="en"] { display: none; }
   margin: 1.35em 0;
 }
 
-.readme h1 { 
-  color: rgb(255, 100, 100); 
+/* h1 border lines up with the border below the GitHub button:
+   readme padding + h1 line = meta-link padding + button line,
+   so the rest is the button's vertical padding plus the bottom gutter */
+.readme h1 {
+  color: rgb(255, 100, 100);
+  text-align: center;
+  padding-bottom: calc(2 * 10px + var(--gutter));
+  border-bottom: 1.5px solid;
+}
+
+.readme h2 {
+  padding-bottom: 0.5em;
+  border-bottom: 1.5px solid;
 }
 
 .readme > :first-child,
