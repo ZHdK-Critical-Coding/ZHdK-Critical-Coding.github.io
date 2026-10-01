@@ -28,6 +28,13 @@ main_categories:
     categories:
       - servers
       - arduino
+      - editors
+  - id: document-generation
+    title: Document Generation
+    title_de: Dokumente erzeugen
+    url: /document-generation/
+    categories:
+      - batch-mode
 
 collections:
   examples:
