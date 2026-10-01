@@ -1,11 +1,13 @@
 ---
 title: Camera Distance
+maincategory: code-samples
 category: input
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-16
 repo: P5_Input_Distance_From_Camera
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Input_Distance_From_Camera
+screenshot: "/assets/examples/p5-input-distance-from-camera/screenshot.png"
 related: []
 render_with_liquid: false
 languages:

@@ -1,12 +1,15 @@
 ---
 title: Image Segmentation
+maincategory: code-samples
 category: input
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-16
 repo: P5_Input_KI_ImageSegmentation
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Input_KI_ImageSegmentation
-related: []
+screenshot: "/assets/examples/p5-input-ki-imagesegmentation/screenshot.png"
+related:
+- Servers_RaspberriPi
 render_with_liquid: false
 languages:
 - en
@@ -28,14 +31,23 @@ Requirements: a webcam (or an MJPEG stream), Chrome (the model runs on
 WebGPU, other browsers show "This runs only on Chrome!") and an internet
 connection – transformers.js and the model are downloaded on first start.
 
-Optional, MJPEG stream instead of webcam: set `videoSrc` and `proxyUrl` at
-the top of `sketch.js` and set `useWebcam = false` (`true`, the default,
-uses the webcam). The stream is loaded through a CORS proxy server that you
-need to provide yourself (called as `<proxyUrl><encoded videoSrc>`).
+Optional, MJPEG stream instead of webcam: set `videoSrc` at the top of
+`sketch.js` and set `useWebcam = false` (`true`, the default, uses the
+webcam). The stream needs a proxy (see Server).
 
 Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
 used), ml5.js 1.2.2, `ml5-extra-imagesegmentation.js`. transformers.js
 (Hugging Face) is loaded in its latest version from jsDelivr.
+
+## Server
+
+Only needed for the MJPEG stream (`useWebcam = false`): `stream-proxy` from
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
+(HTTP, port 5000), running on a Raspberry Pi in the same network as your
+computer. Start it first with `bash run.sh` (or `python server.py`) in its
+folder. It fetches the camera stream and passes it on with CORS headers,
+so the model can read its pixels. Set `proxyUrl` in `sketch.js` to
+`http://<pi-ip>:5000/stream?url=`.
 
 ## How to Run
 
@@ -89,15 +101,24 @@ läuft auf WebGPU, andere Browser zeigen "This runs only on Chrome!") und
 eine Internetverbindung – transformers.js und das Modell werden beim ersten
 Start heruntergeladen.
 
-Optional, MJPEG-Stream statt Webcam: `videoSrc` und `proxyUrl` oben in
-`sketch.js` setzen und `useWebcam = false` setzen (`true`, der Standard,
-verwendet die Webcam). Der Stream wird über einen CORS-Proxy geladen, den
-man selbst bereitstellen muss (aufgerufen als `<proxyUrl><encoded videoSrc>`).
+Optional, MJPEG-Stream statt Webcam: `videoSrc` oben in `sketch.js` und
+`useWebcam = false` setzen (`true`, der Standard, verwendet die Webcam).
+Der Stream braucht einen Proxy (siehe Server).
 
 Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
 nicht verwendet), ml5.js 1.2.2, `ml5-extra-imagesegmentation.js`.
 transformers.js (Hugging Face) wird in der neusten Version von jsDelivr
 geladen.
+
+## Server
+
+Nur für den MJPEG-Stream nötig (`useWebcam = false`): `stream-proxy` aus
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
+(HTTP, Port 5000), auf einem Raspberry Pi im selben Netzwerk wie dein
+Computer. Zuerst im Ordner mit `bash run.sh` (oder `python server.py`)
+starten. Er holt den Kamerastream und reicht ihn mit CORS-Headern weiter,
+damit das Modell seine Pixel lesen kann. In `sketch.js` `proxyUrl` auf
+`http://<pi-ip>:5000/stream?url=` setzen.
 
 ## Ausführen
 

@@ -1,5 +1,6 @@
 ---
 title: Züri wie neu
+maincategory: code-samples
 category: input
 technology: P5.js
 author: Urs Hofer

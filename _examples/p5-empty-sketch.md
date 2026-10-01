@@ -1,11 +1,13 @@
 ---
 title: Empty Sketch
+maincategory: code-samples
 category: transformation
 technology: P5.js
 author: Urs Hofer
 date: 2026-05-15
 repo: P5_Empty_Sketch
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Empty_Sketch
+screenshot: "/assets/examples/p5-empty-sketch/screenshot.png"
 related: []
 render_with_liquid: false
 languages:

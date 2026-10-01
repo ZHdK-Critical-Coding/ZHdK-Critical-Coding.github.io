@@ -8,11 +8,26 @@ baseurl: ""
 # GitHub organisation the examples are collected from (see scripts/update.rb)
 github_org: ZHdK-Critical-Coding
 
-# Column order on the start page
-example_categories:
-  - input
-  - transformation
-  - output
+# Main categories (pages, chosen in the header dropdown) and their
+# categories (columns, in this order). example.yaml sets both:
+#   maincategory: code-samples
+#   category: input
+main_categories:
+  - id: code-samples
+    title: Code Samples
+    title_de: Code-Beispiele
+    url: /
+    categories:
+      - input
+      - transformation
+      - output
+  - id: utilities
+    title: Utilities
+    title_de: Werkzeuge
+    url: /utilities/
+    categories:
+      - servers
+      - arduino
 
 collections:
   examples:

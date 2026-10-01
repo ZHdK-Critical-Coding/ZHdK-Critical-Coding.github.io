@@ -1,11 +1,13 @@
 ---
 title: SearXNG Images
+maincategory: code-samples
 category: input
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-17
 repo: P5_Input_SearchXNG_Images
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Input_SearchXNG_Images
+screenshot: "/assets/examples/p5-input-searchxng-images/screenshot.png"
 related: []
 render_with_liquid: false
 languages:

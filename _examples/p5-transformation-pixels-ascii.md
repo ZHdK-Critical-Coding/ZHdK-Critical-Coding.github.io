@@ -1,11 +1,13 @@
 ---
 title: ASCII
+maincategory: code-samples
 category: transformation
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-16
 repo: P5_Transformation_Pixels_ASCII
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Transformation_Pixels_ASCII
+screenshot: "/assets/examples/p5-transformation-pixels-ascii/screenshot.png"
 related: []
 render_with_liquid: false
 languages:

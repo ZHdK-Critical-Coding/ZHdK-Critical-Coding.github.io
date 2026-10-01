@@ -1,12 +1,15 @@
 ---
 title: Thermal Printer Bitmap
+maincategory: code-samples
 category: output
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-16
 repo: P5_Output_Printers_ThermalPrinter_Bitmap
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Output_Printers_ThermalPrinter_Bitmap
-related: []
+screenshot: "/assets/examples/p5-output-printers-thermalprinter-bitmap/screenshot.png"
+related:
+- Servers_RaspberriPi
 render_with_liquid: false
 languages:
 - en
@@ -24,19 +27,26 @@ printing your own p5 drawings on a receipt printer.
 
 ## Installation
 
-Requirements: a thermal printer server that accepts PNG data over
-WebSocket and answers with `ok`, reachable from your computer's network.
-
-Set `printerConnection` in `sketch.js` to the server address (default
-`ws://10.21.3.49:8080`).
+Requirements: a browser on the same network as the Pi (see Server).
 
 Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not used).
 
 License: MIT
 
+## Server
+
+Needs `printer-websockets` from
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi),
+running on a Raspberry Pi with an ESC/POS thermal printer on USB, port
+8080. After `npm install` (see its readme for the `escpos-usb` fix), start
+it first with `bash run.sh` in the folder on the Pi; it prints its address.
+It takes a PNG as binary and the string `cut`, and answers `ok` (or `busy`
+while printing). Put its address in `printerConnection` at the top of
+`sketch.js` (default `ws://10.21.3.49:8080`).
+
 ## How to Run
 
-1. Make sure the printer server is running.
+1. Make sure the printer server is running (see Server).
 2. Open the folder in Visual Studio Code and start Live Server (click
    **Go Live** in the status bar).
 3. Click on the canvas to print the next frame.
@@ -74,21 +84,28 @@ Bondrucker auszugeben.
 
 ## Installation
 
-Voraussetzungen: ein Thermodrucker-Server, der PNG-Daten per WebSocket
-annimmt, mit `ok` antwortet und im Netzwerk deines Computers erreichbar
-ist.
-
-In `sketch.js` `printerConnection` auf die Adresse des Servers setzen
-(Standard `ws://10.21.3.49:8080`).
+Voraussetzungen: ein Browser im selben Netzwerk wie der Pi (siehe Server).
 
 Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
 nicht verwendet).
 
 Lizenz: MIT
 
+## Server
+
+Braucht `printer-websockets` aus
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi),
+auf einem Raspberry Pi mit einem ESC/POS-Thermodrucker an USB, Port 8080.
+Nach `npm install` (für den `escpos-usb`-Fix siehe dessen readme) zuerst
+mit `bash run.sh` im Ordner auf dem Pi starten; er druckt seine Adresse.
+Er nimmt ein PNG als Binärdaten und den String `cut` an und antwortet mit
+`ok` (oder `busy`, solange gedruckt wird). Seine Adresse oben in
+`sketch.js` bei `printerConnection` eintragen (Standard
+`ws://10.21.3.49:8080`).
+
 ## Ausführen
 
-1. Sicherstellen, dass der Drucker-Server läuft.
+1. Sicherstellen, dass der Drucker-Server läuft (siehe Server).
 2. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
    Statusleiste auf **Go Live** klicken).
 3. Auf die Zeichenfläche klicken, um den nächsten Frame zu drucken.

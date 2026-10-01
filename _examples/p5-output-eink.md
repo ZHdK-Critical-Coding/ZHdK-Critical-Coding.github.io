@@ -1,12 +1,15 @@
 ---
 title: E-Ink
+maincategory: code-samples
 category: output
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-16
 repo: P5_Output_EInk
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Output_EInk
-related: []
+screenshot: "/assets/examples/p5-output-eink/screenshot.png"
+related:
+- Servers_RaspberriPi
 render_with_liquid: false
 languages:
 - en
@@ -24,19 +27,27 @@ for slow, paper-like displays that only update now and then.
 
 ## Installation
 
-Requirements: a Raspberry Pi with a Waveshare 4.2" e-paper display (SPI)
-running `screen-websocket` from
-[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
-(port 8765), and a browser on the same network.
+Requirements: a browser on the same network as the Pi (see Server).
 
 Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
 used).
 
 License: MIT
 
+## Server
+
+Needs `screen-websocket` from
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi),
+running on a Raspberry Pi with a Waveshare 4.2" e-paper display on SPI
+(enable SPI in `sudo raspi-config`), port 8765. Start it first with
+`python screen.py` in the folder on the Pi (there is no `run.sh`); the
+display shows its address. It takes a PNG, resizes it to 400 × 300 and
+shows it in four grey levels; it sends no answer. Put its address in
+`displayConnection` at the top of `sketch.js`.
+
 ## How to Run
 
-1. Start the server on the Pi. The display shows its address.
+1. Start the server on the Pi (see Server). The display shows its address.
 2. Enter that address in `displayConnection` at the top of `sketch.js`,
    e.g. `ws://192.168.138.96:8765`.
 3. Open the folder in Visual Studio Code and start Live Server (click
@@ -77,19 +88,27 @@ sich nur ab und zu ändern.
 
 ## Installation
 
-Voraussetzungen: ein Raspberry Pi mit einem Waveshare-4.2"-E-Paper-Display
-(SPI), auf dem `screen-websocket` aus
-[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
-läuft (Port 8765), und ein Browser im selben Netzwerk.
+Voraussetzungen: ein Browser im selben Netzwerk wie der Pi (siehe Server).
 
 Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
 nicht verwendet).
 
 Lizenz: MIT
 
+## Server
+
+Braucht `screen-websocket` aus
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi),
+auf einem Raspberry Pi mit einem Waveshare-4.2"-E-Paper-Display an SPI
+(SPI in `sudo raspi-config` aktivieren), Port 8765. Zuerst mit
+`python screen.py` im Ordner auf dem Pi starten (es gibt kein `run.sh`);
+das Display zeigt seine Adresse. Er nimmt ein PNG an, skaliert es auf
+400 × 300 und zeigt es in vier Graustufen; er schickt keine Antwort. Seine
+Adresse oben in `sketch.js` bei `displayConnection` eintragen.
+
 ## Ausführen
 
-1. Den Server auf dem Pi starten. Das Display zeigt seine Adresse.
+1. Den Server auf dem Pi starten (siehe Server). Das Display zeigt seine Adresse.
 2. Diese Adresse oben in `sketch.js` bei `displayConnection` eintragen,
    z. B. `ws://192.168.138.96:8765`.
 3. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der

@@ -1,5 +1,6 @@
 ---
 title: Load Images
+maincategory: code-samples
 category: output
 technology: Basil.js
 author: Urs Hofer

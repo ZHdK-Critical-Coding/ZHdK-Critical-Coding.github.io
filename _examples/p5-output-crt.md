@@ -1,12 +1,15 @@
 ---
 title: CRT
+maincategory: code-samples
 category: output
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-16
 repo: P5_Output_CRT
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Output_CRT
-related: []
+screenshot: "/assets/examples/p5-output-crt/screenshot.png"
+related:
+- Servers_RaspberriPi
 render_with_liquid: false
 languages:
 - en
@@ -24,18 +27,26 @@ top. A starting point for using an old TV as an output for a sketch.
 
 ## Installation
 
-Requirements: a Raspberry Pi with a CRT on its composite output running
-`crt-websocket` from
-[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
-(port 8100), a webcam and a browser on the same network.
+Requirements: a webcam and a browser on the same network as the Pi (see
+Server).
 
 Libraries (in `libraries/`): p5.js 1.11.10, p5.sound 1.0.1 (included, not used).
 
 License: MIT
 
+## Server
+
+Needs `crt-websocket` from
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi),
+running on a Raspberry Pi with a CRT TV on its composite output (PAL),
+port 8100. Start it first with `bash run.sh` in the folder on the Pi; it
+shows the Pi's IP on the TV. It takes JPEG frames of exactly 720 × 576 and
+answers `ok` after each one. Put its address in `connection` at the top of
+`sketch.js`.
+
 ## How to Run
 
-1. Start the server on the Pi. It shows its IP address on the TV.
+1. Start the server on the Pi (see Server). It shows its IP address on the TV.
 2. Enter that address in `connection` at the top of `sketch.js`, e.g.
    `ws://10.21.14.32:8100`.
 3. Open the folder in Visual Studio Code and start Live Server (click
@@ -75,19 +86,27 @@ Fernseher als Ausgabe für einen Sketch zu verwenden.
 
 ## Installation
 
-Voraussetzungen: ein Raspberry Pi mit einem CRT am Composite-Ausgang, auf
-dem `crt-websocket` aus
-[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
-läuft (Port 8100), eine Webcam und ein Browser im selben Netzwerk.
+Voraussetzungen: eine Webcam und ein Browser im selben Netzwerk wie der Pi
+(siehe Server).
 
 Bibliotheken (in `libraries/`): p5.js 1.11.10, p5.sound 1.0.1 (eingebunden,
 nicht verwendet).
 
 Lizenz: MIT
 
+## Server
+
+Braucht `crt-websocket` aus
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi),
+auf einem Raspberry Pi mit einem Röhrenfernseher am Composite-Ausgang
+(PAL), Port 8100. Zuerst mit `bash run.sh` im Ordner auf dem Pi starten;
+er zeigt die IP des Pi auf dem Fernseher. Er nimmt JPEG-Frames von genau
+720 × 576 an und antwortet nach jedem mit `ok`. Seine Adresse oben in
+`sketch.js` bei `connection` eintragen.
+
 ## Ausführen
 
-1. Den Server auf dem Pi starten. Er zeigt seine IP-Adresse auf dem
+1. Den Server auf dem Pi starten (siehe Server). Er zeigt seine IP-Adresse auf dem
    Fernseher.
 2. Diese Adresse oben in `sketch.js` bei `connection` eintragen, z. B.
    `ws://10.21.14.32:8100`.

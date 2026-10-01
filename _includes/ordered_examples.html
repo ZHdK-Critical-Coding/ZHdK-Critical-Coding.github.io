@@ -1,9 +1,12 @@
 {%- comment -%}
-  Sets `ordered_examples`: all examples, grouped by site.example_categories
-  (in that order) and sorted by title within each category.
+  Sets `ordered_examples`: the examples of one main category
+  (include.maincategory), grouped by its categories (in the order of
+  site.main_categories) and sorted by title within each category.
 {%- endcomment -%}
+{%- assign oe_main = site.main_categories | where: "id", include.maincategory | first -%}
+{%- assign oe_items = site.examples | where: "maincategory", include.maincategory -%}
 {%- assign ordered_examples = "" | split: "" -%}
-{%- for cat in site.example_categories -%}
-  {%- assign cat_items = site.examples | where: "category", cat | sort_natural: "title" -%}
+{%- for cat in oe_main.categories -%}
+  {%- assign cat_items = oe_items | where: "category", cat | sort_natural: "title" -%}
   {%- assign ordered_examples = ordered_examples | concat: cat_items -%}
 {%- endfor -%}

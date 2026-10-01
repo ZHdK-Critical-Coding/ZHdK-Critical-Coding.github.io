@@ -1,12 +1,15 @@
 ---
 title: LED Matrix
+maincategory: code-samples
 category: output
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-16
 repo: P5_Output_LED
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Output_LED
-related: []
+screenshot: "/assets/examples/p5-output-led/screenshot.png"
+related:
+- Servers_RaspberriPi
 render_with_liquid: false
 languages:
 - en
@@ -24,11 +27,7 @@ showing your own p5 graphics on an LED wall.
 
 ## Installation
 
-Requirements: an LED matrix server that accepts raw RGBA frames over a ZMQ
-REQ/REP WebSocket connection, reachable from your computer's network.
-
-Set `ledConnection` in `sketch.js` to the server address (default
-`ws://10.21.22.238:42069`) and adjust `matrix` to your panel setup.
+Requirements: a browser on the same network as the Pi (see Server).
 
 Libraries (in `libraries/`): p5.js 1.11.10, p5.sound 1.0.1 (included, not
 used), `zeromq.bundle.js` (browser build of jszmq, exposes `window.zmq`).
@@ -36,9 +35,20 @@ Font: `font/pixelmix.ttf`.
 
 License: MIT
 
+## Server
+
+Needs `led` from
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi),
+running on a Raspberry Pi with a chain of four 64 × 32 LED panels, port
+42069. It starts the external `led-matrix-zmq-server`, which must be built
+on the Pi first. Start it with `bash run_zmq_server.sh` on the Pi. It takes
+raw RGBA frames over a ZMQ REQ/REP WebSocket connection and replies after
+each one. Put its address in `ledConnection` at the top of `sketch.js`
+(default `ws://10.21.22.238:42069`) and adjust `matrix` to your panels.
+
 ## How to Run
 
-1. Make sure the LED matrix server is running.
+1. Make sure the LED matrix server is running (see Server).
 2. Open the folder in Visual Studio Code and start Live Server (click
    **Go Live** in the status bar).
 
@@ -78,12 +88,7 @@ zeigen.
 
 ## Installation
 
-Voraussetzungen: ein LED-Matrix-Server, der rohe RGBA-Frames über eine ZMQ
-REQ/REP-WebSocket-Verbindung annimmt und im Netzwerk deines Computers
-erreichbar ist.
-
-In `sketch.js` `ledConnection` auf die Adresse des Servers setzen (Standard
-`ws://10.21.22.238:42069`) und `matrix` an die eigenen Panels anpassen.
+Voraussetzungen: ein Browser im selben Netzwerk wie der Pi (siehe Server).
 
 Bibliotheken (in `libraries/`): p5.js 1.11.10, p5.sound 1.0.1 (eingebunden,
 nicht verwendet), `zeromq.bundle.js` (Browser-Build von jszmq, stellt
@@ -91,9 +96,21 @@ nicht verwendet), `zeromq.bundle.js` (Browser-Build von jszmq, stellt
 
 Lizenz: MIT
 
+## Server
+
+Braucht `led` aus
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi),
+auf einem Raspberry Pi mit einer Kette von vier 64 × 32-LED-Panels, Port
+42069. Er startet den externen `led-matrix-zmq-server`, der zuerst auf dem
+Pi gebaut werden muss. Mit `bash run_zmq_server.sh` auf dem Pi starten. Er
+nimmt rohe RGBA-Frames über eine ZMQ-REQ/REP-WebSocket-Verbindung an und
+antwortet nach jedem. Seine Adresse oben in `sketch.js` bei `ledConnection`
+eintragen (Standard `ws://10.21.22.238:42069`) und `matrix` an die eigenen
+Panels anpassen.
+
 ## Ausführen
 
-1. Sicherstellen, dass der LED-Matrix-Server läuft.
+1. Sicherstellen, dass der LED-Matrix-Server läuft (siehe Server).
 2. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
    Statusleiste auf **Go Live** klicken).
 

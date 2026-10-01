@@ -1,12 +1,15 @@
 ---
 title: Deepface
+maincategory: code-samples
 category: input
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-16
 repo: P5_Input_KI_Deepface
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Input_KI_Deepface
-related: []
+screenshot: "/assets/examples/p5-input-ki-deepface/screenshot.png"
+related:
+- Servers_RaspberriPi
 render_with_liquid: false
 languages:
 - en
@@ -24,26 +27,30 @@ point for using face analysis on a server as input for a sketch.
 
 ## Installation
 
-Requirements: a webcam, and a running DeepFace server that is reachable from
-your computer. The sketch is made for the small Flask server `deepface` in
-[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
-(`deepface_server.py`, port 7777): it exposes `POST /analyze`, expects the
-body `{ "image": "<base64 jpeg>" }` and allows cross-origin requests (CORS).
-The official DeepFace API (`img` / `img_path`) uses a different format and
-does not work without changes.
-
-Set `serverURL` at the top of `sketch.js` to your server (default
-`http://10.21.4.117:7777/analyze`).
+Requirements: a webcam.
 
 Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
 used).
 
+## Server
+
+Needs `deepface` from
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
+(HTTP, port 7777), running on a Raspberry Pi in the same network as your
+computer. Start it first with `python deepface_server.py` in its folder
+(or `bash run_server.sh`, which restarts it after a crash). It exposes
+`POST /analyze`, takes `{ "image": "<base64 jpeg>" }` and returns age,
+gender, race and emotion as JSON (with CORS). The official DeepFace API
+uses a different format. Set `serverURL` in `sketch.js` to its address
+(default `http://10.21.4.117:7777/analyze`).
+
 ## How to Run
 
-1. Open the folder in Visual Studio Code and start Live Server (click
+1. Make sure the DeepFace server is running (see Server).
+2. Open the folder in Visual Studio Code and start Live Server (click
    **Go Live** in the status bar).
-2. Allow webcam access.
-3. Press **Space** to send a frame for analysis. A red dot is shown while
+3. Allow webcam access.
+4. Press **Space** to send a frame for analysis. A red dot is shown while
    waiting for the answer.
 
 ## Coding Help
@@ -76,28 +83,31 @@ für einen Sketch zu verwenden.
 
 ## Installation
 
-Voraussetzungen: eine Webcam und ein laufender DeepFace-Server, der vom
-eigenen Computer aus erreichbar ist. Der Sketch ist für den kleinen
-Flask-Server `deepface` in
-[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
-gemacht (`deepface_server.py`, Port 7777): Er bietet `POST /analyze` an,
-erwartet den Body `{ "image": "<base64 jpeg>" }` und erlaubt
-Cross-Origin-Anfragen (CORS). Die offizielle DeepFace-API (`img` /
-`img_path`) verwendet ein anderes Format und funktioniert nicht ohne
-Anpassungen.
-
-`serverURL` oben in `sketch.js` auf den eigenen Server setzen (Standard
-`http://10.21.4.117:7777/analyze`).
+Voraussetzungen: eine Webcam.
 
 Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
 nicht verwendet).
 
+## Server
+
+Braucht `deepface` aus
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
+(HTTP, Port 7777), auf einem Raspberry Pi im selben Netzwerk wie dein
+Computer. Zuerst im Ordner mit `python deepface_server.py` starten (oder
+`bash run_server.sh`, das ihn nach einem Absturz neu startet). Er bietet
+`POST /analyze` an, nimmt `{ "image": "<base64 jpeg>" }` entgegen und
+liefert Alter, Geschlecht, Herkunft und Emotion als JSON (mit CORS). Die
+offizielle DeepFace-API verwendet ein anderes Format. In `sketch.js`
+`serverURL` auf seine Adresse setzen (Standard
+`http://10.21.4.117:7777/analyze`).
+
 ## Ausführen
 
-1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
+1. Sicherstellen, dass der DeepFace-Server läuft (siehe Server).
+2. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
    Statusleiste auf **Go Live** klicken).
-2. Den Zugriff auf die Webcam erlauben.
-3. **Leertaste** drücken, um ein Bild zur Analyse zu schicken. Während auf
+3. Den Zugriff auf die Webcam erlauben.
+4. **Leertaste** drücken, um ein Bild zur Analyse zu schicken. Während auf
    die Antwort gewartet wird, erscheint ein roter Punkt.
 
 ## Coding-Hilfe

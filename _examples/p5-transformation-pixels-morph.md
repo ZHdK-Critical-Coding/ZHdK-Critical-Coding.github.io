@@ -1,11 +1,13 @@
 ---
 title: Image Morph
+maincategory: code-samples
 category: transformation
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-16
 repo: P5_Transformation_Pixels_Morph
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Transformation_Pixels_Morph
+screenshot: "/assets/examples/p5-transformation-pixels-morph/screenshot.png"
 related: []
 render_with_liquid: false
 languages:

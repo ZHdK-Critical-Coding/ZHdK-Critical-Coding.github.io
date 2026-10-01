@@ -1,11 +1,13 @@
 ---
 title: Fullscreen App
+maincategory: code-samples
 category: output
 technology: Electron
 author: Urs Hofer
 date: 2026-09-16
 repo: Electron_P5_Starter
 repo_url: https://github.com/ZHdK-Critical-Coding/Electron_P5_Starter
+screenshot: "/assets/examples/electron-p5-starter/screenshot.png"
 related: []
 render_with_liquid: false
 languages:

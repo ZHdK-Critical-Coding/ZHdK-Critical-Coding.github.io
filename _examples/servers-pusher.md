@@ -1,6 +1,7 @@
 ---
 title: Pusher Server
-category: input
+maincategory: utilities
+category: servers
 technology: Node.js
 author: Urs Hofer
 date: 2026-05-27

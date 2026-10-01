@@ -1,11 +1,13 @@
 ---
 title: Vector Export
+maincategory: code-samples
 category: output
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-16
 repo: P5_Output_Files_Vectors
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Output_Files_Vectors
+screenshot: "/assets/examples/p5-output-files-vectors/screenshot.png"
 related: []
 render_with_liquid: false
 languages:

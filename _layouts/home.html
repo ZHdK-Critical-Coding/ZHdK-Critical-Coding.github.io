@@ -10,16 +10,31 @@ body_class: home
       <button type="button" data-lang="de">DE</button>
     </div>
   </div>
-  <span><span class="lang" lang="en">{{ site.subtitle }}</span><span class="lang" lang="de">{{ site.subtitle_de }}</span></span>
+  {%- assign main = site.main_categories | where: "id", page.maincategory | first %}
+  <details class="menu">
+    <summary><span class="lang" lang="en">{{ main.title }}</span><span class="lang" lang="de">{{ main.title_de }}</span></summary>
+    <nav class="menu-list">
+      {%- for m in site.main_categories %}
+      <a class="menu-item" href="{{ m.url | relative_url }}"{% if m.id == main.id %} aria-current="page"{% endif %}><span class="lang" lang="en">{{ m.title }}</span><span class="lang" lang="de">{{ m.title_de }}</span></a>
+      {%- endfor %}
+    </nav>
+  </details>
 </header>
 
 <section class="intro">
   {{ content }}
 </section>
 
-<main class="columns">
-  {%- for cat in site.example_categories %}
-  {%- assign items = site.examples | where: "category", cat | sort_natural: "title" %}
+{%- comment -%} one column per category that has examples {%- endcomment -%}
+{%- assign main_items = site.examples | where: "maincategory", main.id %}
+{%- assign cats = "" | split: "" %}
+{%- for cat in main.categories %}
+  {%- assign n = main_items | where: "category", cat | size %}
+  {%- if n > 0 %}{% assign cats = cats | push: cat %}{% endif %}
+{%- endfor %}
+<main class="columns" style="--cols: {{ cats.size | at_least: 1 }}">
+  {%- for cat in cats %}
+  {%- assign items = main_items | where: "category", cat | sort_natural: "title" %}
   <section class="column">
     <h2 class="row row-head">{{ cat }}</h2>
     <ul>
@@ -40,13 +55,15 @@ body_class: home
   // Keep the scroll position of the list when coming back from an example ("Close").
   (function () {
     try {
-      var saved = sessionStorage.getItem("homeScroll");
+      var key = "homeScroll:" + location.pathname;
+      var saved = sessionStorage.getItem(key);
       var fromExample = document.referrer.indexOf(location.origin + "{{ '/examples/' | relative_url }}") === 0;
       if (saved !== null && fromExample) window.scrollTo(0, Number(saved));
       window.addEventListener("pagehide", function () {
-        sessionStorage.setItem("homeScroll", String(window.scrollY));
+        sessionStorage.setItem(key, String(window.scrollY));
       });
     } catch (e) {}
   })();
 </script>
 <script src="{{ '/assets/js/lang.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/menu.js' | relative_url }}"></script>

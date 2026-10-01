@@ -1,5 +1,6 @@
 ---
 layout: home
+maincategory: code-samples
 ---
 
 <div class="lang" lang="en" markdown="1">

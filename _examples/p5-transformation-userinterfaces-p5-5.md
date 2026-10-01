@@ -1,11 +1,13 @@
 ---
 title: P5.5 Interface
+maincategory: code-samples
 category: transformation
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-16
 repo: P5_Transformation_UserInterfaces_P5.5
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Transformation_UserInterfaces_P5.5
+screenshot: "/assets/examples/p5-transformation-userinterfaces-p5-5/screenshot.png"
 related: []
 render_with_liquid: false
 languages:

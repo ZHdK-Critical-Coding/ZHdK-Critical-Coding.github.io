@@ -1,12 +1,15 @@
 ---
 title: Image Recognition
+maincategory: code-samples
 category: input
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-16
 repo: P5_Input_KI_ImageRecognition
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Input_KI_ImageRecognition
-related: []
+screenshot: "/assets/examples/p5-input-ki-imagerecognition/screenshot.png"
+related:
+- Servers_RaspberriPi
 render_with_liquid: false
 languages:
 - en
@@ -28,13 +31,21 @@ Requirements: a webcam (or an MJPEG stream) and an internet connection –
 the model is downloaded on first start.
 
 Optional, MJPEG stream instead of webcam: set `videoSrc` to the stream URL
-and `proxyUrl` to a proxy that forwards the stream with CORS headers (not
-included; it is called as `<proxyUrl><encoded videoSrc>`). The source is
-switched with the `useWebcam` constant: `true` (default) uses the webcam,
-`false` uses the stream.
+and `useWebcam = false` (`true`, the default, uses the webcam). The stream
+needs a proxy (see Server).
 
 Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
 used), ml5.js 1.2.2.
+
+## Server
+
+Only needed for the MJPEG stream (`useWebcam = false`): `stream-proxy` from
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
+(HTTP, port 5000), running on a Raspberry Pi in the same network as your
+computer. Start it first with `bash run.sh` (or `python server.py`) in its
+folder. It fetches the camera stream and passes it on with CORS headers,
+so the classifier can read its pixels. Set `proxyUrl` in `sketch.js` to
+`http://<pi-ip>:5000/stream?url=`.
 
 ## How to Run
 
@@ -75,14 +86,22 @@ Ein Ausgangspunkt, um auf Objekte vor einer Kamera zu reagieren.
 Voraussetzungen: eine Webcam (oder ein MJPEG-Stream) und eine
 Internetverbindung – das Modell wird beim ersten Start heruntergeladen.
 
-Optional, MJPEG-Stream statt Webcam: `videoSrc` auf die Stream-URL setzen
-und `proxyUrl` auf einen Proxy, der den Stream mit CORS-Headern
-weiterleitet (nicht enthalten; er wird als `<proxyUrl><encoded videoSrc>`
-aufgerufen). Die Quelle wird mit der Konstante `useWebcam` umgeschaltet:
-`true` (Standard) verwendet die Webcam, `false` den Stream.
+Optional, MJPEG-Stream statt Webcam: `videoSrc` auf die Stream-URL und
+`useWebcam = false` setzen (`true`, der Standard, verwendet die Webcam).
+Der Stream braucht einen Proxy (siehe Server).
 
 Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
 nicht verwendet), ml5.js 1.2.2.
+
+## Server
+
+Nur für den MJPEG-Stream nötig (`useWebcam = false`): `stream-proxy` aus
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
+(HTTP, Port 5000), auf einem Raspberry Pi im selben Netzwerk wie dein
+Computer. Zuerst im Ordner mit `bash run.sh` (oder `python server.py`)
+starten. Er holt den Kamerastream und reicht ihn mit CORS-Headern weiter,
+damit der Classifier seine Pixel lesen kann. In `sketch.js` `proxyUrl` auf
+`http://<pi-ip>:5000/stream?url=` setzen.
 
 ## Ausführen
 

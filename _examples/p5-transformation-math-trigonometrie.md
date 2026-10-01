@@ -1,11 +1,13 @@
 ---
 title: Trigonometry
+maincategory: code-samples
 category: transformation
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-16
 repo: P5_Transformation_Math_Trigonometrie
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Transformation_Math_Trigonometrie
+screenshot: "/assets/examples/p5-transformation-math-trigonometrie/screenshot.png"
 related: []
 render_with_liquid: false
 languages:

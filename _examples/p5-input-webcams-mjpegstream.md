@@ -1,12 +1,14 @@
 ---
 title: MJPEG Stream
+maincategory: code-samples
 category: input
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-16
 repo: P5_Input_Webcams_MJPEGStream
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Input_Webcams_MJPEGStream
-related: []
+related:
+- Servers_RaspberriPi
 render_with_liquid: false
 languages:
 - en
@@ -24,20 +26,25 @@ point for using network cameras as input for a sketch.
 
 ## Installation
 
-Requirements: an MJPEG stream URL and a proxy that adds CORS headers to
-the stream. The proxy is not included in this repository; you have to run
-one yourself.
-
-1. Set the camera stream URL in `videoSrc` at the top of `sketch.js`
-   (MJPEG cameras often serve streams at paths like `/?action=stream`).
-2. Set `proxyUrl` to your proxy. The sketch expects an endpoint of the
-   form `http://<host>:<port>/stream?url=`.
+Requirements: an MJPEG stream URL. Set it in `videoSrc` at the top of
+`sketch.js` (MJPEG cameras often serve streams at paths like
+`/?action=stream`).
 
 Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not used).
 
+## Server
+
+Needs `stream-proxy` from
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
+(HTTP, port 5000), running on a Raspberry Pi in the same network as your
+computer. Start it first with `bash run.sh` (or `python server.py`) in its
+folder. It fetches the camera stream and passes it on with CORS headers,
+so the sketch can read its pixels. Set `proxyUrl` in `sketch.js` to
+`http://<pi-ip>:5000/stream?url=`.
+
 ## How to Run
 
-Open the folder in Visual Studio Code and start Live Server (click
+Start the proxy first (see Server). Then open the folder in Visual Studio Code and start Live Server (click
 **Go Live** in the status bar).
 
 While the stream is loading, the stream URL is shown on a black canvas.
@@ -73,21 +80,26 @@ verwenden.
 
 ## Installation
 
-Voraussetzungen: eine MJPEG-Stream-URL und ein Proxy, der dem Stream
-CORS-Header hinzufügt. Der Proxy ist nicht in diesem Repository enthalten,
-du musst selbst einen betreiben.
-
-1. In `sketch.js` oben in `videoSrc` die URL des Kamerastreams eintragen
-   (MJPEG-Kameras liefern Streams oft unter Pfaden wie `/?action=stream`).
-2. `proxyUrl` auf den eigenen Proxy setzen. Der Sketch erwartet einen
-   Endpunkt der Form `http://<host>:<port>/stream?url=`.
+Voraussetzungen: eine MJPEG-Stream-URL. Sie in `sketch.js` oben in
+`videoSrc` eintragen (MJPEG-Kameras liefern Streams oft unter Pfaden wie
+`/?action=stream`).
 
 Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
 nicht verwendet).
 
+## Server
+
+Braucht `stream-proxy` aus
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
+(HTTP, Port 5000), auf einem Raspberry Pi im selben Netzwerk wie dein
+Computer. Zuerst im Ordner mit `bash run.sh` (oder `python server.py`)
+starten. Er holt den Kamerastream und reicht ihn mit CORS-Headern weiter,
+damit der Sketch seine Pixel lesen kann. In `sketch.js` `proxyUrl` auf
+`http://<pi-ip>:5000/stream?url=` setzen.
+
 ## Ausführen
 
-Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
+Zuerst den Proxy starten (siehe Server). Dann den Ordner in Visual Studio Code öffnen und Live Server starten (in der
 Statusleiste auf **Go Live** klicken).
 
 Solange der Stream lädt, wird die Stream-URL auf schwarzem Grund angezeigt.

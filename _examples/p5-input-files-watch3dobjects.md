@@ -1,11 +1,13 @@
 ---
 title: Watch 3D Objects
+maincategory: code-samples
 category: input
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-16
 repo: P5_Input_Files_Watch3dObjects
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Input_Files_Watch3dObjects
+screenshot: "/assets/examples/p5-input-files-watch3dobjects/screenshot.png"
 related: []
 render_with_liquid: false
 languages:

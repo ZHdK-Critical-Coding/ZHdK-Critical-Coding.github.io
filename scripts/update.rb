@@ -10,7 +10,8 @@
 #   date: 2026-09-16
 #   author: Urs Hofer
 #   technology: "P5.js"         # shown right of the title
-#   category: input             # input | transformation | output
+#   maincategory: code-samples  # page: code-samples | utilities (see _config.yml)
+#   category: input             # column on that page, e.g. input | transformation | output
 #   readme: "sub/readme.md"     # optional, default: README.md in the repo root
 #   readme_de: "sub/README_DE.md" # optional, default: README_DE.md next to the README
 #   related: Servers_Pusher     # optional, repository name or list of names
@@ -37,7 +38,7 @@ require "optparse"
 ROOT        = File.expand_path("..", __dir__)
 CONFIG      = YAML.safe_load(File.read(File.join(ROOT, "_config.yml")))
 ORG         = CONFIG.fetch("github_org")
-CATEGORIES  = CONFIG.fetch("example_categories")
+MAIN_CATS   = CONFIG.fetch("main_categories").to_h { |m| [m.fetch("id"), m.fetch("categories")] }
 SKIP_REPOS  = %w[ZHdK-Critical-Coding.github.io .github].map(&:downcase).freeze
 OUT_DIR     = File.join(ROOT, "_examples")
 ASSET_DIR   = File.join(ROOT, "assets", "examples")
@@ -265,9 +266,14 @@ repos.each do |repo|
     next
   end
 
+  maincategory = meta["maincategory"].to_s.downcase.strip
+  unless MAIN_CATS.key?(maincategory)
+    report[:errors] << "#{name}: maincategory '#{meta["maincategory"]}' must be one of #{MAIN_CATS.keys.join(", ")}"
+    next
+  end
   category = meta["category"].to_s.downcase.strip
-  unless CATEGORIES.include?(category)
-    report[:errors] << "#{name}: category '#{meta["category"]}' must be one of #{CATEGORIES.join(", ")}"
+  unless MAIN_CATS[maincategory].include?(category)
+    report[:errors] << "#{name}: category '#{meta["category"]}' must be one of #{MAIN_CATS[maincategory].join(", ")} (maincategory #{maincategory})"
     next
   end
   report[:no_name] << name if meta["name"].to_s.strip.empty?
@@ -297,6 +303,7 @@ repos.each do |repo|
 
   front = {
     "title" => meta["name"].to_s.strip.empty? ? name : meta["name"].to_s.strip,
+    "maincategory" => maincategory,
     "category" => category,
     "technology" => meta["technology"].to_s,
     "author" => meta["author"].to_s,

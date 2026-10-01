@@ -1,6 +1,7 @@
 ---
 title: Raspberry Pi Servers
-category: output
+maincategory: utilities
+category: servers
 technology: Node.js
 author: Urs Hofer
 date: 2025-09-26

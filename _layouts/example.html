@@ -2,7 +2,8 @@
 layout: default
 body_class: detail
 ---
-{%- include ordered_examples.html -%}
+{%- include ordered_examples.html maincategory=page.maincategory -%}
+{%- assign main = site.main_categories | where: "id", page.maincategory | first -%}
 {%- assign total = ordered_examples | size -%}
 {%- for e in ordered_examples -%}
   {%- if e.url == page.url -%}{%- assign idx = forloop.index0 -%}{%- endif -%}
@@ -15,7 +16,7 @@ body_class: detail
   <p>
     <span>{{ page.category }}</span><span>{{ page.title }}</span>
   </p>
-  <a href="{{ '/' | relative_url }}" data-key="Escape">Close</a>
+  <a href="{{ main.url | default: '/' | relative_url }}" data-key="Escape">Close</a>
 </header>
 
 <main class="detail-body">

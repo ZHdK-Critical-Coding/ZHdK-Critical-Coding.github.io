@@ -1,11 +1,13 @@
 ---
 title: Hand and Sound
+maincategory: code-samples
 category: input
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-16
 repo: P5_Input_Hand_and_Sound
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Input_Hand_and_Sound
+screenshot: "/assets/examples/p5-input-hand-and-sound/screenshot.png"
 related: []
 render_with_liquid: false
 languages:

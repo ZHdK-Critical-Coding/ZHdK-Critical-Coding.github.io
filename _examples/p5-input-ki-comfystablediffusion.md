@@ -1,11 +1,13 @@
 ---
 title: Comfy Stable Diffusion
+maincategory: code-samples
 category: input
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-16
 repo: P5_Input_KI_ComfyStableDiffusion
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Input_KI_ComfyStableDiffusion
+screenshot: "/assets/examples/p5-input-ki-comfystablediffusion/screenshot.png"
 related: []
 render_with_liquid: false
 languages:
@@ -23,24 +25,30 @@ to get started with generating images from a sketch through ComfyUI.
 
 ## Installation
 
-Requirements: a ComfyUI instance reachable from your computer (usually on
-the local network, with a GPU). The workflow `workflows/workflow_api.json`
-expects the checkpoint `SD1.5/v1-5-pruned-emaonly.ckpt` and the
-**SaveImageWebsocket** node (included with ComfyUI).
-
-Set the address of your ComfyUI server in the `instance` constant at the
-top of `sketch.js` (default `http://192.168.2.8:8188`).
+Requirements: a running ComfyUI server (see Server).
 
 Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not
 used), [p5.comfyui-helper](https://github.com/gohai/p5.comfyui-helper) by
 Gottfried Haider.
 
+## Server
+
+Needs a [ComfyUI](https://github.com/comfyanonymous/ComfyUI) server on port
+8188, usually on a machine with a GPU — on the same computer or on another
+machine in the network. Start it before the sketch; to allow access from
+other machines and from the browser, start it with
+`python main.py --listen --enable-cors-header`. The workflow
+`workflows/workflow_api.json` expects the checkpoint
+`SD1.5/v1-5-pruned-emaonly.ckpt` and the **SaveImageWebsocket** node
+(included with ComfyUI). Set the server address in the `instance` constant
+at the top of `sketch.js` (default `http://192.168.2.8:8188`).
+
 ## How to Run
 
 1. Open the folder in Visual Studio Code and start Live Server (click
    **Go Live** in the status bar).
-2. The browser calls ComfyUI cross-origin. Either start ComfyUI with
-   `--enable-cors-header`, or use the debugger configuration
+2. The browser calls ComfyUI cross-origin. If ComfyUI isn't started with
+   `--enable-cors-header` (see Server), use the debugger configuration
    **Launch Chrome (no Security)** (Run and Debug panel).
 3. Edit the prompt in the text field and press **generate**. A pulsing red
    dot is shown while the image is being generated.
@@ -81,26 +89,32 @@ ComfyUI Bilder zu generieren.
 
 ## Installation
 
-Voraussetzungen: eine ComfyUI-Instanz, die vom eigenen Computer aus
-erreichbar ist (meist im lokalen Netz, mit GPU). Der Workflow
-`workflows/workflow_api.json` erwartet den Checkpoint
-`SD1.5/v1-5-pruned-emaonly.ckpt` und den Node **SaveImageWebsocket** (in
-ComfyUI enthalten).
-
-Die Adresse des ComfyUI-Servers in der Konstante `instance` oben in
-`sketch.js` eintragen (Standard `http://192.168.2.8:8188`).
+Voraussetzungen: ein laufender ComfyUI-Server (siehe Server).
 
 Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
 nicht verwendet), [p5.comfyui-helper](https://github.com/gohai/p5.comfyui-helper)
 von Gottfried Haider.
 
+## Server
+
+Braucht einen [ComfyUI](https://github.com/comfyanonymous/ComfyUI)-Server
+auf Port 8188, meist auf einem Rechner mit GPU – auf demselben Computer
+oder auf einem anderen Rechner im Netzwerk. Vor dem Sketch starten; damit
+andere Rechner und der Browser zugreifen können, mit
+`python main.py --listen --enable-cors-header` starten. Der Workflow
+`workflows/workflow_api.json` erwartet den Checkpoint
+`SD1.5/v1-5-pruned-emaonly.ckpt` und den Node **SaveImageWebsocket** (in
+ComfyUI enthalten). Die Adresse des Servers in der Konstante `instance`
+oben in `sketch.js` eintragen (Standard `http://192.168.2.8:8188`).
+
 ## Ausführen
 
 1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
    Statusleiste auf **Go Live** klicken).
-2. Der Browser greift Cross-Origin auf ComfyUI zu. Entweder ComfyUI mit
-   `--enable-cors-header` starten oder die Debugger-Konfiguration
-   **Launch Chrome (no Security)** verwenden (Panel Run and Debug).
+2. Der Browser greift Cross-Origin auf ComfyUI zu. Ist ComfyUI nicht mit
+   `--enable-cors-header` gestartet (siehe Server), die
+   Debugger-Konfiguration **Launch Chrome (no Security)** verwenden (Panel
+   Run and Debug).
 3. Den Prompt im Textfeld anpassen und auf **generate** klicken. Während
    das Bild generiert wird, pulsiert ein roter Punkt.
 

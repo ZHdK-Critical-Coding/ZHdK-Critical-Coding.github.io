@@ -3,7 +3,9 @@
 Jekyll site listing the coding examples of the [ZHdK-Critical-Coding](https://github.com/ZHdK-Critical-Coding) organisation.
 Published with GitHub Pages at https://zhdk-critical-coding.github.io/.
 
-- **Start page text:** `index.md`
+- **Start page text:** `index.md` (Code Samples), `utilities.md` (Utilities)
+- **Main categories and their columns:** `main_categories` in `_config.yml`; the header dropdown switches between them.
+  A page shows one column per category that has examples, in equal widths.
 - **Layout / design:** `_layouts/`, `assets/css/style.css`
 - **Detail pages:** generated into `_examples/` by `scripts/update.rb` – don't edit them by hand
 
@@ -16,7 +18,9 @@ name: "Joystick"            # title on the page
 date: 2026-09-16
 author: Urs Hofer
 technology: "P5.js"         # shown right of the title
-category: input             # input | transformation | output
+maincategory: code-samples  # page: code-samples | utilities
+category: input             # column on that page – code-samples: input | transformation | output
+                            #                       utilities: servers | arduino
 readme: "sub/readme.md"     # optional, if the README is not in the repo root
 readme_de: "sub/README_DE.md" # optional, if the German README is not next to the README
 related: Servers_Pusher     # optional, repo name or list of names, linked above the README
@@ -57,7 +61,7 @@ bundle exec ruby scripts/update.rb --local ../Examples  # or read existing local
 bundle exec jekyll serve                    # preview on http://127.0.0.1:4000/
 ```
 
-The script prints which repositories have no `example.yaml`, no or an empty README, or an invalid category.
+The script prints which repositories have no `example.yaml`, no or an empty README, or an invalid main category / category.
 Private repositories need a token: `GITHUB_TOKEN`/`GH_TOKEN`, otherwise git's stored github.com credentials are used.
 
 Commit and push the result – or let GitHub do it (see below).

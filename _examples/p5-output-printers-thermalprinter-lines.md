@@ -1,12 +1,15 @@
 ---
 title: Thermal Printer Lines
+maincategory: code-samples
 category: output
 technology: P5.js
 author: Urs Hofer
 date: 2026-09-16
 repo: P5_Output_Printers_ThermalPrinter_Lines
 repo_url: https://github.com/ZHdK-Critical-Coding/P5_Output_Printers_ThermalPrinter_Lines
-related: []
+screenshot: "/assets/examples/p5-output-printers-thermalprinter-lines/screenshot.png"
+related:
+- Servers_RaspberriPi
 render_with_liquid: false
 languages:
 - en
@@ -25,20 +28,23 @@ printer.
 
 ## Installation
 
-Requirements: a thermal printer server that accepts JSON text commands
-over WebSocket and answers with `ok`, reachable from your computer's
-network.
-
-Set `printerConnection` in `sketch.js` to the server address (default
-`ws://10.21.8.225:8080`).
-
 Libraries (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (included, not used).
 
 License: MIT
 
+## Server
+
+Needs `printer-websockets` from
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
+(WebSocket, port 8080), running on a Raspberry Pi with an ESC/POS thermal
+printer on USB, in the same network as your computer. Start it first with
+`bash run.sh` (or `node printer.js`) in its folder. It prints JSON text
+commands and images and answers with `ok`. Set `printerConnection` in
+`sketch.js` to its address (default `ws://10.21.8.225:8080`).
+
 ## How to Run
 
-1. Make sure the printer server is running.
+1. Make sure the printer server is running (see Server).
 2. Open the folder in Visual Studio Code and start Live Server (click
    **Go Live** in the status bar).
 3. Type into the text field and click **Print**.
@@ -73,21 +79,25 @@ Ausgangspunkt, um Text auf einem Bondrucker auszugeben.
 
 ## Installation
 
-Voraussetzungen: ein Thermodrucker-Server, der JSON-Textbefehle per
-WebSocket annimmt, mit `ok` antwortet und im Netzwerk deines Computers
-erreichbar ist.
-
-In `sketch.js` `printerConnection` auf die Adresse des Servers setzen
-(Standard `ws://10.21.8.225:8080`).
-
 Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
 nicht verwendet).
 
 Lizenz: MIT
 
+## Server
+
+Braucht `printer-websockets` aus
+[Servers_RaspberriPi](https://github.com/ZHdK-Critical-Coding/Servers_RaspberriPi)
+(WebSocket, Port 8080), auf einem Raspberry Pi mit einem
+ESC/POS-Thermodrucker an USB, im selben Netzwerk wie dein Computer. Zuerst
+im Ordner mit `bash run.sh` (oder `node printer.js`) starten. Er druckt
+JSON-Textbefehle und Bilder und antwortet mit `ok`. In `sketch.js`
+`printerConnection` auf seine Adresse setzen (Standard
+`ws://10.21.8.225:8080`).
+
 ## Ausführen
 
-1. Sicherstellen, dass der Drucker-Server läuft.
+1. Sicherstellen, dass der Drucker-Server läuft (siehe Server).
 2. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
    Statusleiste auf **Go Live** klicken).
 3. Text ins Textfeld schreiben und auf **Print** klicken.
