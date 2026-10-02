@@ -8,17 +8,14 @@
 # personal library of the API key and in all groups it can read.
 #
 # Tags:
-#   01_Black-Box_Theorie   topic (two digits + underscore): one page per topic,
-#                          listed in the Literature menu
-#   Black-Box-Theorie      the same name written out: not repeated as an entry
-#                          tag, used as the title of new topic pages
+#   02_Medientheorie       category (two digits + underscore), ordered by number
+#   Black Box              subcategory: a plain tag listed under its category
+#                          in literature.categories (_config.yml)
+#                          Both go into the Category column ("Medientheorie ›
+#                          Black Box"); the category names come from the config too
 #   everything else        entry tags, shown in the table and used as filters
 #
-# For every new topic a page literature/<slug>.md is created with a
-# placeholder intro; existing pages are never overwritten, so their intro
-# and title (shown in the menu) can be edited.
-#
-# Only bibliographic data is written (authors, title, year, type, tags, link) –
+# Only bibliographic data is written (authors, title, year, type, category, tags, link) –
 # no API key, library id or Zotero URLs end up on the public site.
 #
 # Usage:
@@ -35,8 +32,9 @@ ROOT      = File.expand_path("..", __dir__)
 CONFIG    = YAML.safe_load(File.read(File.join(ROOT, "_config.yml")))
 SETTINGS  = CONFIG.fetch("literature")
 COLL_PATH = SETTINGS.fetch("collection").split("/").map(&:strip)
+CATS      = SETTINGS.fetch("categories", {})
+SUB_OF    = CATS.flat_map { |cat, c| Array(c["sub"]).map { |sub| [sub, cat] } }.to_h  # "Black Box" => "02_Medientheorie"
 DATA_FILE = File.join(ROOT, "_data", "literature.json")
-PAGE_DIR  = File.join(ROOT, "literature")
 KEY_FILE  = File.join(ROOT, ".zotero_api_key")
 API       = ENV.fetch("ZOTERO_API_URL", "https://api.zotero.org") # override only for tests
 TOPIC_TAG = /\A\d{2}_/
@@ -147,25 +145,6 @@ def topic_title(tag)
   tag.sub(TOPIC_TAG, "").tr("_", " ").strip
 end
 
-def slugify(s)
-  s.downcase.gsub(/[äöü]/, "ä" => "ae", "ö" => "oe", "ü" => "ue").gsub(/[^a-z0-9]+/, "-").gsub(/\A-|-\z/, "")
-end
-
-# Compares tag names without number, case, punctuation and umlaut spelling:
-# "04_Medientheorie_Aesthetik" ~ "Medientheorie & Ästhetik"
-def tag_key(tag)
-  tag.sub(TOPIC_TAG, "").downcase
-     .gsub(/[äöüß]/, "ä" => "ae", "ö" => "oe", "ü" => "ue", "ß" => "ss")
-     .gsub(/[^a-z0-9]/, "")
-end
-
-# An entry tag that repeats a topic: the same name, or the topic name
-# continued ("Interface, HCI & Disappearing Computer" for 05_Interface_HCI_Disappearing)
-def repeats_topic?(tag, topic_keys)
-  key = tag_key(tag)
-  topic_keys.any? { |t| !t.empty? && key.start_with?(t) }
-end
-
 def sort_tags(tags)
   tags.uniq.sort_by(&:downcase)
 end
@@ -185,20 +164,10 @@ abort "Collection #{COLL_PATH.join(" > ")} not found in any library of this key"
 
 raw = get_all("#{lib}/collections/#{coll}/items/top", key, format: "json")
 raw.reject! { |i| SKIP_TYPES.include?(i.dig("data", "itemType")) }
-item_tags = ->(i) { i.dig("data", "tags").to_a.map { |t| t["tag"].to_s.strip }.reject(&:empty?) }
-
-# Topic tags and the written-out names that repeat them
-topic_keys = raw.flat_map { |i| item_tags.(i).grep(TOPIC_TAG) }.uniq.to_h { |t| [t, tag_key(t)] }
-repeats = Hash.new { |h, k| h[k] = [] }
-raw.each do |i|
-  item_tags.(i).grep_v(TOPIC_TAG).each do |t|
-    topic_keys.each { |topic, k| repeats[topic] << t if repeats_topic?(t, [k]) }
-  end
-end
 
 items = raw.map do |i|
   d = i["data"]
-  tags = item_tags.(i).reject { |t| !t.match?(TOPIC_TAG) && repeats_topic?(t, topic_keys.values) }
+  tags = d.fetch("tags", []).map { |t| t["tag"].to_s.strip }.reject(&:empty?)
   author, author_sort = authors(d)
   {
     "author" => author,
@@ -207,67 +176,42 @@ items = raw.map do |i|
     "year" => year(i),
     "type" => kind(d["itemType"]),
     "url" => link(d),
-    "topics" => sort_tags(tags.grep(TOPIC_TAG)),
-    "tags" => sort_tags(tags.grep_v(TOPIC_TAG))
+    "topics" => tags.grep(TOPIC_TAG).sort,
+    "subs" => tags.select { |t| SUB_OF.key?(t) },
+    "tags" => sort_tags(tags.reject { |t| t.match?(TOPIC_TAG) || SUB_OF.key?(t) })
   }.compact
 end
 items.sort_by! { |i| [i["author_sort"].downcase, i["year"], i["title"].downcase] }
 
-topics = items.flat_map { |i| i["topics"] }.uniq.sort.map do |tag|
-  in_topic = items.select { |i| i["topics"].include?(tag) }
-  # the most used written-out name, else the tag without number and underscores
-  written = repeats[tag].tally.max_by { |name, n| [n, -name.length] }&.first
-  {
-    "tag" => tag,
-    "title" => written || topic_title(tag),
-    "slug" => slugify(topic_title(tag)),
-    "count" => in_topic.size,
-    "tags" => sort_tags(in_topic.flat_map { |i| i["tags"] })
-  }
+# Category names from _config.yml, else the tag without number and underscores
+cat_name = ->(t) { CATS.dig(t, "name") || topic_title(t) }
+categories = items.flat_map { |i| i["topics"] }.uniq.sort
+unnamed = categories.reject { |t| CATS.dig(t, "name") }
+
+# One line per category: "Medientheorie › Black Box", or just "Medientheorie".
+# A subcategory also counts for its category, even if that tag is missing.
+items.each do |i|
+  topics = i.delete("topics")
+  subs = i.delete("subs")
+  tops = (topics + subs.map { |t| SUB_OF[t] }).uniq.sort
+  i["categories"] = tops.flat_map do |top|
+    mine = Array(CATS.dig(top, "sub")) & subs  # in the order of the config
+    mine.empty? ? [cat_name.(top)] : mine.map { |t| "#{cat_name.(top)} › #{t}" }
+  end
+  # sorts by category number, then by the position of the subcategory in the config
+  i["category_sort"] = tops.map { |t| [t[0, 2], *(Array(CATS.dig(t, "sub")) & subs).map { |x| format("%02d", Array(CATS.dig(t, "sub")).index(x)) }].join(".") }.join(" ")
 end
 
 FileUtils.mkdir_p(File.dirname(DATA_FILE))
+# Filter row: only tags used by two or more entries (single-use tags stay
+# visible on their entry and still work as filters there)
+tag_count = items.flat_map { |i| i["tags"] }.tally
 File.write(DATA_FILE, JSON.pretty_generate(
-  "topics" => topics,
-  "tags" => sort_tags(items.flat_map { |i| i["tags"] }),
+  "tags" => sort_tags(tag_count.select { |_, n| n > 1 }.keys),
   "items" => items
 ) + "\n")
 
-# A page per topic, created once with a placeholder intro
-FileUtils.mkdir_p(PAGE_DIR)
-created = []
-topics.each do |t|
-  file = File.join(PAGE_DIR, "#{t["slug"]}.md")
-  next if File.exist?(file)
-
-  File.write(file, <<~MD)
-    ---
-    layout: literature
-    topic: "#{t["tag"]}"
-    title: "#{t["title"]}"
-    permalink: /literature/#{t["slug"]}/
-    ---
-
-    <div class="lang" lang="en" markdown="1">
-
-    #{t["title"]}
-
-    </div>
-
-    <div class="lang" lang="de" markdown="1">
-
-    #{t["title"]}
-
-    </div>
-  MD
-  created << file.delete_prefix("#{ROOT}/")
-end
-
-known = topics.map { |t| "#{t["slug"]}.md" } + ["index.md"]
-stale = Dir.children(PAGE_DIR).grep(/\.md\z/) - known
-
-puts "#{items.size} entries, #{topics.size} topics from #{COLL_PATH.join(" > ")} -> _data/literature.json"
-created.each { |f| puts "  created #{f} (edit its intro)" }
-stale.each { |f| puts "  literature/#{f} has no topic in Zotero any more – delete it?" }
-no_topic = items.count { |i| i["topics"].empty? }
-puts "  #{no_topic} entries without a topic tag (only on the overview page)" if no_topic.positive?
+puts "#{items.size} entries, #{categories.size} categories from #{COLL_PATH.join(" > ")} -> _data/literature.json"
+unnamed.each { |t| puts "  category #{t} has no name in _config.yml (literature.categories) – shown as \"#{topic_title(t)}\"" }
+no_category = items.count { |i| i["categories"].empty? }
+puts "  #{no_category} entries without a category tag" if no_category.positive?

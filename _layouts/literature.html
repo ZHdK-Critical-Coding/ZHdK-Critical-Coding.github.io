@@ -4,9 +4,8 @@ body_class: home
 section: literature
 ---
 {%- comment -%}
-  A literature list from _data/literature.json (scripts/literature.rb):
-  all entries, or – with `topic:` in the front matter – the entries
-  tagged with that topic. Sorting and tag filters: assets/js/literature.js
+  The literature list from _data/literature.json (scripts/literature.rb).
+  Sorting and tag filters: assets/js/literature.js
 {%- endcomment -%}
 {%- include header.html %}
 
@@ -14,14 +13,8 @@ section: literature
   {{ content }}
 </section>
 
-{%- assign lit = site.data.literature %}
-{%- assign items = lit.items %}
-{%- assign tags = lit.tags %}
-{%- if page.topic %}
-  {%- assign topic = lit.topics | where: "tag", page.topic | first %}
-  {%- assign items = items | where_exp: "i", "i.topics contains page.topic" %}
-  {%- assign tags = topic.tags %}
-{%- endif %}
+{%- assign items = site.data.literature.items %}
+{%- assign tags = site.data.literature.tags %}
 
 <main class="literature" data-literature>
   {%- if tags.size > 0 %}
@@ -45,16 +38,18 @@ section: literature
         <th class="col-title"><button type="button" data-sort="title"><span class="lang" lang="en">Title</span><span class="lang" lang="de">Titel</span></button></th>
         <th class="col-year"><button type="button" data-sort="year"><span class="lang" lang="en">Year</span><span class="lang" lang="de">Jahr</span></button></th>
         <th class="col-type"><button type="button" data-sort="type"><span class="lang" lang="en">Type</span><span class="lang" lang="de">Typ</span></button></th>
+        <th class="col-category"><button type="button" data-sort="category"><span class="lang" lang="en">Category</span><span class="lang" lang="de">Kategorie</span></button></th>
         <th class="col-tags"><button type="button" data-sort="tags"><span class="lang" lang="en">Tags</span><span class="lang" lang="de">Schlagworte</span></button></th>
       </tr>
     </thead>
     <tbody>
       {%- for i in items %}
-      <tr data-author="{{ i.author_sort | escape }}" data-title="{{ i.title | escape }}" data-year="{{ i.year }}" data-type="{{ i.type }}" data-tags="{{ i.tags | join: '|' | escape }}">
+      <tr data-author="{{ i.author_sort | escape }}" data-title="{{ i.title | escape }}" data-year="{{ i.year }}" data-type="{{ i.type }}" data-category="{{ i.category_sort | escape }}" data-tags="{{ i.tags | join: '|' | escape }}">
         <td class="col-author">{{ i.author | escape }}</td>
         <td class="col-title">{% if i.url %}<a href="{{ i.url | escape }}" target="_blank" rel="noopener">{{ i.title | escape }}</a>{% else %}{{ i.title | escape }}{% endif %}</td>
         <td class="col-year">{{ i.year }}</td>
         <td class="col-type">{% case i.type %}{% when "book" %}<span class="lang" lang="en">Book</span><span class="lang" lang="de">Buch</span>{% when "article" %}<span class="lang" lang="en">Article</span><span class="lang" lang="de">Artikel</span>{% else %}Web{% endcase %}</td>
+        <td class="col-category">{% for c in i.categories %}<span class="category">{{ c | escape }}</span>{% endfor %}</td>
         <td class="col-tags">
           {%- if i.tags.size > 0 %}
           <ul class="tags">

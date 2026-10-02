@@ -57,15 +57,19 @@ Short abstract, 2–4 sentences.
 
 ## Literature
 
-The Literature pages list the entries of the Zotero collection `literature.collection` in `_config.yml`
-(`Critical Coding/Export`). `scripts/literature.rb` reads it and writes `_data/literature.json`.
+`/literature/` lists all entries of the Zotero collection `literature.collection` in `_config.yml`
+(`Critical Coding/Export`) in one table. `scripts/literature.rb` reads it and writes `_data/literature.json`;
+the intro text is in `literature/index.md`.
 
-- Tags of the form `01_Black-Box_Theorie` (two digits, underscore) are **topics**: each gets a page
-  `literature/<slug>.md` and an entry in the Literature menu. The number sets the order.
+- Tags of the form `02_Medientheorie` (two digits, underscore) are **categories**, ordered by their number.
+  Their **subcategories** are plain tags (`Black Box`) listed under the category in `literature.categories` in
+  `_config.yml`, which also sets the names shown. The Category column shows "Medientheorie › Black Box".
+  Add new (sub)categories there when they appear in Zotero (the script reports categories without a name).
+  An entry can have several.
 - The Type column groups Zotero's item types into Book, Article and Web (`BOOK_TYPES`, `ARTICLE_TYPES` in the script).
 - All other tags are shown per entry and can be used as filters (an entry must have all selected tags).
-- New topic pages are created with a placeholder intro – edit it and the `title` (used in the menu) there; existing pages are never overwritten.
-  `literature/index.md` is the overview with all entries.
+  The filter row above the table only lists tags used by two or more entries; the others work from the entry itself.
+- Every column is sortable.
 
 ```sh
 printf '%s' 'YOUR-ZOTERO-KEY' > .zotero_api_key     # once; git-ignored, never commit it

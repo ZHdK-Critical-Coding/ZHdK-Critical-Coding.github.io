@@ -1,108 +1,277 @@
 {
-  "topics": [
-    {
-      "tag": "01_Black-Box_Theorie",
-      "title": "Black-Box-Theorie",
-      "slug": "black-box-theorie",
-      "count": 1,
-      "tags": [
-        "Black Box",
-        "id found",
-        "Systemtheorie",
-        "Wissenschaftstheorie"
-      ]
-    },
-    {
-      "tag": "03_Techniksoziologie_STS",
-      "title": "Techniksoziologie & STS",
-      "slug": "techniksoziologie-sts",
-      "count": 1,
-      "tags": [
-        "Feminismus",
-        "id candidate",
-        "Posthumanismus",
-        "Technologie"
-      ]
-    },
-    {
-      "tag": "04_Medientheorie_Aesthetik",
-      "title": "Medientheorie & Ästhetik",
-      "slug": "medientheorie-aesthetik",
-      "count": 2,
-      "tags": [
-        "Brief",
-        "Computerkunst",
-        "Medienmaterialität",
-        "Medienphilosophie",
-        "Ressourcen",
-        "Ökologie"
-      ]
-    },
-    {
-      "tag": "05_Interface_HCI_Disappearing",
-      "title": "Interface, HCI & Disappearing Computer",
-      "slug": "interface-hci-disappearing",
-      "count": 1,
-      "tags": [
-        "HCI",
-        "id found",
-        "Technikgeschichte",
-        "Überblick"
-      ]
-    }
-  ],
   "tags": [
-    "Black Box",
-    "Brief",
-    "Computerkunst",
-    "Feminismus",
-    "HCI",
-    "id candidate",
-    "id found",
-    "Medienmaterialität",
-    "Medienphilosophie",
-    "Posthumanismus",
-    "Ressourcen",
-    "Systemtheorie",
-    "Technikgeschichte",
-    "Technologie",
-    "Wissenschaftstheorie",
-    "Ökologie",
-    "Überblick"
+    "Bild",
+    "Einführung",
+    "Gender",
+    "Handbuch",
+    "Katalog",
+    "Kritik",
+    "Kunst",
+    "Methode",
+    "Open Source",
+    "Philosophie",
+    "Politik",
+    "Pädagogik",
+    "Sichtbarkeit",
+    "Ästhetik",
+    "Ökologie"
   ],
   "items": [
     {
-      "author": "Bunge, Mario",
-      "author_sort": "Bunge",
-      "title": "A General Black Box Theory",
-      "year": "1963",
-      "type": "article",
-      "url": "https://www.cambridge.org/core/product/identifier/S0031824800040150/type/journal_article",
-      "topics": [
-        "01_Black-Box_Theorie"
-      ],
+      "author": "(:Unkn) Unknown",
+      "author_sort": "(:Unkn) Unknown",
+      "title": "Algorithmic Regimes. Methods, Interactions, and Politics",
+      "year": "2024",
+      "type": "web",
+      "url": "https://doi.org/10.25969/mediarep/22097",
       "tags": [
-        "Black Box",
-        "id found",
-        "Systemtheorie",
-        "Wissenschaftstheorie"
-      ]
+        "Methode",
+        "Politik"
+      ],
+      "categories": [
+        "KI und Algorithmen"
+      ],
+      "category_sort": "07"
     },
     {
-      "author": "Flusser, Vilém",
-      "author_sort": "Flusser",
-      "title": "1986: Letter to the Editor of Leonardo",
-      "year": "1986",
-      "type": "article",
-      "url": "https://doi.org/10.11588/ic.2018.0.44747",
-      "topics": [
-        "04_Medientheorie_Aesthetik"
+      "author": "Ashby, W. Ross",
+      "author_sort": "Ashby",
+      "title": "An Introduction to Cybernetics",
+      "year": "1956",
+      "type": "book",
+      "url": "https://www.biodiversitylibrary.org/bibliography/5851",
+      "tags": [],
+      "categories": [
+        "Medientheorie › Black Box",
+        "Medientheorie › Kybernetik & Systemtheorie"
       ],
+      "category_sort": "02.00.01"
+    },
+    {
+      "author": "Bergstrom, Ilias; Lotto, R. Beau",
+      "author_sort": "Bergstrom",
+      "title": "Code Bending: A New Creative Coding Practice",
+      "year": "2015",
+      "type": "article",
+      "url": "https://doi.org/10.1162/LEON_a_00934",
+      "tags": [],
+      "categories": [
+        "Gestaltung & Design › Computerkunst & Generative Kunst",
+        "Coding und Praxis › Creative Coding"
+      ],
+      "category_sort": "05.00 06.03"
+    },
+    {
+      "author": "Berry, David M.; Dieter, Michael (Ed.)",
+      "author_sort": "Berry",
+      "title": "Postdigital Aesthetics: Art, Computation and Design",
+      "year": "2015",
+      "type": "book",
       "tags": [
-        "Brief",
-        "Computerkunst",
-        "Medienphilosophie"
-      ]
+        "Ästhetik"
+      ],
+      "categories": [
+        "Gestaltung & Design › Postdigitale Gestaltung & Design",
+        "Coding und Praxis › Software & Code Studies"
+      ],
+      "category_sort": "05.02 06.00"
+    },
+    {
+      "author": "Betancourt, Michael",
+      "author_sort": "Betancourt",
+      "title": "Glitch Art in Theory and Practice: Critical Failures and Post-Digital Aesthetics",
+      "year": "2017",
+      "type": "book",
+      "tags": [
+        "Ästhetik"
+      ],
+      "categories": [
+        "Gestaltung & Design › Postdigitale Gestaltung & Design"
+      ],
+      "category_sort": "05.02"
+    },
+    {
+      "author": "Bridle, James",
+      "author_sort": "Bridle",
+      "title": "New Dark Age: Technology and the End of the Future",
+      "year": "2018",
+      "type": "book",
+      "tags": [
+        "Kritik",
+        "Methode"
+      ],
+      "categories": [
+        "Gesellschaft › Digitale Kultur & Plattformen"
+      ],
+      "category_sort": "01.01"
+    },
+    {
+      "author": "Brunton, Finn; Nissenbaum, Helen",
+      "author_sort": "Brunton",
+      "title": "Obfuscation. A User's Guide for Privacy and Protest",
+      "year": "2015",
+      "type": "book",
+      "tags": [
+        "Politik",
+        "Sichtbarkeit"
+      ],
+      "categories": [
+        "Überwachung und Macht"
+      ],
+      "category_sort": "04"
+    },
+    {
+      "author": "Chiang, Ted",
+      "author_sort": "Chiang",
+      "title": "ChatGPT Is a Blurry JPEG of the Web",
+      "year": "2023",
+      "type": "article",
+      "tags": [],
+      "categories": [
+        "KI und Algorithmen"
+      ],
+      "category_sort": "07"
+    },
+    {
+      "author": "Conrad, Demian; van Leijsen, Rob; Héritier, David",
+      "author_sort": "Conrad",
+      "title": "Graphic Design in the Post-Digital Age",
+      "year": "2021",
+      "type": "book",
+      "tags": [],
+      "categories": [
+        "Gestaltung & Design › Grafikdesign",
+        "Gestaltung & Design › Postdigitale Gestaltung & Design"
+      ],
+      "category_sort": "05.01.02"
+    },
+    {
+      "author": "Cramer, Florian",
+      "author_sort": "Cramer",
+      "title": "What Is 'Post-Digital'?",
+      "year": "2014",
+      "type": "article",
+      "url": "https://tidsskrift.dk/APRJA/article/view/116068",
+      "tags": [],
+      "categories": [
+        "Medientheorie",
+        "Gestaltung & Design › Postdigitale Gestaltung & Design"
+      ],
+      "category_sort": "02 05.02"
+    },
+    {
+      "author": "Cramer, Florian; Jandrić, Petar",
+      "author_sort": "Cramer",
+      "title": "Postdigital: A Term That Sucks but Is Useful",
+      "year": "2021",
+      "type": "article",
+      "url": "https://doi.org/10.1007/s42438-021-00225-9",
+      "tags": [
+        "Einführung"
+      ],
+      "categories": [
+        "Gestaltung & Design › Postdigitale Gestaltung & Design"
+      ],
+      "category_sort": "05.02"
+    },
+    {
+      "author": "Crawford, Kate; Paglen, Trevor",
+      "author_sort": "Crawford",
+      "title": "Excavating AI. The Politics of Images in Machine Learning Training Sets",
+      "year": "2019",
+      "type": "article",
+      "url": "https://link.springer.com/10.1007/s00146-021-01162-8",
+      "tags": [],
+      "categories": [
+        "Informationstechnologie › Ordnen, Suchen & Finden",
+        "KI und Algorithmen"
+      ],
+      "category_sort": "03.02 07"
+    },
+    {
+      "author": "Dechow, Douglas R.",
+      "author_sort": "Dechow",
+      "title": "Intertwingled. The Work and Influence of Ted Nelson",
+      "year": "2015",
+      "type": "book",
+      "tags": [
+        "People",
+        "Sprache"
+      ],
+      "categories": [
+        "Coding und Praxis › Software & Code Studies",
+        "Geschichte › Computergeschichte"
+      ],
+      "category_sort": "06.00 08.00"
+    },
+    {
+      "author": "Dunne, Anthony; Raby, Fiona",
+      "author_sort": "Dunne",
+      "title": "Speculative Everything. Design, Fiction, and Social Dreaming",
+      "year": "2013",
+      "type": "book",
+      "tags": [
+        "Kritik"
+      ],
+      "categories": [
+        "Gestaltung & Design › Grafikdesign"
+      ],
+      "category_sort": "05.01"
+    },
+    {
+      "author": "Funk, Mathias; Zhang, Yu",
+      "author_sort": "Funk",
+      "title": "Coding Art: A Guide to Unlocking Your Creativity with the Processing Language",
+      "year": "2023",
+      "type": "book",
+      "url": "https://link.springer.com/10.1007/978-1-4842-9780-3",
+      "tags": [
+        "Einführung"
+      ],
+      "categories": [
+        "Coding und Praxis › Creative Coding"
+      ],
+      "category_sort": "06.03"
+    },
+    {
+      "author": "George, Warren",
+      "author_sort": "George",
+      "title": "Creating 3D Algorithmic Art with p5.js",
+      "year": "2024",
+      "type": "book",
+      "tags": [],
+      "categories": [
+        "Coding und Praxis › Creative Coding"
+      ],
+      "category_sort": "06.03"
+    },
+    {
+      "author": "Gerstner, Karl",
+      "author_sort": "Gerstner",
+      "title": "Designing Programmes (Auszug)",
+      "year": "1964",
+      "type": "book",
+      "tags": [],
+      "categories": [
+        "Gestaltung & Design › Grafikdesign"
+      ],
+      "category_sort": "05.01"
+    },
+    {
+      "author": "Goodchild, Amy",
+      "author_sort": "Goodchild",
+      "title": "Using ChatGPT to Implement Sol LeWitt's Wall Drawings (Weblink)",
+      "year": "1975",
+      "type": "web",
+      "url": "https://www.amygoodchild.com/blog/chatgpt-sol-lewitt-wall-drawings",
+      "tags": [
+        "Kunst"
+      ],
+      "categories": [
+        "Gestaltung & Design › Computerkunst & Generative Kunst",
+        "KI und Algorithmen"
+      ],
+      "category_sort": "05.00 07"
     },
     {
       "author": "Haraway, Donna",
@@ -110,32 +279,315 @@
       "title": "A Cyborg Manifesto",
       "year": "1991",
       "type": "book",
-      "topics": [
-        "03_Techniksoziologie_STS"
-      ],
       "tags": [
-        "Feminismus",
-        "id candidate",
-        "Posthumanismus",
-        "Technologie"
-      ]
+        "Gender",
+        "Philosophie"
+      ],
+      "categories": [
+        "Gesellschaft › STS & Soziologie"
+      ],
+      "category_sort": "01.00"
     },
     {
-      "author": "Myers, Brad A.",
-      "author_sort": "Myers",
-      "title": "A Brief History of Human-Computer Interaction Technology",
-      "year": "1998",
-      "type": "article",
-      "url": "https://dl.acm.org/doi/10.1145/274430.274436",
-      "topics": [
-        "05_Interface_HCI_Disappearing"
-      ],
+      "author": "Haraway, Donna J.",
+      "author_sort": "Haraway",
+      "title": "Simians, Cyborgs, and Women. The Reinvention of Nature",
+      "year": "1991",
+      "type": "book",
       "tags": [
-        "HCI",
-        "id found",
-        "Technikgeschichte",
-        "Überblick"
-      ]
+        "Gender",
+        "Methode"
+      ],
+      "categories": [
+        "Gesellschaft › STS & Soziologie"
+      ],
+      "category_sort": "01.00"
+    },
+    {
+      "author": "Hebron, Patrick",
+      "author_sort": "Hebron",
+      "title": "Machine Learning for Designers",
+      "year": "2016",
+      "type": "article",
+      "tags": [],
+      "categories": [
+        "Gestaltung & Design",
+        "KI und Algorithmen"
+      ],
+      "category_sort": "05 07"
+    },
+    {
+      "author": "Hoy, Meredith Anne",
+      "author_sort": "Hoy",
+      "title": "From Point to Pixel. A Genealogy of Digital Aesthetics",
+      "year": "2017",
+      "type": "book",
+      "tags": [
+        "Ästhetik"
+      ],
+      "categories": [
+        "Medientheorie",
+        "Gestaltung & Design › Grafikdesign",
+        "Geschichte"
+      ],
+      "category_sort": "02 05.01 08"
+    },
+    {
+      "author": "Isaacs, Ken",
+      "author_sort": "Isaacs",
+      "title": "How to Build Your Own Living Structures",
+      "year": "1974",
+      "type": "book",
+      "tags": [],
+      "categories": [
+        "Gestaltung & Design",
+        "Coding und Praxis › DIY & Repair",
+        "Geschichte › Computergeschichte"
+      ],
+      "category_sort": "05 06.01 08.00"
+    },
+    {
+      "author": "Konior, Bogna",
+      "author_sort": "Konior",
+      "title": "The Dark Forest Theory of the Internet",
+      "year": "2025",
+      "type": "book",
+      "tags": [
+        "Philosophie"
+      ],
+      "categories": [
+        "Gesellschaft › Digitale Kultur & Plattformen",
+        "Coding und Praxis › Software & Code Studies",
+        "Geschichte › Computergeschichte"
+      ],
+      "category_sort": "01.01 06.00 08.00"
+    },
+    {
+      "author": "Krol, Ed",
+      "author_sort": "Krol",
+      "title": "The Whole Internet User's Guide & Catalog (2nd ed.)",
+      "year": "1994",
+      "type": "book",
+      "tags": [
+        "Handbuch",
+        "Open Source"
+      ],
+      "categories": [
+        "Gesellschaft › Digitale Kultur & Plattformen",
+        "Geschichte › Computergeschichte"
+      ],
+      "category_sort": "01.01 08.00"
+    },
+    {
+      "author": "Levin, Golan; Brain, Tega",
+      "author_sort": "Levin",
+      "title": "Code as Creative Medium: A Handbook for Computational Art and Design",
+      "year": "2021",
+      "type": "book",
+      "tags": [
+        "Kunst",
+        "Pädagogik"
+      ],
+      "categories": [
+        "Coding und Praxis › Creative Coding"
+      ],
+      "category_sort": "06.03"
+    },
+    {
+      "author": "LeWitt, Sol; Legg, Alicia; Lippard, Lucy R.; Rose, Bernice; Rosenblum, Robert",
+      "author_sort": "LeWitt",
+      "title": "Sol LeWitt. Katalog zur Ausstellung im Museum of Modern Art, New York",
+      "year": "1978",
+      "type": "book",
+      "tags": [
+        "Katalog"
+      ],
+      "categories": [
+        "Gestaltung & Design › Computerkunst & Generative Kunst"
+      ],
+      "category_sort": "05.00"
+    },
+    {
+      "author": "Light, Jennifer S.",
+      "author_sort": "Light",
+      "title": "When Computers Were Women",
+      "year": "1999",
+      "type": "article",
+      "url": "https://muse.jhu.edu/article/33396",
+      "tags": [
+        "Gender"
+      ],
+      "categories": [
+        "Gesellschaft",
+        "Geschichte › Computergeschichte",
+        "Wirtschaftskritik"
+      ],
+      "category_sort": "01 08.00 09"
+    },
+    {
+      "author": "Lorenz, Martin",
+      "author_sort": "Lorenz",
+      "title": "Flexible Visual Systems. The Design Manual for Contemporary Visual Identities",
+      "year": "2021",
+      "type": "book",
+      "tags": [
+        "Handbuch"
+      ],
+      "categories": [
+        "Gestaltung & Design › Grafikdesign"
+      ],
+      "category_sort": "05.01"
+    },
+    {
+      "author": "Lovink, Geert",
+      "author_sort": "Lovink",
+      "title": "Im Bann der Plattformen. Die nächste Runde der Netzkritik",
+      "year": "2017",
+      "type": "book",
+      "url": "https://doi.org/10.14361/9783839433683",
+      "tags": [
+        "Kritik"
+      ],
+      "categories": [
+        "Gesellschaft › Digitale Kultur & Plattformen"
+      ],
+      "category_sort": "01.01"
+    },
+    {
+      "author": "Lovink, Geert",
+      "author_sort": "Lovink",
+      "title": "In der Plattformfalle. Plädoyer zur Rückeroberung des Internets",
+      "year": "2022",
+      "type": "book",
+      "url": "https://doi.org/10.14361/9783839463338",
+      "tags": [
+        "Kritik",
+        "Open Source"
+      ],
+      "categories": [
+        "Gesellschaft › Digitale Kultur & Plattformen"
+      ],
+      "category_sort": "01.01"
+    },
+    {
+      "author": "Manovich, Lev",
+      "author_sort": "Manovich",
+      "title": "The Language of New Media",
+      "year": "2001",
+      "type": "article",
+      "url": "https://cjc.utppublishing.com/doi/10.22230/cjc.2002v27n1a1280",
+      "tags": [
+        "Einführung",
+        "Ästhetik"
+      ],
+      "categories": [
+        "Medientheorie"
+      ],
+      "category_sort": "02"
+    },
+    {
+      "author": "Manovich, Lev",
+      "author_sort": "Manovich",
+      "title": "AI Aesthetics",
+      "year": "2018",
+      "type": "book",
+      "tags": [
+        "Daten",
+        "Ästhetik"
+      ],
+      "categories": [
+        "KI und Algorithmen"
+      ],
+      "category_sort": "07"
+    },
+    {
+      "author": "Marino, Mark C.",
+      "author_sort": "Marino",
+      "title": "Critical Code Studies",
+      "year": "2020",
+      "type": "book",
+      "tags": [
+        "Methode"
+      ],
+      "categories": [
+        "Coding und Praxis › Software & Code Studies"
+      ],
+      "category_sort": "06.00"
+    },
+    {
+      "author": "Marschner, Steve; Shirley, Peter",
+      "author_sort": "Marschner",
+      "title": "Fundamentals of Computer Graphics",
+      "year": "2016",
+      "type": "book",
+      "tags": [
+        "Bild",
+        "Einführung"
+      ],
+      "categories": [
+        "Coding und Praxis › Creative Coding"
+      ],
+      "category_sort": "06.03"
+    },
+    {
+      "author": "Maurer, Kathrin; Petersen, Rikke Munck; Routhier, Dominique; Wellendorf, Kassandra; Veel, Kristin (Ed.)",
+      "author_sort": "Maurer",
+      "title": "The Aesthetics of Machine Vision. Critical Terms and Ideas",
+      "year": "2026",
+      "type": "book",
+      "tags": [
+        "Bild",
+        "Handbuch",
+        "Ästhetik"
+      ],
+      "categories": [
+        "KI und Algorithmen"
+      ],
+      "category_sort": "07"
+    },
+    {
+      "author": "Metahaven",
+      "author_sort": "Metahaven",
+      "title": "Black Transparency: The Right to Know in the Age of Mass Surveillance",
+      "year": "2015",
+      "type": "book",
+      "tags": [
+        "Sichtbarkeit"
+      ],
+      "categories": [
+        "Medientheorie › Black Box",
+        "Überwachung und Macht",
+        "Gestaltung & Design"
+      ],
+      "category_sort": "02.00 04 05"
+    },
+    {
+      "author": "Nees, Georg",
+      "author_sort": "Nees",
+      "title": "Generative Computergraphik",
+      "year": "2006",
+      "type": "book",
+      "tags": [],
+      "categories": [
+        "Gestaltung & Design › Computerkunst & Generative Kunst",
+        "Geschichte › Computergeschichte"
+      ],
+      "category_sort": "05.00 08.00"
+    },
+    {
+      "author": "Paoletti, John T.",
+      "author_sort": "Paoletti",
+      "title": "No Title. The Collection of Sol LeWitt",
+      "year": "1981",
+      "type": "book",
+      "tags": [
+        "Katalog"
+      ],
+      "categories": [
+        "Informationstechnologie › Ordnen, Suchen & Finden",
+        "Gestaltung & Design › Computerkunst & Generative Kunst"
+      ],
+      "category_sort": "03.02 05.00"
     },
     {
       "author": "Parikka, Jussi",
@@ -143,14 +595,236 @@
       "title": "A Geology of Media",
       "year": "2015",
       "type": "book",
-      "topics": [
-        "04_Medientheorie_Aesthetik"
-      ],
       "tags": [
-        "Medienmaterialität",
-        "Ressourcen",
         "Ökologie"
-      ]
+      ],
+      "categories": [
+        "Medientheorie"
+      ],
+      "category_sort": "02"
+    },
+    {
+      "author": "Pater, Ruben",
+      "author_sort": "Pater",
+      "title": "CAPS LOCK. How Capitalism Took Hold of Graphic Design, and How to Escape from It",
+      "year": "2021",
+      "type": "book",
+      "tags": [],
+      "categories": [
+        "Gestaltung & Design › Grafikdesign",
+        "Wirtschaftskritik"
+      ],
+      "category_sort": "05.01 09"
+    },
+    {
+      "author": "Reas, Casey; McWilliams, Chandler",
+      "author_sort": "Reas",
+      "title": "Form+Code in Design, Art, and Architecture",
+      "year": "2010",
+      "type": "book",
+      "tags": [
+        "Kunst"
+      ],
+      "categories": [
+        "Gestaltung & Design",
+        "Coding und Praxis › Creative Coding"
+      ],
+      "category_sort": "05 06.03"
+    },
+    {
+      "author": "Richardson, Andrew",
+      "author_sort": "Richardson",
+      "title": "Data-driven Graphic Design: Creative Coding for Visual Communication",
+      "year": "2016",
+      "type": "book",
+      "url": "https://www.bloomsburyvisualarts.com/encyclopedia?docid=b-9781474222457",
+      "tags": [],
+      "categories": [
+        "Gestaltung & Design › Grafikdesign",
+        "Coding und Praxis › Creative Coding"
+      ],
+      "category_sort": "05.01 06.03"
+    },
+    {
+      "author": "Riddell, Alan (Ed.)",
+      "author_sort": "Riddell",
+      "title": "Typewriter Art",
+      "year": "1975",
+      "type": "article",
+      "tags": [
+        "Essay",
+        "Kunst"
+      ],
+      "categories": [
+        "Gestaltung & Design › Computerkunst & Generative Kunst",
+        "Gestaltung & Design › Grafikdesign"
+      ],
+      "category_sort": "05.00.01"
+    },
+    {
+      "author": "Rushkoff, Douglas",
+      "author_sort": "Rushkoff",
+      "title": "Survival of the Richest: Escape Fantasies of the Tech Billionaires",
+      "year": "2022",
+      "type": "book",
+      "tags": [
+        "Kritik"
+      ],
+      "categories": [
+        "Gesellschaft › Digitale Kultur & Plattformen",
+        "Wirtschaftskritik"
+      ],
+      "category_sort": "01.01 09"
+    },
+    {
+      "author": "Savić, Selena; Wuschitz, Stefanie",
+      "author_sort": "Savić",
+      "title": "Feminist Hackerspace as a Place of Infrastructure Production",
+      "year": "2018",
+      "type": "article",
+      "tags": [
+        "Gender",
+        "Ökologie"
+      ],
+      "categories": [
+        "Coding und Praxis › DIY & Repair",
+        "Geschichte › Computergeschichte"
+      ],
+      "category_sort": "06.01 08.00"
+    },
+    {
+      "author": "Seele, Peter; Zapf, Lucas",
+      "author_sort": "Seele",
+      "title": "Die Rückseite der Cloud. Eine Theorie des Privaten ohne Geheimnis",
+      "year": "2017",
+      "type": "book",
+      "tags": [
+        "Sichtbarkeit"
+      ],
+      "categories": [
+        "Informationstechnologie › Cloud Computing",
+        "Überwachung und Macht"
+      ],
+      "category_sort": "03.01 04"
+    },
+    {
+      "author": "Soon, Winnie; Cox, Geoff",
+      "author_sort": "Soon",
+      "title": "Aesthetic Programming: A Handbook of Software Studies",
+      "year": "2020",
+      "type": "book",
+      "tags": [
+        "Ästhetik"
+      ],
+      "categories": [
+        "Coding und Praxis › Software & Code Studies",
+        "Coding und Praxis › Creative Coding"
+      ],
+      "category_sort": "06.00.03"
+    },
+    {
+      "author": "Steyerl, Hito",
+      "author_sort": "Steyerl",
+      "title": "In Defense of the Poor Image",
+      "year": "2009",
+      "type": "book",
+      "url": "https://www.bloomsburycollections.com/monograph?docid=b-9781501354120",
+      "tags": [
+        "Bild"
+      ],
+      "categories": [
+        "Gesellschaft › Digitale Kultur & Plattformen",
+        "Medientheorie"
+      ],
+      "category_sort": "01.01 02"
+    },
+    {
+      "author": "Steyerl, Hito",
+      "author_sort": "Steyerl",
+      "title": "A Sea of Data: Apophenia and Pattern (Mis-)Recognition",
+      "year": "2016",
+      "type": "article",
+      "tags": [
+        "Bild",
+        "Wahrnehmung"
+      ],
+      "categories": [
+        "Informationstechnologie › Ordnen, Suchen & Finden",
+        "Überwachung und Macht"
+      ],
+      "category_sort": "03.02 04"
+    },
+    {
+      "author": "Steyerl, Hito",
+      "author_sort": "Steyerl",
+      "title": "Medium Hot. Images in the Age of Heat",
+      "year": "2025",
+      "type": "book",
+      "tags": [
+        "Bild",
+        "Ökologie"
+      ],
+      "categories": [
+        "KI und Algorithmen"
+      ],
+      "category_sort": "07"
+    },
+    {
+      "author": "Thompson, Clive",
+      "author_sort": "Thompson",
+      "title": "Coding After Coders: The End of Computer Programming as We Know It",
+      "year": "2026",
+      "type": "article",
+      "tags": [],
+      "categories": [
+        "KI und Algorithmen",
+        "Wirtschaftskritik"
+      ],
+      "category_sort": "07 09"
+    },
+    {
+      "author": "Viction:ary (Ed.)",
+      "author_sort": "Viction:ary",
+      "title": "Code Crafted: Generative Design in Branding",
+      "year": "2024",
+      "type": "book",
+      "tags": [],
+      "categories": [
+        "Gestaltung & Design › Grafikdesign",
+        "Coding und Praxis › Creative Coding"
+      ],
+      "category_sort": "05.01 06.03"
+    },
+    {
+      "author": "Xin, Xin; Moriwaki, Katherine (Ed.)",
+      "author_sort": "Xin",
+      "title": "Critical Coding Cookbook: Intersectional Feminist Approaches to Teaching and Learning",
+      "year": "2022",
+      "type": "book",
+      "tags": [
+        "Gender",
+        "Pädagogik"
+      ],
+      "categories": [
+        "Coding und Praxis › Creative Coding"
+      ],
+      "category_sort": "06.03"
+    },
+    {
+      "author": "Zeller, Ludwig; Groß, Benedikt; Davis, Ted",
+      "author_sort": "Zeller",
+      "title": "basil.js – Bridging Mouse and Code Based Design Strategies",
+      "year": "2014",
+      "type": "book",
+      "url": "http://link.springer.com/10.1007/978-3-319-07668-3_66",
+      "tags": [
+        "Open Source"
+      ],
+      "categories": [
+        "Gesellschaft › Digitale Kultur & Plattformen",
+        "Coding und Praxis › Creative Coding"
+      ],
+      "category_sort": "01.01 06.03"
     }
   ]
 }
