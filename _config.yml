@@ -29,34 +29,19 @@ nav:
 # Zotero collection for the Literature pages (scripts/literature.rb)
 literature:
   collection: Critical Coding/Export
-  # Categories (Zotero tags XX_…, ordered by their number) with the name shown
-  # in the Category column, and their subcategories (plain Zotero tags, shown as
-  # "Category › Subcategory"). Every other tag is a normal tag.
+  # Categories (Zotero tags XX_…, ordered by their number) and the name shown
+  # for each. Rewritten by scripts/literature.rb on every Zotero pull: new
+  # categories are added, unused ones removed; names you change here are kept.
   categories:
-    01_Gesellschaft:
-      name: Gesellschaft
-      sub: [STS & Soziologie, Digitale Kultur & Plattformen, Netzwerkforschung]
-    02_Medientheorie:
-      name: Medientheorie
-      sub: [Black Box, Kybernetik & Systemtheorie]
-    03_Informationstechnologie:
-      name: Informationstechnologie
-      sub: [Human-Computer Interface, Cloud Computing, "Ordnen, Suchen & Finden"]
-    04_Ueberwachung_und_Macht:
-      name: Überwachung und Macht
-    05_Gestaltung_&_Design:
-      name: Gestaltung & Design
-      sub: [Computerkunst & Generative Kunst, Grafikdesign, Postdigitale Gestaltung & Design]
-    06_Coding_und_Praxis:
-      name: Coding und Praxis
-      sub: [Software & Code Studies, DIY & Repair, Dilettantismus, Creative Coding]
-    07_KI_und_Algorithmen:
-      name: KI und Algorithmen
-    08_Geschichte:
-      name: Geschichte
-      sub: [Computergeschichte]
-    09_Wirtschaftskritik:
-      name: Wirtschaftskritik
+    01_Gesellschaft: "Gesellschaft"
+    02_Medientheorie: "Medientheorie"
+    03_Informationstechnologie: "Informationstechnologie"
+    04_Ueberwachung_und_Macht: "Überwachung und Macht"
+    05_Gestaltung_&_Design: "Gestaltung & Design"
+    06_Coding_und_Praxis: "Coding und Praxis"
+    07_KI_und_Algorithmen: "KI und Algorithmen"
+    08_Geschichte: "Geschichte"
+    09_Wirtschaftskritik: "Wirtschaftskritik"
 
 # Main categories (pages, chosen in the header dropdown) and their
 # categories (columns, in this order). example.yaml sets both:

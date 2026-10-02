@@ -61,14 +61,14 @@ Short abstract, 2–4 sentences.
 (`Critical Coding/Export`) in one table. `scripts/literature.rb` reads it and writes `_data/literature.json`;
 the intro text is in `literature/index.md`.
 
-- Tags of the form `02_Medientheorie` (two digits, underscore) are **categories**, ordered by their number.
-  Their **subcategories** are plain tags (`Black Box`) listed under the category in `literature.categories` in
-  `_config.yml`, which also sets the names shown. The Category column shows "Medientheorie › Black Box".
-  Add new (sub)categories there when they appear in Zotero (the script reports categories without a name).
-  An entry can have several.
+- Tags of the form `02_Medientheorie` (two digits, underscore) are **categories**, shown in the Category column
+  and ordered by their number; an entry can have several. Their names are in `literature.categories` in
+  `_config.yml`, which the script rewrites on every run: new categories are added with a name derived from the
+  tag, unused ones removed, names changed by hand are kept.
 - The Type column groups Zotero's item types into Book, Article and Web (`BOOK_TYPES`, `ARTICLE_TYPES` in the script).
-- All other tags are shown per entry and can be used as filters (an entry must have all selected tags).
-  The filter row above the table only lists tags used by two or more entries; the others work from the entry itself.
+- All other tags are shown per entry.
+- Filters above the table: the categories, and below a line the tags used by two or more entries (the others work from the entry itself). An entry must match all selected filters; filters
+  that would leave no entries are disabled while you select.
 - Every column is sortable.
 
 ```sh

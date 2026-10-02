@@ -249,21 +249,44 @@ a.row:focus-visible {
 /* ---------- literature ----------
    Same rows as the code sample columns, as a full-width table */
 
-.tag-filter {
+/* literature: entry count right of the intro, in its size */
+.intro-count {
   display: flex;
+  justify-content: space-between;
   align-items: baseline;
   gap: var(--gutter);
-  padding: 8px var(--gutter);
+}
+.intro-count .lit-count {
+  margin: 0;
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.tag-filter {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 
-.tag-filter .tags { flex: 1; }
+/* categories above the line, subcategories and tags below */
+.filter-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--gutter);
+  padding: var(--gutter);  /* same space on all sides */
+}
+.filter-part + .filter-part { border-top: 1px solid var(--line); }
+.filter-part .tags { flex: 1; }
+
 .tag-filter-status {
   flex-shrink: 0;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
+
+.tag-category { text-transform: uppercase; }
+.tag:disabled { opacity: 0.3; cursor: default; }
+.tag:disabled:hover { background: var(--bg); color: var(--fg); }
 
 .tags {
   display: flex;
@@ -357,7 +380,7 @@ a.row:focus-visible {
   .lit-table td { display: block; width: auto; padding: 2px var(--gutter); border: 0; }
   .lit-table td + td { border-left: 0; }
   .lit-table td.col-tags:empty { display: none; }
-  .tag-filter { flex-wrap: wrap; }
+  .filter-part { flex-wrap: wrap; }
 }
 
 @media (max-width: 800px) {

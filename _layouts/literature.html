@@ -9,25 +9,37 @@ section: literature
 {%- endcomment -%}
 {%- include header.html %}
 
-<section class="intro">
-  {{ content }}
+{%- assign items = site.data.literature.items %}
+<section class="intro intro-count">
+  <div>{{ content }}</div>
+  {%- comment %} number of entries shown / all, updated by the filters {% endcomment %}
+  <p class="lit-count"><span data-count>{{ items.size }}</span>&thinsp;/&thinsp;{{ items.size }}</p>
 </section>
 
-{%- assign items = site.data.literature.items %}
 {%- assign tags = site.data.literature.tags %}
 
 <main class="literature" data-literature>
-  {%- if tags.size > 0 %}
+  {%- assign categories = site.data.literature.categories %}
+  {%- if tags.size > 0 or categories.size > 0 %}
   <div class="tag-filter">
-    <ul class="tags">
-      {%- for t in tags %}
-      <li><button type="button" class="tag" data-tag="{{ t | escape }}" aria-pressed="false">{{ t | escape }}</button></li>
-      {%- endfor %}
-    </ul>
-    <span class="tag-filter-status">
-      <span data-count>{{ items.size }}</span>&thinsp;/&thinsp;{{ items.size }}
-      <button type="button" class="tag-clear" data-clear hidden><span class="lang" lang="en">Clear</span><span class="lang" lang="de">Zurücksetzen</span></button>
-    </span>
+    {%- comment %} part 1: categories, part 2 (below a line): tags {% endcomment %}
+    <div class="filter-part">
+      <ul class="tags">
+        {%- for c in categories %}
+        <li><button type="button" class="tag tag-category" data-filter="cat:{{ c | escape }}" aria-pressed="false">{{ c | escape }}</button></li>
+        {%- endfor %}
+      </ul>
+      <span class="tag-filter-status">
+        <button type="button" class="tag-clear" data-clear hidden><span class="lang" lang="en">Clear</span><span class="lang" lang="de">Zurücksetzen</span></button>
+      </span>
+    </div>
+    <div class="filter-part">
+      <ul class="tags">
+        {%- for t in tags %}
+        <li><button type="button" class="tag" data-filter="tag:{{ t | escape }}" aria-pressed="false">{{ t | escape }}</button></li>
+        {%- endfor %}
+      </ul>
+    </div>
   </div>
   {%- endif %}
 
@@ -44,7 +56,8 @@ section: literature
     </thead>
     <tbody>
       {%- for i in items %}
-      <tr data-author="{{ i.author_sort | escape }}" data-title="{{ i.title | escape }}" data-year="{{ i.year }}" data-type="{{ i.type }}" data-category="{{ i.category_sort | escape }}" data-tags="{{ i.tags | join: '|' | escape }}">
+      <tr data-author="{{ i.author_sort | escape }}" data-title="{{ i.title | escape }}" data-year="{{ i.year }}" data-type="{{ i.type }}" data-category="{{ i.category_sort | escape }}" data-tags="{{ i.tags | join: '|' | escape }}"
+          {%- capture filters %}{% for t in i.tags %}tag:{{ t }}|{% endfor %}{% for c in i.categories %}cat:{{ c }}|{% endfor %}{% endcapture %} data-filters="{{ filters | escape }}">
         <td class="col-author">{{ i.author | escape }}</td>
         <td class="col-title">{% if i.url %}<a href="{{ i.url | escape }}" target="_blank" rel="noopener">{{ i.title | escape }}</a>{% else %}{{ i.title | escape }}{% endif %}</td>
         <td class="col-year">{{ i.year }}</td>
@@ -54,7 +67,7 @@ section: literature
           {%- if i.tags.size > 0 %}
           <ul class="tags">
             {%- for t in i.tags %}
-            <li><button type="button" class="tag" data-tag="{{ t | escape }}" aria-pressed="false">{{ t | escape }}</button></li>
+            <li><button type="button" class="tag" data-filter="tag:{{ t | escape }}" aria-pressed="false">{{ t | escape }}</button></li>
             {%- endfor %}
           </ul>
           {%- endif %}
@@ -63,7 +76,7 @@ section: literature
       {%- endfor %}
     </tbody>
   </table>
-  <p class="lit-empty" data-empty{% if items.size > 0 %} hidden{% endif %}><span class="lang" lang="en">No entries match the selected tags.</span><span class="lang" lang="de">Keine Einträge mit den gewählten Schlagworten.</span></p>
+  <p class="lit-empty" data-empty{% if items.size > 0 %} hidden{% endif %}><span class="lang" lang="en">No entries match the selected filters.</span><span class="lang" lang="de">Keine Einträge mit den gewählten Filtern.</span></p>
 </main>
 
 <script src="{{ '/assets/js/lang.js' | relative_url }}"></script>

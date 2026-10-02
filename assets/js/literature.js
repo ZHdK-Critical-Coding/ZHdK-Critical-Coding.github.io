@@ -1,12 +1,14 @@
-// Literature table: sort by any column, filter by tags.
-// Selected tags are kept in the address (#tags=a,b) so a filtered list can be shared.
+// Literature table: sort by any column, filter by categories and tags.
+// An entry is shown if it matches all selected filters. Filters without a
+// match for the current selection are disabled. The selection is kept in the
+// address (#filter=cat:…,tag:…) so a filtered list can be shared.
 (function () {
   var root = document.querySelector("[data-literature]");
   if (!root) return;
 
   var tbody = root.querySelector("tbody");
   var rows = Array.prototype.slice.call(tbody.rows);
-  var count = root.querySelector("[data-count]");
+  var count = document.querySelector("[data-count]");  // right of the intro
   var clear = root.querySelector("[data-clear]");
   var empty = root.querySelector("[data-empty]");
   var collator = new Intl.Collator(document.documentElement.lang || "de", { sensitivity: "base", numeric: true });
@@ -50,32 +52,47 @@
     });
   });
 
-  // ---- tag filter: an entry is shown if it has all selected tags ----
+  // ---- filters: "tag:Design", "cat:Medientheorie", "cat:Medientheorie › Black Box" ----
+
+  var filterButtons = root.querySelectorAll("[data-filter]");
+  var barButtons = root.querySelectorAll(".tag-filter [data-filter]");
+  var rowFilters = rows.map(function (row) { return value(row, "filters").split("|"); });
+
+  function matches(i, filters) {
+    return filters.every(function (f) { return rowFilters[i].indexOf(f) !== -1; });
+  }
 
   function filter() {
     var visible = 0;
-    rows.forEach(function (row) {
-      var tags = value(row, "tags").split("|");
-      var match = selected.every(function (t) { return tags.indexOf(t) !== -1; });
-      row.hidden = !match;
-      if (match) visible++;
+    rows.forEach(function (row, i) {
+      row.hidden = !matches(i, selected);
+      if (!row.hidden) visible++;
     });
-    root.querySelectorAll(".tag[data-tag]").forEach(function (button) {
-      button.setAttribute("aria-pressed", selected.indexOf(button.getAttribute("data-tag")) !== -1);
+    filterButtons.forEach(function (button) {
+      button.setAttribute("aria-pressed", selected.indexOf(button.getAttribute("data-filter")) !== -1);
+    });
+    // a filter that would leave no entries is disabled (selected ones stay usable)
+    barButtons.forEach(function (button) {
+      var f = button.getAttribute("data-filter");
+      if (selected.indexOf(f) !== -1) { button.disabled = false; return; }
+      var n = 0;
+      rows.forEach(function (row, i) { if (!row.hidden && rowFilters[i].indexOf(f) !== -1) n++; });
+      button.disabled = n === 0;
+      button.title = n + (n === 1 ? " entry" : " entries");
     });
     if (count) count.textContent = visible;
     if (clear) clear.hidden = selected.length === 0;
     if (empty) empty.hidden = visible > 0;
-    var hash = selected.length ? "#tags=" + selected.map(encodeURIComponent).join(",") : "";
+    var hash = selected.length ? "#filter=" + selected.map(encodeURIComponent).join(",") : "";
     history.replaceState(null, "", location.pathname + location.search + hash);
   }
 
   root.addEventListener("click", function (event) {
-    var button = event.target.closest(".tag[data-tag]");
-    if (!button) return;
-    var tag = button.getAttribute("data-tag");
-    var i = selected.indexOf(tag);
-    if (i === -1) selected.push(tag); else selected.splice(i, 1);
+    var button = event.target.closest("[data-filter]");
+    if (!button || button.disabled) return;
+    var f = button.getAttribute("data-filter");
+    var i = selected.indexOf(f);
+    if (i === -1) selected.push(f); else selected.splice(i, 1);
     filter();
   });
 
@@ -84,12 +101,14 @@
     filter();
   });
 
-  // #tags=a,b in the address selects tags (on load and when a link changes it)
+  // #filter=… in the address selects filters (#tags=a,b from older links too)
   function readHash() {
-    var match = location.hash.match(/^#tags=(.+)$/);
-    selected = match ? match[1].split(",").map(decodeURIComponent) : [];
+    var match = location.hash.match(/^#(filter|tags)=(.+)$/);
+    selected = match ? match[2].split(",").map(decodeURIComponent).map(function (f) {
+      return match[1] === "tags" ? "tag:" + f : f;
+    }) : [];
     filter();
   }
   window.addEventListener("hashchange", readHash);
-  if (location.hash) readHash();
+  if (location.hash) readHash(); else filter();
 })();

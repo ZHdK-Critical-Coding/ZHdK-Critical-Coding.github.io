@@ -8,11 +8,10 @@
 # personal library of the API key and in all groups it can read.
 #
 # Tags:
-#   02_Medientheorie       category (two digits + underscore), ordered by number
-#   Black Box              subcategory: a plain tag listed under its category
-#                          in literature.categories (_config.yml)
-#                          Both go into the Category column ("Medientheorie ›
-#                          Black Box"); the category names come from the config too
+#   02_Medientheorie       category (two digits + underscore): Category column,
+#                          ordered by number. Its name comes from
+#                          literature.categories in _config.yml, which this
+#                          script rewrites on every run (see write_categories)
 #   everything else        entry tags, shown in the table and used as filters
 #
 # Only bibliographic data is written (authors, title, year, type, category, tags, link) –
@@ -32,8 +31,8 @@ ROOT      = File.expand_path("..", __dir__)
 CONFIG    = YAML.safe_load(File.read(File.join(ROOT, "_config.yml")))
 SETTINGS  = CONFIG.fetch("literature")
 COLL_PATH = SETTINGS.fetch("collection").split("/").map(&:strip)
-CATS      = SETTINGS.fetch("categories", {})
-SUB_OF    = CATS.flat_map { |cat, c| Array(c["sub"]).map { |sub| [sub, cat] } }.to_h  # "Black Box" => "02_Medientheorie"
+CONFIG_FILE = File.join(ROOT, "_config.yml")
+CAT_NAMES = SETTINGS.fetch("categories", nil) || {}   # "02_Medientheorie" => "Medientheorie"
 DATA_FILE = File.join(ROOT, "_data", "literature.json")
 KEY_FILE  = File.join(ROOT, ".zotero_api_key")
 API       = ENV.fetch("ZOTERO_API_URL", "https://api.zotero.org") # override only for tests
@@ -141,6 +140,17 @@ def kind(item_type)
   "web"
 end
 
+# Rewrites the block "  categories:" under "literature:" in _config.yml with
+# the current categories; the rest of the file (and its comments) stays as is.
+def write_categories(names)
+  lines = File.readlines(CONFIG_FILE)
+  start = lines.index { |l| l.match?(/\A  categories:\s*\z/) } or abort "_config.yml: no '  categories:' under literature:"
+  stop = start + 1
+  stop += 1 while stop < lines.size && lines[stop].match?(/\A    \S/)
+  block = names.map { |tag, name| "    #{tag}: #{name.to_json}\n" }
+  File.write(CONFIG_FILE, (lines[0..start] + block + lines[stop..]).join)
+end
+
 def topic_title(tag)
   tag.sub(TOPIC_TAG, "").tr("_", " ").strip
 end
@@ -177,29 +187,22 @@ items = raw.map do |i|
     "type" => kind(d["itemType"]),
     "url" => link(d),
     "topics" => tags.grep(TOPIC_TAG).sort,
-    "subs" => tags.select { |t| SUB_OF.key?(t) },
-    "tags" => sort_tags(tags.reject { |t| t.match?(TOPIC_TAG) || SUB_OF.key?(t) })
+    "tags" => sort_tags(tags.grep_v(TOPIC_TAG))
   }.compact
 end
 items.sort_by! { |i| [i["author_sort"].downcase, i["year"], i["title"].downcase] }
 
 # Category names from _config.yml, else the tag without number and underscores
-cat_name = ->(t) { CATS.dig(t, "name") || topic_title(t) }
 categories = items.flat_map { |i| i["topics"] }.uniq.sort
-unnamed = categories.reject { |t| CATS.dig(t, "name") }
+# names you set in _config.yml are kept, new categories get one derived from the tag
+names = categories.to_h { |t| [t, CAT_NAMES[t].is_a?(String) ? CAT_NAMES[t] : topic_title(t)] }
+added = categories.reject { |t| CAT_NAMES[t].is_a?(String) }
+removed = CAT_NAMES.keys - categories
 
-# One line per category: "Medientheorie › Black Box", or just "Medientheorie".
-# A subcategory also counts for its category, even if that tag is missing.
 items.each do |i|
   topics = i.delete("topics")
-  subs = i.delete("subs")
-  tops = (topics + subs.map { |t| SUB_OF[t] }).uniq.sort
-  i["categories"] = tops.flat_map do |top|
-    mine = Array(CATS.dig(top, "sub")) & subs  # in the order of the config
-    mine.empty? ? [cat_name.(top)] : mine.map { |t| "#{cat_name.(top)} › #{t}" }
-  end
-  # sorts by category number, then by the position of the subcategory in the config
-  i["category_sort"] = tops.map { |t| [t[0, 2], *(Array(CATS.dig(t, "sub")) & subs).map { |x| format("%02d", Array(CATS.dig(t, "sub")).index(x)) }].join(".") }.join(" ")
+  i["categories"] = topics.map { |t| names[t] }
+  i["category_sort"] = topics.join(" ")  # sorts by number
 end
 
 FileUtils.mkdir_p(File.dirname(DATA_FILE))
@@ -208,10 +211,13 @@ FileUtils.mkdir_p(File.dirname(DATA_FILE))
 tag_count = items.flat_map { |i| i["tags"] }.tally
 File.write(DATA_FILE, JSON.pretty_generate(
   "tags" => sort_tags(tag_count.select { |_, n| n > 1 }.keys),
+  "categories" => categories.map { |t| names[t] },  # category filter row
   "items" => items
 ) + "\n")
 
 puts "#{items.size} entries, #{categories.size} categories from #{COLL_PATH.join(" > ")} -> _data/literature.json"
-unnamed.each { |t| puts "  category #{t} has no name in _config.yml (literature.categories) – shown as \"#{topic_title(t)}\"" }
+write_categories(names)
+added.each { |t| puts "  new category #{t} -> \"#{names[t]}\" (name can be changed in _config.yml)" }
+removed.each { |t| puts "  category #{t} is no longer used – removed from _config.yml" }
 no_category = items.count { |i| i["categories"].empty? }
 puts "  #{no_category} entries without a category tag" if no_category.positive?

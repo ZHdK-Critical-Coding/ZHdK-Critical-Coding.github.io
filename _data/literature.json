@@ -1,20 +1,42 @@
 {
   "tags": [
     "Bild",
+    "Black Box",
+    "Computergeschichte",
+    "Computerkunst & Generative Kunst",
+    "Creative Coding",
+    "Digitale Kultur & Plattformen",
+    "DIY & Repair",
     "Einführung",
     "Gender",
+    "Grafikdesign",
     "Handbuch",
     "Katalog",
     "Kritik",
     "Kunst",
     "Methode",
     "Open Source",
+    "Ordnen, Suchen & Finden",
     "Philosophie",
     "Politik",
+    "Postdigitale Gestaltung & Design",
     "Pädagogik",
     "Sichtbarkeit",
+    "Software & Code Studies",
+    "STS & Soziologie",
     "Ästhetik",
     "Ökologie"
+  ],
+  "categories": [
+    "Gesellschaft",
+    "Medientheorie",
+    "Informationstechnologie",
+    "Überwachung und Macht",
+    "Gestaltung & Design",
+    "Coding und Praxis",
+    "KI und Algorithmen",
+    "Geschichte",
+    "Wirtschaftskritik"
   ],
   "items": [
     {
@@ -31,7 +53,7 @@
       "categories": [
         "KI und Algorithmen"
       ],
-      "category_sort": "07"
+      "category_sort": "07_KI_und_Algorithmen"
     },
     {
       "author": "Ashby, W. Ross",
@@ -40,12 +62,14 @@
       "year": "1956",
       "type": "book",
       "url": "https://www.biodiversitylibrary.org/bibliography/5851",
-      "tags": [],
-      "categories": [
-        "Medientheorie › Black Box",
-        "Medientheorie › Kybernetik & Systemtheorie"
+      "tags": [
+        "Black Box",
+        "Kybernetik & Systemtheorie"
       ],
-      "category_sort": "02.00.01"
+      "categories": [
+        "Medientheorie"
+      ],
+      "category_sort": "02_Medientheorie"
     },
     {
       "author": "Bergstrom, Ilias; Lotto, R. Beau",
@@ -54,12 +78,15 @@
       "year": "2015",
       "type": "article",
       "url": "https://doi.org/10.1162/LEON_a_00934",
-      "tags": [],
-      "categories": [
-        "Gestaltung & Design › Computerkunst & Generative Kunst",
-        "Coding und Praxis › Creative Coding"
+      "tags": [
+        "Computerkunst & Generative Kunst",
+        "Creative Coding"
       ],
-      "category_sort": "05.00 06.03"
+      "categories": [
+        "Gestaltung & Design",
+        "Coding und Praxis"
+      ],
+      "category_sort": "05_Gestaltung_&_Design 06_Coding_und_Praxis"
     },
     {
       "author": "Berry, David M.; Dieter, Michael (Ed.)",
@@ -68,13 +95,15 @@
       "year": "2015",
       "type": "book",
       "tags": [
+        "Postdigitale Gestaltung & Design",
+        "Software & Code Studies",
         "Ästhetik"
       ],
       "categories": [
-        "Gestaltung & Design › Postdigitale Gestaltung & Design",
-        "Coding und Praxis › Software & Code Studies"
+        "Gestaltung & Design",
+        "Coding und Praxis"
       ],
-      "category_sort": "05.02 06.00"
+      "category_sort": "05_Gestaltung_&_Design 06_Coding_und_Praxis"
     },
     {
       "author": "Betancourt, Michael",
@@ -83,12 +112,13 @@
       "year": "2017",
       "type": "book",
       "tags": [
+        "Postdigitale Gestaltung & Design",
         "Ästhetik"
       ],
       "categories": [
-        "Gestaltung & Design › Postdigitale Gestaltung & Design"
+        "Gestaltung & Design"
       ],
-      "category_sort": "05.02"
+      "category_sort": "05_Gestaltung_&_Design"
     },
     {
       "author": "Bridle, James",
@@ -97,13 +127,14 @@
       "year": "2018",
       "type": "book",
       "tags": [
+        "Digitale Kultur & Plattformen",
         "Kritik",
         "Methode"
       ],
       "categories": [
-        "Gesellschaft › Digitale Kultur & Plattformen"
+        "Gesellschaft"
       ],
-      "category_sort": "01.01"
+      "category_sort": "01_Gesellschaft"
     },
     {
       "author": "Brunton, Finn; Nissenbaum, Helen",
@@ -118,7 +149,7 @@
       "categories": [
         "Überwachung und Macht"
       ],
-      "category_sort": "04"
+      "category_sort": "04_Ueberwachung_und_Macht"
     },
     {
       "author": "Chiang, Ted",
@@ -130,7 +161,7 @@
       "categories": [
         "KI und Algorithmen"
       ],
-      "category_sort": "07"
+      "category_sort": "07_KI_und_Algorithmen"
     },
     {
       "author": "Conrad, Demian; van Leijsen, Rob; Héritier, David",
@@ -138,12 +169,14 @@
       "title": "Graphic Design in the Post-Digital Age",
       "year": "2021",
       "type": "book",
-      "tags": [],
-      "categories": [
-        "Gestaltung & Design › Grafikdesign",
-        "Gestaltung & Design › Postdigitale Gestaltung & Design"
+      "tags": [
+        "Grafikdesign",
+        "Postdigitale Gestaltung & Design"
       ],
-      "category_sort": "05.01.02"
+      "categories": [
+        "Gestaltung & Design"
+      ],
+      "category_sort": "05_Gestaltung_&_Design"
     },
     {
       "author": "Cramer, Florian",
@@ -152,12 +185,14 @@
       "year": "2014",
       "type": "article",
       "url": "https://tidsskrift.dk/APRJA/article/view/116068",
-      "tags": [],
+      "tags": [
+        "Postdigitale Gestaltung & Design"
+      ],
       "categories": [
         "Medientheorie",
-        "Gestaltung & Design › Postdigitale Gestaltung & Design"
+        "Gestaltung & Design"
       ],
-      "category_sort": "02 05.02"
+      "category_sort": "02_Medientheorie 05_Gestaltung_&_Design"
     },
     {
       "author": "Cramer, Florian; Jandrić, Petar",
@@ -167,12 +202,13 @@
       "type": "article",
       "url": "https://doi.org/10.1007/s42438-021-00225-9",
       "tags": [
-        "Einführung"
+        "Einführung",
+        "Postdigitale Gestaltung & Design"
       ],
       "categories": [
-        "Gestaltung & Design › Postdigitale Gestaltung & Design"
+        "Gestaltung & Design"
       ],
-      "category_sort": "05.02"
+      "category_sort": "05_Gestaltung_&_Design"
     },
     {
       "author": "Crawford, Kate; Paglen, Trevor",
@@ -181,12 +217,14 @@
       "year": "2019",
       "type": "article",
       "url": "https://link.springer.com/10.1007/s00146-021-01162-8",
-      "tags": [],
+      "tags": [
+        "Ordnen, Suchen & Finden"
+      ],
       "categories": [
-        "Informationstechnologie › Ordnen, Suchen & Finden",
+        "Informationstechnologie",
         "KI und Algorithmen"
       ],
-      "category_sort": "03.02 07"
+      "category_sort": "03_Informationstechnologie 07_KI_und_Algorithmen"
     },
     {
       "author": "Dechow, Douglas R.",
@@ -195,14 +233,16 @@
       "year": "2015",
       "type": "book",
       "tags": [
+        "Computergeschichte",
         "People",
+        "Software & Code Studies",
         "Sprache"
       ],
       "categories": [
-        "Coding und Praxis › Software & Code Studies",
-        "Geschichte › Computergeschichte"
+        "Coding und Praxis",
+        "Geschichte"
       ],
-      "category_sort": "06.00 08.00"
+      "category_sort": "06_Coding_und_Praxis 08_Geschichte"
     },
     {
       "author": "Dunne, Anthony; Raby, Fiona",
@@ -211,12 +251,13 @@
       "year": "2013",
       "type": "book",
       "tags": [
+        "Grafikdesign",
         "Kritik"
       ],
       "categories": [
-        "Gestaltung & Design › Grafikdesign"
+        "Gestaltung & Design"
       ],
-      "category_sort": "05.01"
+      "category_sort": "05_Gestaltung_&_Design"
     },
     {
       "author": "Funk, Mathias; Zhang, Yu",
@@ -226,12 +267,13 @@
       "type": "book",
       "url": "https://link.springer.com/10.1007/978-1-4842-9780-3",
       "tags": [
+        "Creative Coding",
         "Einführung"
       ],
       "categories": [
-        "Coding und Praxis › Creative Coding"
+        "Coding und Praxis"
       ],
-      "category_sort": "06.03"
+      "category_sort": "06_Coding_und_Praxis"
     },
     {
       "author": "George, Warren",
@@ -239,11 +281,13 @@
       "title": "Creating 3D Algorithmic Art with p5.js",
       "year": "2024",
       "type": "book",
-      "tags": [],
-      "categories": [
-        "Coding und Praxis › Creative Coding"
+      "tags": [
+        "Creative Coding"
       ],
-      "category_sort": "06.03"
+      "categories": [
+        "Coding und Praxis"
+      ],
+      "category_sort": "06_Coding_und_Praxis"
     },
     {
       "author": "Gerstner, Karl",
@@ -251,11 +295,13 @@
       "title": "Designing Programmes (Auszug)",
       "year": "1964",
       "type": "book",
-      "tags": [],
-      "categories": [
-        "Gestaltung & Design › Grafikdesign"
+      "tags": [
+        "Grafikdesign"
       ],
-      "category_sort": "05.01"
+      "categories": [
+        "Gestaltung & Design"
+      ],
+      "category_sort": "05_Gestaltung_&_Design"
     },
     {
       "author": "Goodchild, Amy",
@@ -265,13 +311,14 @@
       "type": "web",
       "url": "https://www.amygoodchild.com/blog/chatgpt-sol-lewitt-wall-drawings",
       "tags": [
+        "Computerkunst & Generative Kunst",
         "Kunst"
       ],
       "categories": [
-        "Gestaltung & Design › Computerkunst & Generative Kunst",
+        "Gestaltung & Design",
         "KI und Algorithmen"
       ],
-      "category_sort": "05.00 07"
+      "category_sort": "05_Gestaltung_&_Design 07_KI_und_Algorithmen"
     },
     {
       "author": "Haraway, Donna",
@@ -281,12 +328,13 @@
       "type": "book",
       "tags": [
         "Gender",
-        "Philosophie"
+        "Philosophie",
+        "STS & Soziologie"
       ],
       "categories": [
-        "Gesellschaft › STS & Soziologie"
+        "Gesellschaft"
       ],
-      "category_sort": "01.00"
+      "category_sort": "01_Gesellschaft"
     },
     {
       "author": "Haraway, Donna J.",
@@ -296,12 +344,13 @@
       "type": "book",
       "tags": [
         "Gender",
-        "Methode"
+        "Methode",
+        "STS & Soziologie"
       ],
       "categories": [
-        "Gesellschaft › STS & Soziologie"
+        "Gesellschaft"
       ],
-      "category_sort": "01.00"
+      "category_sort": "01_Gesellschaft"
     },
     {
       "author": "Hebron, Patrick",
@@ -314,7 +363,7 @@
         "Gestaltung & Design",
         "KI und Algorithmen"
       ],
-      "category_sort": "05 07"
+      "category_sort": "05_Gestaltung_&_Design 07_KI_und_Algorithmen"
     },
     {
       "author": "Hoy, Meredith Anne",
@@ -323,14 +372,15 @@
       "year": "2017",
       "type": "book",
       "tags": [
+        "Grafikdesign",
         "Ästhetik"
       ],
       "categories": [
         "Medientheorie",
-        "Gestaltung & Design › Grafikdesign",
+        "Gestaltung & Design",
         "Geschichte"
       ],
-      "category_sort": "02 05.01 08"
+      "category_sort": "02_Medientheorie 05_Gestaltung_&_Design 08_Geschichte"
     },
     {
       "author": "Isaacs, Ken",
@@ -338,13 +388,16 @@
       "title": "How to Build Your Own Living Structures",
       "year": "1974",
       "type": "book",
-      "tags": [],
+      "tags": [
+        "Computergeschichte",
+        "DIY & Repair"
+      ],
       "categories": [
         "Gestaltung & Design",
-        "Coding und Praxis › DIY & Repair",
-        "Geschichte › Computergeschichte"
+        "Coding und Praxis",
+        "Geschichte"
       ],
-      "category_sort": "05 06.01 08.00"
+      "category_sort": "05_Gestaltung_&_Design 06_Coding_und_Praxis 08_Geschichte"
     },
     {
       "author": "Konior, Bogna",
@@ -353,14 +406,17 @@
       "year": "2025",
       "type": "book",
       "tags": [
-        "Philosophie"
+        "Computergeschichte",
+        "Digitale Kultur & Plattformen",
+        "Philosophie",
+        "Software & Code Studies"
       ],
       "categories": [
-        "Gesellschaft › Digitale Kultur & Plattformen",
-        "Coding und Praxis › Software & Code Studies",
-        "Geschichte › Computergeschichte"
+        "Gesellschaft",
+        "Coding und Praxis",
+        "Geschichte"
       ],
-      "category_sort": "01.01 06.00 08.00"
+      "category_sort": "01_Gesellschaft 06_Coding_und_Praxis 08_Geschichte"
     },
     {
       "author": "Krol, Ed",
@@ -369,14 +425,16 @@
       "year": "1994",
       "type": "book",
       "tags": [
+        "Computergeschichte",
+        "Digitale Kultur & Plattformen",
         "Handbuch",
         "Open Source"
       ],
       "categories": [
-        "Gesellschaft › Digitale Kultur & Plattformen",
-        "Geschichte › Computergeschichte"
+        "Gesellschaft",
+        "Geschichte"
       ],
-      "category_sort": "01.01 08.00"
+      "category_sort": "01_Gesellschaft 08_Geschichte"
     },
     {
       "author": "Levin, Golan; Brain, Tega",
@@ -385,13 +443,14 @@
       "year": "2021",
       "type": "book",
       "tags": [
+        "Creative Coding",
         "Kunst",
         "Pädagogik"
       ],
       "categories": [
-        "Coding und Praxis › Creative Coding"
+        "Coding und Praxis"
       ],
-      "category_sort": "06.03"
+      "category_sort": "06_Coding_und_Praxis"
     },
     {
       "author": "LeWitt, Sol; Legg, Alicia; Lippard, Lucy R.; Rose, Bernice; Rosenblum, Robert",
@@ -400,12 +459,13 @@
       "year": "1978",
       "type": "book",
       "tags": [
+        "Computerkunst & Generative Kunst",
         "Katalog"
       ],
       "categories": [
-        "Gestaltung & Design › Computerkunst & Generative Kunst"
+        "Gestaltung & Design"
       ],
-      "category_sort": "05.00"
+      "category_sort": "05_Gestaltung_&_Design"
     },
     {
       "author": "Light, Jennifer S.",
@@ -415,14 +475,15 @@
       "type": "article",
       "url": "https://muse.jhu.edu/article/33396",
       "tags": [
+        "Computergeschichte",
         "Gender"
       ],
       "categories": [
         "Gesellschaft",
-        "Geschichte › Computergeschichte",
+        "Geschichte",
         "Wirtschaftskritik"
       ],
-      "category_sort": "01 08.00 09"
+      "category_sort": "01_Gesellschaft 08_Geschichte 09_Wirtschaftskritik"
     },
     {
       "author": "Lorenz, Martin",
@@ -431,12 +492,13 @@
       "year": "2021",
       "type": "book",
       "tags": [
+        "Grafikdesign",
         "Handbuch"
       ],
       "categories": [
-        "Gestaltung & Design › Grafikdesign"
+        "Gestaltung & Design"
       ],
-      "category_sort": "05.01"
+      "category_sort": "05_Gestaltung_&_Design"
     },
     {
       "author": "Lovink, Geert",
@@ -446,12 +508,13 @@
       "type": "book",
       "url": "https://doi.org/10.14361/9783839433683",
       "tags": [
+        "Digitale Kultur & Plattformen",
         "Kritik"
       ],
       "categories": [
-        "Gesellschaft › Digitale Kultur & Plattformen"
+        "Gesellschaft"
       ],
-      "category_sort": "01.01"
+      "category_sort": "01_Gesellschaft"
     },
     {
       "author": "Lovink, Geert",
@@ -461,13 +524,14 @@
       "type": "book",
       "url": "https://doi.org/10.14361/9783839463338",
       "tags": [
+        "Digitale Kultur & Plattformen",
         "Kritik",
         "Open Source"
       ],
       "categories": [
-        "Gesellschaft › Digitale Kultur & Plattformen"
+        "Gesellschaft"
       ],
-      "category_sort": "01.01"
+      "category_sort": "01_Gesellschaft"
     },
     {
       "author": "Manovich, Lev",
@@ -483,7 +547,7 @@
       "categories": [
         "Medientheorie"
       ],
-      "category_sort": "02"
+      "category_sort": "02_Medientheorie"
     },
     {
       "author": "Manovich, Lev",
@@ -498,7 +562,7 @@
       "categories": [
         "KI und Algorithmen"
       ],
-      "category_sort": "07"
+      "category_sort": "07_KI_und_Algorithmen"
     },
     {
       "author": "Marino, Mark C.",
@@ -507,12 +571,13 @@
       "year": "2020",
       "type": "book",
       "tags": [
-        "Methode"
+        "Methode",
+        "Software & Code Studies"
       ],
       "categories": [
-        "Coding und Praxis › Software & Code Studies"
+        "Coding und Praxis"
       ],
-      "category_sort": "06.00"
+      "category_sort": "06_Coding_und_Praxis"
     },
     {
       "author": "Marschner, Steve; Shirley, Peter",
@@ -522,12 +587,13 @@
       "type": "book",
       "tags": [
         "Bild",
+        "Creative Coding",
         "Einführung"
       ],
       "categories": [
-        "Coding und Praxis › Creative Coding"
+        "Coding und Praxis"
       ],
-      "category_sort": "06.03"
+      "category_sort": "06_Coding_und_Praxis"
     },
     {
       "author": "Maurer, Kathrin; Petersen, Rikke Munck; Routhier, Dominique; Wellendorf, Kassandra; Veel, Kristin (Ed.)",
@@ -543,7 +609,7 @@
       "categories": [
         "KI und Algorithmen"
       ],
-      "category_sort": "07"
+      "category_sort": "07_KI_und_Algorithmen"
     },
     {
       "author": "Metahaven",
@@ -552,14 +618,15 @@
       "year": "2015",
       "type": "book",
       "tags": [
+        "Black Box",
         "Sichtbarkeit"
       ],
       "categories": [
-        "Medientheorie › Black Box",
+        "Medientheorie",
         "Überwachung und Macht",
         "Gestaltung & Design"
       ],
-      "category_sort": "02.00 04 05"
+      "category_sort": "02_Medientheorie 04_Ueberwachung_und_Macht 05_Gestaltung_&_Design"
     },
     {
       "author": "Nees, Georg",
@@ -567,12 +634,15 @@
       "title": "Generative Computergraphik",
       "year": "2006",
       "type": "book",
-      "tags": [],
-      "categories": [
-        "Gestaltung & Design › Computerkunst & Generative Kunst",
-        "Geschichte › Computergeschichte"
+      "tags": [
+        "Computergeschichte",
+        "Computerkunst & Generative Kunst"
       ],
-      "category_sort": "05.00 08.00"
+      "categories": [
+        "Gestaltung & Design",
+        "Geschichte"
+      ],
+      "category_sort": "05_Gestaltung_&_Design 08_Geschichte"
     },
     {
       "author": "Paoletti, John T.",
@@ -581,13 +651,15 @@
       "year": "1981",
       "type": "book",
       "tags": [
-        "Katalog"
+        "Computerkunst & Generative Kunst",
+        "Katalog",
+        "Ordnen, Suchen & Finden"
       ],
       "categories": [
-        "Informationstechnologie › Ordnen, Suchen & Finden",
-        "Gestaltung & Design › Computerkunst & Generative Kunst"
+        "Informationstechnologie",
+        "Gestaltung & Design"
       ],
-      "category_sort": "03.02 05.00"
+      "category_sort": "03_Informationstechnologie 05_Gestaltung_&_Design"
     },
     {
       "author": "Parikka, Jussi",
@@ -601,7 +673,7 @@
       "categories": [
         "Medientheorie"
       ],
-      "category_sort": "02"
+      "category_sort": "02_Medientheorie"
     },
     {
       "author": "Pater, Ruben",
@@ -609,12 +681,14 @@
       "title": "CAPS LOCK. How Capitalism Took Hold of Graphic Design, and How to Escape from It",
       "year": "2021",
       "type": "book",
-      "tags": [],
+      "tags": [
+        "Grafikdesign"
+      ],
       "categories": [
-        "Gestaltung & Design › Grafikdesign",
+        "Gestaltung & Design",
         "Wirtschaftskritik"
       ],
-      "category_sort": "05.01 09"
+      "category_sort": "05_Gestaltung_&_Design 09_Wirtschaftskritik"
     },
     {
       "author": "Reas, Casey; McWilliams, Chandler",
@@ -623,13 +697,14 @@
       "year": "2010",
       "type": "book",
       "tags": [
+        "Creative Coding",
         "Kunst"
       ],
       "categories": [
         "Gestaltung & Design",
-        "Coding und Praxis › Creative Coding"
+        "Coding und Praxis"
       ],
-      "category_sort": "05 06.03"
+      "category_sort": "05_Gestaltung_&_Design 06_Coding_und_Praxis"
     },
     {
       "author": "Richardson, Andrew",
@@ -638,12 +713,15 @@
       "year": "2016",
       "type": "book",
       "url": "https://www.bloomsburyvisualarts.com/encyclopedia?docid=b-9781474222457",
-      "tags": [],
-      "categories": [
-        "Gestaltung & Design › Grafikdesign",
-        "Coding und Praxis › Creative Coding"
+      "tags": [
+        "Creative Coding",
+        "Grafikdesign"
       ],
-      "category_sort": "05.01 06.03"
+      "categories": [
+        "Gestaltung & Design",
+        "Coding und Praxis"
+      ],
+      "category_sort": "05_Gestaltung_&_Design 06_Coding_und_Praxis"
     },
     {
       "author": "Riddell, Alan (Ed.)",
@@ -652,14 +730,15 @@
       "year": "1975",
       "type": "article",
       "tags": [
+        "Computerkunst & Generative Kunst",
         "Essay",
+        "Grafikdesign",
         "Kunst"
       ],
       "categories": [
-        "Gestaltung & Design › Computerkunst & Generative Kunst",
-        "Gestaltung & Design › Grafikdesign"
+        "Gestaltung & Design"
       ],
-      "category_sort": "05.00.01"
+      "category_sort": "05_Gestaltung_&_Design"
     },
     {
       "author": "Rushkoff, Douglas",
@@ -668,13 +747,14 @@
       "year": "2022",
       "type": "book",
       "tags": [
+        "Digitale Kultur & Plattformen",
         "Kritik"
       ],
       "categories": [
-        "Gesellschaft › Digitale Kultur & Plattformen",
+        "Gesellschaft",
         "Wirtschaftskritik"
       ],
-      "category_sort": "01.01 09"
+      "category_sort": "01_Gesellschaft 09_Wirtschaftskritik"
     },
     {
       "author": "Savić, Selena; Wuschitz, Stefanie",
@@ -683,14 +763,16 @@
       "year": "2018",
       "type": "article",
       "tags": [
+        "Computergeschichte",
+        "DIY & Repair",
         "Gender",
         "Ökologie"
       ],
       "categories": [
-        "Coding und Praxis › DIY & Repair",
-        "Geschichte › Computergeschichte"
+        "Coding und Praxis",
+        "Geschichte"
       ],
-      "category_sort": "06.01 08.00"
+      "category_sort": "06_Coding_und_Praxis 08_Geschichte"
     },
     {
       "author": "Seele, Peter; Zapf, Lucas",
@@ -699,13 +781,14 @@
       "year": "2017",
       "type": "book",
       "tags": [
+        "Cloud Computing",
         "Sichtbarkeit"
       ],
       "categories": [
-        "Informationstechnologie › Cloud Computing",
+        "Informationstechnologie",
         "Überwachung und Macht"
       ],
-      "category_sort": "03.01 04"
+      "category_sort": "03_Informationstechnologie 04_Ueberwachung_und_Macht"
     },
     {
       "author": "Soon, Winnie; Cox, Geoff",
@@ -714,13 +797,14 @@
       "year": "2020",
       "type": "book",
       "tags": [
+        "Creative Coding",
+        "Software & Code Studies",
         "Ästhetik"
       ],
       "categories": [
-        "Coding und Praxis › Software & Code Studies",
-        "Coding und Praxis › Creative Coding"
+        "Coding und Praxis"
       ],
-      "category_sort": "06.00.03"
+      "category_sort": "06_Coding_und_Praxis"
     },
     {
       "author": "Steyerl, Hito",
@@ -730,13 +814,14 @@
       "type": "book",
       "url": "https://www.bloomsburycollections.com/monograph?docid=b-9781501354120",
       "tags": [
-        "Bild"
+        "Bild",
+        "Digitale Kultur & Plattformen"
       ],
       "categories": [
-        "Gesellschaft › Digitale Kultur & Plattformen",
+        "Gesellschaft",
         "Medientheorie"
       ],
-      "category_sort": "01.01 02"
+      "category_sort": "01_Gesellschaft 02_Medientheorie"
     },
     {
       "author": "Steyerl, Hito",
@@ -746,13 +831,14 @@
       "type": "article",
       "tags": [
         "Bild",
+        "Ordnen, Suchen & Finden",
         "Wahrnehmung"
       ],
       "categories": [
-        "Informationstechnologie › Ordnen, Suchen & Finden",
+        "Informationstechnologie",
         "Überwachung und Macht"
       ],
-      "category_sort": "03.02 04"
+      "category_sort": "03_Informationstechnologie 04_Ueberwachung_und_Macht"
     },
     {
       "author": "Steyerl, Hito",
@@ -767,7 +853,7 @@
       "categories": [
         "KI und Algorithmen"
       ],
-      "category_sort": "07"
+      "category_sort": "07_KI_und_Algorithmen"
     },
     {
       "author": "Thompson, Clive",
@@ -780,7 +866,7 @@
         "KI und Algorithmen",
         "Wirtschaftskritik"
       ],
-      "category_sort": "07 09"
+      "category_sort": "07_KI_und_Algorithmen 09_Wirtschaftskritik"
     },
     {
       "author": "Viction:ary (Ed.)",
@@ -788,12 +874,15 @@
       "title": "Code Crafted: Generative Design in Branding",
       "year": "2024",
       "type": "book",
-      "tags": [],
-      "categories": [
-        "Gestaltung & Design › Grafikdesign",
-        "Coding und Praxis › Creative Coding"
+      "tags": [
+        "Creative Coding",
+        "Grafikdesign"
       ],
-      "category_sort": "05.01 06.03"
+      "categories": [
+        "Gestaltung & Design",
+        "Coding und Praxis"
+      ],
+      "category_sort": "05_Gestaltung_&_Design 06_Coding_und_Praxis"
     },
     {
       "author": "Xin, Xin; Moriwaki, Katherine (Ed.)",
@@ -802,13 +891,14 @@
       "year": "2022",
       "type": "book",
       "tags": [
+        "Creative Coding",
         "Gender",
         "Pädagogik"
       ],
       "categories": [
-        "Coding und Praxis › Creative Coding"
+        "Coding und Praxis"
       ],
-      "category_sort": "06.03"
+      "category_sort": "06_Coding_und_Praxis"
     },
     {
       "author": "Zeller, Ludwig; Groß, Benedikt; Davis, Ted",
@@ -818,13 +908,15 @@
       "type": "book",
       "url": "http://link.springer.com/10.1007/978-3-319-07668-3_66",
       "tags": [
+        "Creative Coding",
+        "Digitale Kultur & Plattformen",
         "Open Source"
       ],
       "categories": [
-        "Gesellschaft › Digitale Kultur & Plattformen",
-        "Coding und Praxis › Creative Coding"
+        "Gesellschaft",
+        "Coding und Praxis"
       ],
-      "category_sort": "01.01 06.03"
+      "category_sort": "01_Gesellschaft 06_Coding_und_Praxis"
     }
   ]
 }
