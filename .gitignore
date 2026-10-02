@@ -7,3 +7,6 @@ vendor/
 .bundle/
 .DS_Store
 Layout/
+
+# Zotero API key for scripts/literature.rb (never commit)
+.zotero_api_key

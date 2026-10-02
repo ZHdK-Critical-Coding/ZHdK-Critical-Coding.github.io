@@ -1,0 +1,76 @@
+---
+layout: default
+body_class: home
+section: literature
+---
+{%- comment -%}
+  A literature list from _data/literature.json (scripts/literature.rb):
+  all entries, or – with `topic:` in the front matter – the entries
+  tagged with that topic. Sorting and tag filters: assets/js/literature.js
+{%- endcomment -%}
+{%- include header.html %}
+
+<section class="intro">
+  {{ content }}
+</section>
+
+{%- assign lit = site.data.literature %}
+{%- assign items = lit.items %}
+{%- assign tags = lit.tags %}
+{%- if page.topic %}
+  {%- assign topic = lit.topics | where: "tag", page.topic | first %}
+  {%- assign items = items | where_exp: "i", "i.topics contains page.topic" %}
+  {%- assign tags = topic.tags %}
+{%- endif %}
+
+<main class="literature" data-literature>
+  {%- if tags.size > 0 %}
+  <div class="tag-filter">
+    <ul class="tags">
+      {%- for t in tags %}
+      <li><button type="button" class="tag" data-tag="{{ t | escape }}" aria-pressed="false">{{ t | escape }}</button></li>
+      {%- endfor %}
+    </ul>
+    <span class="tag-filter-status">
+      <span data-count>{{ items.size }}</span>&thinsp;/&thinsp;{{ items.size }}
+      <button type="button" class="tag-clear" data-clear hidden><span class="lang" lang="en">Clear</span><span class="lang" lang="de">Zurücksetzen</span></button>
+    </span>
+  </div>
+  {%- endif %}
+
+  <table class="lit-table">
+    <thead>
+      <tr>
+        <th class="col-author" aria-sort="ascending"><button type="button" data-sort="author"><span class="lang" lang="en">Author</span><span class="lang" lang="de">Autor:in</span></button></th>
+        <th class="col-title"><button type="button" data-sort="title"><span class="lang" lang="en">Title</span><span class="lang" lang="de">Titel</span></button></th>
+        <th class="col-year"><button type="button" data-sort="year"><span class="lang" lang="en">Year</span><span class="lang" lang="de">Jahr</span></button></th>
+        <th class="col-type"><button type="button" data-sort="type"><span class="lang" lang="en">Type</span><span class="lang" lang="de">Typ</span></button></th>
+        <th class="col-tags"><button type="button" data-sort="tags"><span class="lang" lang="en">Tags</span><span class="lang" lang="de">Schlagworte</span></button></th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for i in items %}
+      <tr data-author="{{ i.author_sort | escape }}" data-title="{{ i.title | escape }}" data-year="{{ i.year }}" data-type="{{ i.type }}" data-tags="{{ i.tags | join: '|' | escape }}">
+        <td class="col-author">{{ i.author | escape }}</td>
+        <td class="col-title">{% if i.url %}<a href="{{ i.url | escape }}" target="_blank" rel="noopener">{{ i.title | escape }}</a>{% else %}{{ i.title | escape }}{% endif %}</td>
+        <td class="col-year">{{ i.year }}</td>
+        <td class="col-type">{% case i.type %}{% when "book" %}<span class="lang" lang="en">Book</span><span class="lang" lang="de">Buch</span>{% when "article" %}<span class="lang" lang="en">Article</span><span class="lang" lang="de">Artikel</span>{% else %}Web{% endcase %}</td>
+        <td class="col-tags">
+          {%- if i.tags.size > 0 %}
+          <ul class="tags">
+            {%- for t in i.tags %}
+            <li><button type="button" class="tag" data-tag="{{ t | escape }}" aria-pressed="false">{{ t | escape }}</button></li>
+            {%- endfor %}
+          </ul>
+          {%- endif %}
+        </td>
+      </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+  <p class="lit-empty" data-empty{% if items.size > 0 %} hidden{% endif %}><span class="lang" lang="en">No entries match the selected tags.</span><span class="lang" lang="de">Keine Einträge mit den gewählten Schlagworten.</span></p>
+</main>
+
+<script src="{{ '/assets/js/lang.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/menu.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/literature.js' | relative_url }}"></script>

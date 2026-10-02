@@ -1,0 +1,40 @@
+{%- comment -%}
+  Site header: brand and top menu (site.nav) on the left, language switch
+  on the right. The section of the current page (page.section or
+  layout.section) is marked; its dropdown entry for the page too.
+{%- endcomment -%}
+{%- assign section = page.section | default: layout.section -%}
+<header class="bar site-header">
+  <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+  <nav class="site-nav" aria-label="Main">
+    {%- for item in site.nav %}
+    {%- assign current = false %}{% if item.id == section %}{% assign current = true %}{% endif %}
+    {%- if item.menu %}
+    <details class="menu"{% if current %} data-current{% endif %}>
+      <summary><span class="lang" lang="en">{{ item.title }}</span><span class="lang" lang="de">{{ item.title_de }}</span></summary>
+      <div class="menu-list">
+        {%- if item.menu == "literature" %}
+        <a class="menu-item" href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}><span class="lang" lang="en">Overview</span><span class="lang" lang="de">Übersicht</span><span class="menu-count">{{ site.data.literature.items.size }}</span></a>
+        {%- for t in site.data.literature.topics %}
+        {%- assign t_url = "/literature/" | append: t.slug | append: "/" %}
+        {%- comment %} the title of the topic page (editable), else the one derived from the tag {% endcomment %}
+        {%- assign t_page = site.pages | where: "topic", t.tag | first %}
+        <a class="menu-item" href="{{ t_url | relative_url }}"{% if page.url == t_url %} aria-current="page"{% endif %}><span>{{ t_page.title | default: t.title }}</span><span class="menu-count">{{ t.count }}</span></a>
+        {%- endfor %}
+        {%- elsif item.menu == "main_categories" %}
+        {%- for m in site.main_categories %}
+        <a class="menu-item" href="{{ m.url | relative_url }}"{% if page.url == m.url %} aria-current="page"{% endif %}><span class="lang" lang="en">{{ m.title }}</span><span class="lang" lang="de">{{ m.title_de }}</span></a>
+        {%- endfor %}
+        {%- endif %}
+      </div>
+    </details>
+    {%- else %}
+    <a class="menu-link" href="{{ item.url | relative_url }}"{% if current %} aria-current="page"{% endif %}><span class="lang" lang="en">{{ item.title }}</span><span class="lang" lang="de">{{ item.title_de }}</span></a>
+    {%- endif %}
+    {%- endfor %}
+  </nav>
+  <div class="lang-switch" role="group" aria-label="Language">
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="de">DE</button>
+  </div>
+</header>

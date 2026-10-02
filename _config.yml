@@ -8,6 +8,30 @@ baseurl: ""
 # GitHub organisation the examples are collected from (see scripts/update.rb)
 github_org: ZHdK-Critical-Coding
 
+# Top menu, left to right. `menu` fills the dropdown:
+#   literature       the topics from _data/literature.json (scripts/literature.rb)
+#   main_categories  the main categories below
+# Without `menu` the entry is a plain link.
+nav:
+  - id: literature
+    title: Literature
+    title_de: Literatur
+    url: /literature/
+    menu: literature
+  - id: how-tos
+    title: How-To's
+    title_de: Anleitungen
+    url: /how-tos/
+  - id: code-samples
+    title: Code Samples
+    title_de: Code-Beispiele
+    url: /
+    menu: main_categories
+
+# Zotero collection for the Literature pages (scripts/literature.rb)
+literature:
+  collection: Critical Coding/Export
+
 # Main categories (pages, chosen in the header dropdown) and their
 # categories (columns, in this order). example.yaml sets both:
 #   maincategory: code-samples

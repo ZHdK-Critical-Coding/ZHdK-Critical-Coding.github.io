@@ -7,6 +7,10 @@
 # Needs the repository secret EXAMPLES_TOKEN: a fine-grained personal access
 # token (resource owner: ZHdK-Critical-Coding, all repositories, read-only
 # "Contents" + "Metadata"). Without it the committed _examples are used as-is.
+#
+# Optional repository secret ZOTERO_API_KEY: a read-only Zotero key for the
+# Literature pages (scripts/literature.rb). Without it, or if Zotero cannot be
+# reached, the committed _data/literature.json is used.
 
 name: Build and deploy
 
@@ -33,6 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       EXAMPLES_TOKEN: ${{ secrets.EXAMPLES_TOKEN }}
+      ZOTERO_API_KEY: ${{ secrets.ZOTERO_API_KEY }}
     steps:
       - uses: actions/checkout@v4
 
@@ -46,6 +51,11 @@ jobs:
         run: bundle exec ruby scripts/update.rb
         env:
           GITHUB_TOKEN: ${{ secrets.EXAMPLES_TOKEN }}
+
+      - name: Collect literature from Zotero
+        if: env.ZOTERO_API_KEY != ''
+        continue-on-error: true
+        run: bundle exec ruby scripts/literature.rb
 
       - id: pages
         uses: actions/configure-pages@v5

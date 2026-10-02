@@ -83,16 +83,55 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- start page ---------- */
 
-/* main category dropdown: full-width rows below the header, labels right */
-.home > .bar { position: relative; }
+/* site header: brand and top menu left, language switch right.
+   Dropdowns open as full-width rows below the header. */
+.site-header { position: relative; }
 
-.menu summary {
+.site-header > .brand {
+  flex-shrink: 0;
+  margin-right: var(--gutter);
+  font-size: inherit;
+  border: 0;
+  padding: 0;
+}
+.site-header > .brand:hover { background: none; }
+
+.site-nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--gutter) * 1.5);
+  min-width: 0;
+  white-space: nowrap;
+  /* too narrow: the menu scrolls sideways instead of wrapping */
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.site-nav::-webkit-scrollbar { display: none; }
+
+.menu summary,
+.menu-link {
   list-style: none;
   cursor: pointer;
-  white-space: nowrap;
+  text-underline-offset: 4px;
 }
 .menu summary::-webkit-details-marker { display: none; }
-.menu summary:focus-visible { outline: 1px solid var(--line); outline-offset: 4px; }
+.menu summary::after {
+  content: "▾";
+  margin-left: 0.35em;
+  font-size: 0.75em;
+}
+.menu[open] summary::after { content: "▴"; }
+
+/* the section of the current page */
+.menu[data-current] summary,
+.menu-link[aria-current="page"],
+.menu summary:hover,
+.menu-link:hover { text-decoration: underline; }
+
+.menu summary:focus-visible,
+.menu-link:focus-visible,
+.brand:focus-visible { outline: 1px solid var(--line); outline-offset: 4px; }
 
 .menu-list {
   position: absolute;
@@ -105,13 +144,16 @@ a { color: inherit; text-decoration: none; }
 
 .menu-item {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
+  gap: var(--gutter);
   height: var(--bar);
   padding: 0 var(--gutter);
   border-bottom: 1px solid var(--line);
   background: var(--bg);
 }
+
+.menu-count { font-variant-numeric: tabular-nums; }
 
 .menu-item[aria-current="page"] { background: #EEE; }
 
@@ -120,6 +162,23 @@ a { color: inherit; text-decoration: none; }
   background: var(--fg);
   color: var(--bg);
   outline: none;
+}
+
+/* phones: brand and language switch in the first row, menu below */
+@media (max-width: 600px) {
+  .site-header {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: var(--bar);
+    padding: 10px var(--gutter);
+    row-gap: 10px;
+  }
+  .site-nav {
+    order: 3;
+    flex-basis: 100%;
+    gap: 12px;
+    font-size: 14px;
+  }
 }
 
 .intro {
@@ -188,6 +247,117 @@ a.row:focus-visible {
   outline: none;
 }
 
+/* ---------- literature ----------
+   Same rows as the code sample columns, as a full-width table */
+
+.tag-filter {
+  display: flex;
+  align-items: baseline;
+  gap: var(--gutter);
+  padding: 8px var(--gutter);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.tag-filter .tags { flex: 1; }
+.tag-filter-status {
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tag,
+.tag-clear {
+  font: inherit;
+  font-size: 0.75em;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+.tag-clear { margin-left: 8px; text-transform: uppercase; }
+
+.tag[aria-pressed="true"],
+.tag:hover,
+.tag-clear:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.lit-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.lit-table th,
+.lit-table td {
+  padding: 8px var(--gutter);
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.lit-table th + th,
+.lit-table td + td { border-left: 1px solid var(--line); }
+
+.lit-table th {
+  /* column titles stay visible while scrolling, like .row-head */
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #EEE;
+  font-weight: inherit;
+  white-space: nowrap;
+}
+
+.lit-table th button {
+  font: inherit;
+  text-transform: uppercase;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.lit-table th button:hover { text-decoration: underline; text-underline-offset: 4px; }
+.lit-table th[aria-sort="ascending"] button::after { content: " ▲"; font-size: 0.75em; }
+.lit-table th[aria-sort="descending"] button::after { content: " ▼"; font-size: 0.75em; }
+
+.lit-table .col-author { width: 20%; }
+.lit-table .col-title { width: 37%; text-transform: uppercase; }
+.lit-table .col-year { width: 6%; font-variant-numeric: tabular-nums; }
+.lit-table .col-type { width: 7%; }
+.lit-table th.col-title { text-transform: none; }
+
+.lit-table td.col-title a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.lit-table tbody tr:hover { background: #F4F4F4; }
+
+.lit-empty { margin: 0; padding: 8px var(--gutter); border-bottom: 1px solid var(--line); }
+
+@media (max-width: 800px) {
+  /* every entry becomes a block; the column titles stay as sort buttons */
+  .lit-table thead tr { display: flex; background: #EEE; position: sticky; top: 0; z-index: 1; }
+  .lit-table th { flex: 1; width: auto; position: static; }
+  .lit-table tbody tr { display: block; padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .lit-table td { display: block; width: auto; padding: 2px var(--gutter); border: 0; }
+  .lit-table td + td { border-left: 0; }
+  .lit-table td.col-tags:empty { display: none; }
+  .tag-filter { flex-wrap: wrap; }
+}
+
 @media (max-width: 800px) {
   .columns { grid-template-columns: 1fr; }
   .column + .column { border-left: 0; }
@@ -254,14 +424,7 @@ body.detail {
 
 .button:hover { background: #7fff7f; }
 
-/* language switch next to the brand on the start page, styled like "Close" */
-.bar-start {
-  display: flex;
-  align-items: center;
-  gap: var(--gutter);
-  min-width: 0;
-}
-
+/* language switch at the right of the header, styled like "Close" */
 .lang-switch { display: flex; flex-shrink: 0; }
 
 .lang-switch button {

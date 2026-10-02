@@ -1,10 +1,11 @@
-# Critical Coding – Code Samples
+# Critical Coding
 
-Jekyll site listing the coding examples of the [ZHdK-Critical-Coding](https://github.com/ZHdK-Critical-Coding) organisation.
+Jekyll site with the literature, how-to's and coding examples of the [ZHdK-Critical-Coding](https://github.com/ZHdK-Critical-Coding) organisation.
 Published with GitHub Pages at https://zhdk-critical-coding.github.io/.
 
-- **Start page text:** `index.md` (Code Samples), `utilities.md` (Utilities), `document-generation.md` (Document Generation)
-- **Main categories and their columns:** `main_categories` in `_config.yml`; the header dropdown switches between them.
+- **Top menu:** `nav` in `_config.yml` – Literature, How-To's, Code Samples (header: `_includes/header.html`)
+- **Start page text:** `index.md` (Code Samples), `utilities.md` (Utilities), `document-generation.md` (Document Generation), `how-tos.md` (How-To's)
+- **Main categories and their columns:** `main_categories` in `_config.yml`; the Code Samples dropdown switches between them.
   A page shows one column per category that has examples, in equal widths.
 - **Layout / design:** `_layouts/`, `assets/css/style.css`
 - **Detail pages:** generated into `_examples/` by `scripts/update.rb` – don't edit them by hand
@@ -54,6 +55,26 @@ Short abstract, 2–4 sentences.
 ## Coding Help                   <- DE: "Coding-Hilfe"; what happens in which part of the code
 ```
 
+## Literature
+
+The Literature pages list the entries of the Zotero collection `literature.collection` in `_config.yml`
+(`Critical Coding/Export`). `scripts/literature.rb` reads it and writes `_data/literature.json`.
+
+- Tags of the form `01_Black-Box_Theorie` (two digits, underscore) are **topics**: each gets a page
+  `literature/<slug>.md` and an entry in the Literature menu. The number sets the order.
+- The Type column groups Zotero's item types into Book, Article and Web (`BOOK_TYPES`, `ARTICLE_TYPES` in the script).
+- All other tags are shown per entry and can be used as filters (an entry must have all selected tags).
+- New topic pages are created with a placeholder intro – edit it and the `title` (used in the menu) there; existing pages are never overwritten.
+  `literature/index.md` is the overview with all entries.
+
+```sh
+printf '%s' 'YOUR-ZOTERO-KEY' > .zotero_api_key     # once; git-ignored, never commit it
+bundle exec ruby scripts/literature.rb                # or: ZOTERO_API_KEY=… bundle exec ruby scripts/literature.rb
+```
+
+The key needs read access to the library that holds the collection (personal library or group).
+Only authors, title, year, type, tags and the entry's URL/DOI are written to the site – no key, library id or Zotero links.
+
 ## Updating
 
 ```sh
@@ -75,4 +96,6 @@ One-time setup:
 
 1. *Settings → Pages → Source:* **GitHub Actions**.
 2. *Settings → Secrets → Actions:* add `EXAMPLES_TOKEN`, a fine-grained token for the ZHdK-Critical-Coding organisation with read-only access to *Contents* and *Metadata* of all repositories.
-3. Optional, rebuild immediately when an example is pushed: add `docs/notify-site.yml` to the example repos (or as an organisation workflow template) and an organisation secret `SITE_DISPATCH_TOKEN` that can write to this repository. Without it, new examples show up after the nightly build.
+3. Optional, for the Literature pages: add `ZOTERO_API_KEY`, a read-only Zotero key. The pages then follow Zotero
+   with every build (nightly at the latest); without it the committed `_data/literature.json` is used.
+4. Optional, rebuild immediately when an example is pushed: add `docs/notify-site.yml` to the example repos (or as an organisation workflow template) and an organisation secret `SITE_DISPATCH_TOKEN` that can write to this repository. Without it, new examples show up after the nightly build.

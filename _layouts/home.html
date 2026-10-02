@@ -1,25 +1,10 @@
 ---
 layout: default
 body_class: home
+section: code-samples
 ---
-<header class="bar">
-  <div class="bar-start">
-    <p>{{ site.title }}</p>
-    <div class="lang-switch" role="group" aria-label="Language">
-      <button type="button" data-lang="en">EN</button>
-      <button type="button" data-lang="de">DE</button>
-    </div>
-  </div>
-  {%- assign main = site.main_categories | where: "id", page.maincategory | first %}
-  <details class="menu">
-    <summary><span class="lang" lang="en">{{ main.title }}</span><span class="lang" lang="de">{{ main.title_de }}</span></summary>
-    <nav class="menu-list">
-      {%- for m in site.main_categories %}
-      <a class="menu-item" href="{{ m.url | relative_url }}"{% if m.id == main.id %} aria-current="page"{% endif %}><span class="lang" lang="en">{{ m.title }}</span><span class="lang" lang="de">{{ m.title_de }}</span></a>
-      {%- endfor %}
-    </nav>
-  </details>
-</header>
+{%- assign main = site.main_categories | where: "id", page.maincategory | first %}
+{%- include header.html %}
 
 <section class="intro">
   {{ content }}

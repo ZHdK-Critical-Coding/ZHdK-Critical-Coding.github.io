@@ -1,0 +1,156 @@
+{
+  "topics": [
+    {
+      "tag": "01_Black-Box_Theorie",
+      "title": "Black-Box-Theorie",
+      "slug": "black-box-theorie",
+      "count": 1,
+      "tags": [
+        "Black Box",
+        "id found",
+        "Systemtheorie",
+        "Wissenschaftstheorie"
+      ]
+    },
+    {
+      "tag": "03_Techniksoziologie_STS",
+      "title": "Techniksoziologie & STS",
+      "slug": "techniksoziologie-sts",
+      "count": 1,
+      "tags": [
+        "Feminismus",
+        "id candidate",
+        "Posthumanismus",
+        "Technologie"
+      ]
+    },
+    {
+      "tag": "04_Medientheorie_Aesthetik",
+      "title": "Medientheorie & Ästhetik",
+      "slug": "medientheorie-aesthetik",
+      "count": 2,
+      "tags": [
+        "Brief",
+        "Computerkunst",
+        "Medienmaterialität",
+        "Medienphilosophie",
+        "Ressourcen",
+        "Ökologie"
+      ]
+    },
+    {
+      "tag": "05_Interface_HCI_Disappearing",
+      "title": "Interface, HCI & Disappearing Computer",
+      "slug": "interface-hci-disappearing",
+      "count": 1,
+      "tags": [
+        "HCI",
+        "id found",
+        "Technikgeschichte",
+        "Überblick"
+      ]
+    }
+  ],
+  "tags": [
+    "Black Box",
+    "Brief",
+    "Computerkunst",
+    "Feminismus",
+    "HCI",
+    "id candidate",
+    "id found",
+    "Medienmaterialität",
+    "Medienphilosophie",
+    "Posthumanismus",
+    "Ressourcen",
+    "Systemtheorie",
+    "Technikgeschichte",
+    "Technologie",
+    "Wissenschaftstheorie",
+    "Ökologie",
+    "Überblick"
+  ],
+  "items": [
+    {
+      "author": "Bunge, Mario",
+      "author_sort": "Bunge",
+      "title": "A General Black Box Theory",
+      "year": "1963",
+      "type": "article",
+      "url": "https://www.cambridge.org/core/product/identifier/S0031824800040150/type/journal_article",
+      "topics": [
+        "01_Black-Box_Theorie"
+      ],
+      "tags": [
+        "Black Box",
+        "id found",
+        "Systemtheorie",
+        "Wissenschaftstheorie"
+      ]
+    },
+    {
+      "author": "Flusser, Vilém",
+      "author_sort": "Flusser",
+      "title": "1986: Letter to the Editor of Leonardo",
+      "year": "1986",
+      "type": "article",
+      "url": "https://doi.org/10.11588/ic.2018.0.44747",
+      "topics": [
+        "04_Medientheorie_Aesthetik"
+      ],
+      "tags": [
+        "Brief",
+        "Computerkunst",
+        "Medienphilosophie"
+      ]
+    },
+    {
+      "author": "Haraway, Donna",
+      "author_sort": "Haraway",
+      "title": "A Cyborg Manifesto",
+      "year": "1991",
+      "type": "book",
+      "topics": [
+        "03_Techniksoziologie_STS"
+      ],
+      "tags": [
+        "Feminismus",
+        "id candidate",
+        "Posthumanismus",
+        "Technologie"
+      ]
+    },
+    {
+      "author": "Myers, Brad A.",
+      "author_sort": "Myers",
+      "title": "A Brief History of Human-Computer Interaction Technology",
+      "year": "1998",
+      "type": "article",
+      "url": "https://dl.acm.org/doi/10.1145/274430.274436",
+      "topics": [
+        "05_Interface_HCI_Disappearing"
+      ],
+      "tags": [
+        "HCI",
+        "id found",
+        "Technikgeschichte",
+        "Überblick"
+      ]
+    },
+    {
+      "author": "Parikka, Jussi",
+      "author_sort": "Parikka",
+      "title": "A Geology of Media",
+      "year": "2015",
+      "type": "book",
+      "topics": [
+        "04_Medientheorie_Aesthetik"
+      ],
+      "tags": [
+        "Medienmaterialität",
+        "Ressourcen",
+        "Ökologie"
+      ]
+    }
+  ]
+}
