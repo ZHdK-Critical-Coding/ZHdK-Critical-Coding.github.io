@@ -49,8 +49,8 @@ literature:
 #   category: input
 main_categories:
   - id: code-samples
-    title: Code Samples
-    title_de: Code-Beispiele
+    title: Input Output
+    title_de: Input Output
     url: /
     categories:
       - input
