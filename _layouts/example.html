@@ -26,7 +26,7 @@ body_class: detail
       {%- for name in page.related %}
       {%- assign rel = site.examples | where: "repo", name | first %}
       <li>
-        <span class="related-label">Related</span>
+        {%- if forloop.first %}<span class="related-label">Related</span>{% endif %}
         {%- if rel %}
         <a href="{{ rel.url | relative_url }}">{{ rel.category }} &gt; {{ rel.title }}</a>
         {%- else %}
