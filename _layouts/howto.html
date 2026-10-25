@@ -1,0 +1,42 @@
+---
+layout: default
+body_class: detail
+---
+{%- comment -%} One manual of the How-To's (_howtos, written by scripts/howtos.rb) {%- endcomment -%}
+{%- assign howtos = site.howtos | sort: "order" -%}
+{%- assign total = howtos | size -%}
+{%- for h in howtos -%}
+  {%- if h.url == page.url -%}{%- assign idx = forloop.index0 -%}{%- endif -%}
+{%- endfor -%}
+{%- assign prev_idx = idx | plus: total | minus: 1 | modulo: total -%}
+{%- assign next_idx = idx | plus: 1 | modulo: total -%}
+{%- assign prev = howtos[prev_idx] -%}
+{%- assign next = howtos[next_idx] -%}
+<header class="bar">
+  <p>
+    <span>How-To's</span><span>{{ page.title }}</span>
+  </p>
+  <a href="{{ '/' | relative_url }}" data-key="Escape">Close</a>
+</header>
+
+<main class="detail-body">
+  <article class="readme">
+    {{ content }}
+  </article>
+
+  <aside class="meta">
+    <div class="meta-link">
+      <a class="button" href="{{ page.repo_url }}">GitHub</a>
+    </div>
+    <dl>
+      <dt>Repository</dt><dd>{{ site.howtos_repo }}</dd>
+      <dt>Folder</dt><dd>{{ page.folder }}</dd>
+    </dl>
+  </aside>
+</main>
+
+<footer class="bar pager">
+  <a href="{{ prev.url | relative_url }}" data-key="ArrowLeft">&larr; {{ prev.title }}</a>
+  <a href="{{ next.url | relative_url }}" data-key="ArrowRight">{{ next.title }} &rarr;</a>
+</footer>
+<script src="{{ '/assets/js/keys.js' | relative_url }}"></script>

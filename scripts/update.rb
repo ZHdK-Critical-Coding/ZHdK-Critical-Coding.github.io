@@ -25,27 +25,16 @@
 # Authentication (private repos): GITHUB_TOKEN or GH_TOKEN, otherwise the token
 # stored in git's credential helper for github.com is used.
 
-require "yaml"
-require "json"
 require "date"
-require "net/http"
-require "uri"
-require "open3"
-require "fileutils"
-require "base64"
 require "optparse"
+require_relative "common"
 
-ROOT        = File.expand_path("..", __dir__)
-CONFIG      = YAML.safe_load(File.read(File.join(ROOT, "_config.yml")))
-ORG         = CONFIG.fetch("github_org")
 MAIN_CATS   = CONFIG.fetch("main_categories").to_h { |m| [m.fetch("id"), m.fetch("categories")] }
 SKIP_REPOS  = %w[ZHdK-Critical-Coding.github.io .github].map(&:downcase).freeze
 OUT_DIR     = File.join(ROOT, "_examples")
 ASSET_DIR   = File.join(ROOT, "assets", "examples")
-CACHE_DIR   = File.join(ROOT, ".cache", "repos")
 META_FILE   = "example.yaml"
 SCREENSHOT  = "screenshot.png"
-IMAGE_EXT   = %w[.png .jpg .jpeg .gif .svg .webp .avif].freeze
 
 options = {}
 OptionParser.new do |o|
@@ -54,30 +43,6 @@ OptionParser.new do |o|
 end.parse!
 
 # ---------------------------------------------------------------- helpers
-
-def run(*cmd)
-  out, err, status = Open3.capture3(*cmd)
-  raise "#{cmd.reject { |c| c.start_with?("http.") }.join(" ")} failed: #{err.strip}" unless status.success?
-  out
-end
-
-def github_token
-  token = ENV["GITHUB_TOKEN"] || ENV["GH_TOKEN"]
-  return token unless token.to_s.empty?
-
-  out, _, status = Open3.capture3("git", "credential", "fill", stdin_data: "protocol=https\nhost=github.com\n\n")
-  status.success? ? out[/^password=(.*)$/, 1] : nil
-rescue Errno::ENOENT
-  nil
-end
-
-def api_get(path, token)
-  uri = URI("https://api.github.com#{path}")
-  req = Net::HTTP::Get.new(uri)
-  req["Accept"] = "application/vnd.github+json"
-  req["Authorization"] = "Bearer #{token}" if token
-  Net::HTTP.start(uri.host, uri.port, use_ssl: true) { |http| http.request(req) }
-end
 
 def org_repos(token)
   repos = []
@@ -97,38 +62,11 @@ def has_meta_file?(repo, token)
     .is_a?(Net::HTTPSuccess)
 end
 
-# Shallow clone or refresh a repository in .cache/repos
-def sync_repo(repo, token)
-  dir  = File.join(CACHE_DIR, repo["name"])
-  auth = token ? ["-c", "http.https://github.com/.extraheader=AUTHORIZATION: basic #{Base64.strict_encode64("x-access-token:#{token}")}"] : []
-  branch = repo["default_branch"]
-  if File.directory?(File.join(dir, ".git"))
-    run("git", *auth, "-C", dir, "fetch", "--quiet", "--depth", "1", "origin", branch)
-    run("git", "-C", dir, "reset", "--quiet", "--hard", "FETCH_HEAD")
-  else
-    FileUtils.mkdir_p(CACHE_DIR)
-    run("git", *auth, "clone", "--quiet", "--depth", "1", "--branch", branch, repo["clone_url"], dir)
-  end
-  dir
-end
-
 def local_repos(base)
   Dir.children(base).sort_by(&:downcase).filter_map do |name|
     dir = File.join(base, name)
-    next unless File.directory?(File.join(dir, ".git"))
-
-    remote = (run("git", "-C", dir, "remote", "get-url", "origin").strip rescue "")
-    {
-      "name" => name,
-      "dir" => dir,
-      "html_url" => remote.empty? ? "https://github.com/#{ORG}/#{name}" : remote.sub(/\.git\z/, ""),
-      "default_branch" => run("git", "-C", dir, "branch", "--show-current").strip
-    }
+    local_repo(dir) if File.directory?(File.join(dir, ".git"))
   end
-end
-
-def slugify(name)
-  name.downcase.gsub(/[^a-z0-9]+/, "-").gsub(/\A-|-\z/, "")
 end
 
 def find_readme(dir, meta)
@@ -161,46 +99,6 @@ end
 # link the two language versions on GitHub; the page has its own switch.
 def strip_language_links(markdown)
   markdown.gsub(/^\[(?:Deutsch|English)\]\([^)\s]*readme(?:_de)?\.md\)[ \t]*\n(?:[ \t]*\n)?/i, "")
-end
-
-# Rewrites relative links in the README: images are copied into
-# assets/examples/<slug>/, everything else points to the file on GitHub.
-def rewrite_links(markdown, readme_path, repo_dir, repo, slug)
-  readme_dir = File.dirname(readme_path)
-  in_fence = false
-
-  rewrite = lambda do |target, image|
-    return target if target.empty? || target.match?(%r{\A(?:[a-z][a-z0-9+.-]*:|#|/)}i)
-
-    path, anchor = target.split("#", 2)
-    file = File.expand_path(URI.decode_www_form_component(path.gsub("+", "%2B")), readme_dir)
-    return target unless file.start_with?(repo_dir)
-
-    rel = file.delete_prefix("#{repo_dir}/")
-    encoded = rel.split("/").map { |p| URI.encode_www_form_component(p).gsub("+", "%20") }.join("/")
-    if image && File.file?(file) && IMAGE_EXT.include?(File.extname(file).downcase)
-      dest = File.join(ASSET_DIR, slug, rel)
-      FileUtils.mkdir_p(File.dirname(dest))
-      FileUtils.cp(file, dest)
-      "../../assets/examples/#{slug}/#{encoded}"
-    else
-      kind = File.directory?(file) ? "tree" : "blob"
-      "#{repo["html_url"]}/#{kind}/#{repo["default_branch"]}/#{encoded}#{anchor ? "##{anchor}" : ""}"
-    end
-  end
-
-  markdown.each_line.map do |line|
-    if line.match?(/\A\s*(```|~~~)/)
-      in_fence = !in_fence
-      next line
-    end
-    next line if in_fence
-
-    line
-      .gsub(/(!?)\[([^\]]*)\]\(\s*<([^>]+)>/) { "#{$1}[#{$2}](<#{rewrite.call($3, $1 == "!")}>" }
-      .gsub(/(!?)\[([^\]]*)\]\(\s*([^)\s<]+)/) { "#{$1}[#{$2}](#{rewrite.call($3, $1 == "!")}" }
-      .gsub(/\b(src|href)=(["'])([^"']+)\2/) { "#{$1}=#{$2}#{rewrite.call($3, $1 == "src")}#{$2}" }
-  end.join
 end
 
 # Replaces the first H1 (outside code fences) with "# Technology: Name",
@@ -279,15 +177,16 @@ repos.each do |repo|
   report[:no_name] << name if meta["name"].to_s.strip.empty?
 
   slug   = slugify(name)
+  assets = [File.join(ASSET_DIR, slug), "../../assets/examples/#{slug}"]
   readme = find_readme(dir, meta)
   body   = readme ? File.read(readme, encoding: "bom|utf-8") : ""
   report[:no_readme] << name unless readme
   report[:empty_readme] << name if readme && body.strip.empty?
-  body = rewrite_links(strip_language_links(body), readme, dir, repo, slug) unless body.strip.empty?
+  body = rewrite_links(strip_language_links(body), readme, dir, repo, *assets) unless body.strip.empty?
 
   readme_de = find_readme_de(dir, meta, readme)
   body_de   = readme_de ? File.read(readme_de, encoding: "bom|utf-8") : ""
-  body_de   = body_de.strip.empty? ? nil : rewrite_links(strip_language_links(body_de), readme_de, dir, repo, slug)
+  body_de   = body_de.strip.empty? ? nil : rewrite_links(strip_language_links(body_de), readme_de, dir, repo, *assets)
   report[:no_readme_de] << name if readme && !body.strip.empty? && !body_de
 
   screenshot = File.join(dir, SCREENSHOT)

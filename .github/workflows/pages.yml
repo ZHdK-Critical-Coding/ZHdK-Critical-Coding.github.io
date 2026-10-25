@@ -8,6 +8,9 @@
 # token (resource owner: ZHdK-Critical-Coding, all repositories, read-only
 # "Contents" + "Metadata"). Without it the committed _examples are used as-is.
 #
+# The How-To's are read from the Manuals repository (scripts/howtos.rb); if
+# that fails, the committed _howtos are used.
+#
 # Optional repository secret ZOTERO_API_KEY: a read-only Zotero key for the
 # Literature pages (scripts/literature.rb). Without it, or if Zotero cannot be
 # reached, the committed _data/literature.json is used.
@@ -49,6 +52,13 @@ jobs:
       - name: Collect examples from the organisation
         if: env.EXAMPLES_TOKEN != ''
         run: bundle exec ruby scripts/update.rb
+        env:
+          GITHUB_TOKEN: ${{ secrets.EXAMPLES_TOKEN }}
+
+      # The Manuals repository is public: works without a token
+      - name: Collect how-to's from the Manuals repository
+        continue-on-error: true
+        run: bundle exec ruby scripts/howtos.rb
         env:
           GITHUB_TOKEN: ${{ secrets.EXAMPLES_TOKEN }}
 

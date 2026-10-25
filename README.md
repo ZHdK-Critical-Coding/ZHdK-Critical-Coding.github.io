@@ -4,7 +4,8 @@ Jekyll site with the literature, how-to's and coding examples of the [ZHdK-Criti
 Published with GitHub Pages at https://zhdk-critical-coding.github.io/.
 
 - **Top menu:** `nav` in `_config.yml` – Literature, How-To's, Code Samples (header: `_includes/header.html`)
-- **Start page text:** `index.md` (Code Samples), `utilities.md` (Utilities), `document-generation.md` (Document Generation), `how-tos.md` (How-To's)
+- **Start page:** `index.md` – introduction only, links to the three parts
+- **Page texts:** `input-output.md` (Code Samples: Input Output), `utilities.md` (Utilities), `document-generation.md` (Document Generation)
 - **Main categories and their columns:** `main_categories` in `_config.yml`; the Code Samples dropdown switches between them.
   A page shows one column per category that has examples, in equal widths.
 - **Layout / design:** `_layouts/`, `assets/css/style.css`
@@ -55,6 +56,29 @@ Short abstract, 2–4 sentences.
 ## Coding Help                   <- DE: "Coding-Hilfe"; what happens in which part of the code
 ```
 
+## How-To's
+
+The How-To's dropdown lists the manuals of the [Manuals](https://github.com/ZHdK-Critical-Coding/Manuals)
+repository (`howtos_repo` in `_config.yml`). Its `howtos.yaml` lists them; every entry is one page and one menu entry, in this order:
+
+```yaml
+howtos:
+  - folder: Terminal          # folder of the manual
+    title: Terminal           # menu entry and page title
+    title_de: Terminal        # optional, German title
+    readme: Terminal/Mac.md   # optional, default: README.md in the folder
+```
+
+A folder without README gets a page that lists its files. Images and PDFs linked from a manual are copied into
+`assets/howtos/`, other relative links point to GitHub. Pages are generated into `_howtos/` – don't edit them by hand.
+
+```sh
+bundle exec ruby scripts/howtos.rb                    # pull the Manuals repo from GitHub
+bundle exec ruby scripts/howtos.rb --local ../Manuals # or read a local clone
+```
+
+The script also prints folders of the repository that are not listed in `howtos.yaml`.
+
 ## Literature
 
 `/literature/` lists all entries of the Zotero collection `literature.collection` in `_config.yml`
@@ -94,7 +118,7 @@ Commit and push the result – or let GitHub do it (see below).
 
 ## Automatic updates
 
-`.github/workflows/pages.yml` runs the update script and deploys the site on every push, nightly, manually, and on a `repository_dispatch` of type `example-updated`.
+`.github/workflows/pages.yml` runs the update scripts (examples, how-to's, literature) and deploys the site on every push, nightly, manually, and on a `repository_dispatch` of type `example-updated`.
 
 One-time setup:
 

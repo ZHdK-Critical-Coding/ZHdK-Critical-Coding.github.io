@@ -17,6 +17,11 @@
         {%- for m in site.main_categories %}
         <a class="menu-item" href="{{ m.url | relative_url }}"{% if page.url == m.url %} aria-current="page"{% endif %}><span class="lang" lang="en">{{ m.title }}</span><span class="lang" lang="de">{{ m.title_de }}</span></a>
         {%- endfor %}
+        {%- elsif item.menu == "howtos" %}
+        {%- assign howtos = site.howtos | sort: "order" %}
+        {%- for h in howtos %}
+        <a class="menu-item" href="{{ h.url | relative_url }}"{% if page.url == h.url %} aria-current="page"{% endif %}><span class="lang" lang="en">{{ h.title }}</span><span class="lang" lang="de">{{ h.title_de }}</span></a>
+        {%- endfor %}
         {%- endif %}
       </div>
     </details>

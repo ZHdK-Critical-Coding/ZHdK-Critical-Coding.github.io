@@ -10,6 +10,7 @@ github_org: ZHdK-Critical-Coding
 
 # Top menu, left to right. `menu` fills the dropdown:
 #   main_categories  the main categories below
+#   howtos           the manuals of the How-To's
 # Without `menu` the entry is a plain link.
 nav:
   - id: literature
@@ -19,11 +20,11 @@ nav:
   - id: how-tos
     title: How-To's
     title_de: Anleitungen
-    url: /how-tos/
+    menu: howtos
   - id: code-samples
     title: Code Samples
     title_de: Code-Beispiele
-    url: /
+    url: /input-output/
     menu: main_categories
 
 # Zotero collection for the Literature pages (scripts/literature.rb)
@@ -43,6 +44,10 @@ literature:
     08_Geschichte: "Geschichte"
     09_Wirtschaftskritik: "Wirtschaftskritik"
 
+# Manuals for the How-To's (scripts/howtos.rb): the repository of the
+# organisation that holds them. Its howtos.yaml lists the manuals.
+howtos_repo: Manuals
+
 # Main categories (pages, chosen in the header dropdown) and their
 # categories (columns, in this order). example.yaml sets both:
 #   maincategory: code-samples
@@ -51,7 +56,7 @@ main_categories:
   - id: code-samples
     title: Input Output
     title_de: Input Output
-    url: /
+    url: /input-output/
     categories:
       - input
       - transformation
@@ -75,6 +80,9 @@ collections:
   examples:
     output: true
     permalink: /examples/:name/
+  howtos:
+    output: true
+    permalink: /how-tos/:name/
 
 defaults:
   - scope:
@@ -82,6 +90,11 @@ defaults:
       type: examples
     values:
       layout: example
+  - scope:
+      path: ""
+      type: howtos
+    values:
+      layout: howto
 
 markdown: kramdown
 kramdown:

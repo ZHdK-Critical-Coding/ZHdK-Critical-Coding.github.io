@@ -1,36 +1,29 @@
 ---
-layout: home
-maincategory: code-samples
+layout: page
 ---
 
 <div class="lang" lang="en" markdown="1">
 
-This website is a collection of small, self-contained code samples for the Critical Coding module at the Zurich University of the Arts ZHdK.
-Every example is its own repository in the ZHdK-Critical-Coding organisation on GitHub.
+This is the repository of the Critical Coding module at the Zurich University of the Arts ZHdK.
+It has three parts:
 
-Examples are split in three parts:
+- Literature: texts, books and websites on code and society, media theory, design, AI and history.
+- How-To's: manuals for the tools used in the module – terminal, Git, p5.js and basil.js.
+- Code Samples: small, self-contained examples for input, transformation and output.
 
-- Input: Reading data from a sensor, a camera, the web or an AI model.
-- Transformation: Processing pixels, type, numbers and simulations.
-- Output: Sending results to screens, LEDs, printers and files. 
-
-Open an example to read its documentation, then clone the repository to run and modify it. 
-`Access to the repositories is restricted to members of the Critical Coding Organisation for now.`
+This is an ongoing process: the page grows with the module and is likely to change.
 
 </div>
 
 <div class="lang" lang="de" markdown="1">
 
-Diese Website ist eine Sammlung kleiner, eigenständiger Code-Beispiele für das Modul Critical Coding an der Zürcher Hochschule der Künste ZHdK.
-Jedes Beispiel ist ein eigenes Repository in der Organisation ZHdK-Critical-Coding auf GitHub.
+Dies ist das Repository des Moduls Critical Coding an der Zürcher Hochschule der Künste ZHdK.
+Es besteht aus drei Teilen:
 
-Die Beispiele sind in drei Teile gegliedert:
+- Literatur: Texte, Bücher und Webseiten zu Code und Gesellschaft, Medientheorie, Gestaltung, KI und Geschichte.
+- Anleitungen: Anleitungen zu den Werkzeugen im Modul – Terminal, Git, p5.js und basil.js.
+- Code-Beispiele: kleine, eigenständige Beispiele für Input, Transformation und Output.
 
-- Input: Daten von einem Sensor, einer Kamera, aus dem Web oder von einem KI-Modell lesen.
-- Transformation: Pixel, Schrift, Zahlen und Simulationen verarbeiten.
-- Output: Resultate an Bildschirme, LEDs, Drucker und Dateien ausgeben.
-
-Öffne ein Beispiel, um seine Dokumentation zu lesen, und klone dann das Repository, um es auszuführen und zu verändern.
-`Der Zugang zu den Repositories ist vorerst auf Mitglieder der Critical Coding Organisation beschränkt.`
+Das ist ein laufender Prozess: Die Seite wächst mit dem Modul und wird sich voraussichtlich noch verändern.
 
 </div>
